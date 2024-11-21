@@ -1,0 +1,9 @@
+pandas
+pymongo
+bigjson
+liftover
+numpy
+ijson
+boto3
+requests
+pyarrow
