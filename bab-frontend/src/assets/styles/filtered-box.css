@@ -1,0 +1,72 @@
+.filteredBox{
+    background: #eaf2ff;
+    padding: 5px;
+    font-size: 14px;
+    font-family: 'Mulish', sans-serif;
+}
+
+.filteredBox:hover{
+    background: #b8cfec;
+}
+
+body.body--dark .filteredBox {
+    background-color: #092b63;
+}
+
+body.body--dark .filteredBox:hover {
+    background-color: #194ca1;
+}
+
+.filteredBoxField{
+    cursor: pointer;
+}
+
+.filteredBoxViewOnly{
+    font-size: 14px;
+    font-family: 'Mulish', sans-serif;
+}
+
+
+.filteredBoxField .delete_icon{
+    color: #337ab7;
+    font-weight: bold;
+    font-size: 16px;
+    padding-bottom: 2px;
+}
+
+.filteredEle{
+    margin-left: 6px;
+    margin-right: 6px;
+    word-wrap: break-word;
+}
+
+.filteredBoxIcon{
+    padding-bottom: 2px;
+    color: #4285f4;
+}
+
+.panel-element{
+    cursor: zoom-out;
+    padding: 0 10px;
+}
+
+.panel-element:hover{
+    background: #565656;
+    color: white;
+}
+
+.filteredPanels{
+    cursor: default;
+}
+
+.remove_panels{
+    background: #afafaf;
+    color: white;
+    padding: 0 6px;
+    border-radius: 10px;
+}
+
+.remove_panels:hover{
+    cursor: zoom-out;
+    background: indianred;
+}

@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  bab-backend:
+    # user: 1003:1002
+    platform: "linux/amd64"
+    image: bab-backend:demo
+    ports:
+      - '8080:8080'
+    env_file:
+      - .env
+    volumes:
+      - /tmp/202410255/upload:/usr/src/app/upload_data
+      - ./sample:/usr/src/app/sample
+    networks:
+      - bab_network
+      - mongo_default
+
+networks:
+  bab_network:
+    external: true
+  mongo_default:
+    external: true

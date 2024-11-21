@@ -1,0 +1,10 @@
+*.md
+/variant-import-tool/data/annotated
+/variant-import-tool/data/raw
+/variant-import-tool/nirvana/download/Cache/GRCh38
+/variant-import-tool/nirvana/download/References
+/variant-import-tool/nirvana/download/SupplementaryAnnotation/GRCh38
+/bab-backend/*.zip
+/bab-backend/*.md
+/bab-frontend/*.md
+/bab-backend/sample

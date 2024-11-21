@@ -1,0 +1,5 @@
+[
+  { "label": "yes", "value": 1 },
+  { "label": "no", "value": 0 },
+  { "label": "any", "value": null }
+]

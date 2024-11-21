@@ -1,0 +1,22 @@
+[
+  {
+    "label": "\uD83D\uDD34 Sufficient Evidence for Triplosensitivity",
+    "value": "sufficient"
+  },
+  {
+    "label": "\uD83D\uDFE0 Emerging Evidence for Triplosensitivity",
+    "value": "emerging"
+  },
+  {
+    "label": "\uD83D\uDFE1 Little Evidence for Triplosensitivity",
+    "value": "little"
+  },
+  {
+    "label": "Dosage Sensitivity Unlikely",
+    "value": "unlikely"
+  },
+  {
+    "label": "No Evidence for Triplosensitivity",
+    "value": "no"
+  }
+]

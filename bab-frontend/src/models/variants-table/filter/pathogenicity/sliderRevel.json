@@ -1,0 +1,17 @@
+{
+  "min": 1,
+  "max": 9,
+  "step": 1,
+  "markerList" : [
+    { "label": "0"  , "value" : 1, "db_value" :  0 },
+    { "label": "0.003" , "value" : 2, "db_value" :  0.003 },
+    { "label": "0.046" , "value" : 3, "db_value" :  0.046 },
+    { "label": "0.238" , "value" : 4, "db_value" :  0.238 },
+    { "label": "0.348"  , "value" : 5, "db_value" :  0.348},
+    { "label": "0.629"  , "value" : 6, "db_value" :  0.629},
+    { "label": "0.736"  , "value" : 7, "db_value" :  0.736},
+    { "label": "0.918"  , "value" : 8, "db_value" :  0.918},
+    { "label": "1"  , "value" : 9, "db_value" :  null}
+  ],
+  "conditions" : "$lte"
+}

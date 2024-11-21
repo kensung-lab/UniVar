@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  variant-import-tool:
+    image: ghcr.io/hkgi-bioinformatics/variant-import-tool-env
+    env_file:
+      - .env
+    environment:
+      MONGO_BASE_URL: ${MONGO_BASE_URL} # This should be set in your environment
+      VCF_FILE_NAME: ${VCF_FILE_NAME}
+      PED_FILE_NAME: ${PED_FILE_NAME}
+      PIPELINE_VERSION: ${PIPELINE_VERSION}
+      UAT_MODE: ${UAT_MODE}
+      ACCESS_GROUP: ${ACCESS_GROUP}
+      DATABASE_NAME: ${DATABASE_NAME}
+      EXOMISER_RUN: ${EXOMISER_RUN:-DUMMY}
+      LIFTOVER_PATH: ${LIFTOVER_PATH}
+      VARIANT_TYPE: ${VARIANT_TYPE}
+    command: >
+      /bin/sh -c "
+      python3 /app/variant-import-tool/variant_import_tool.py
+      /app/variant-import-tool/data/annotated/${VCF_FILE_NAME}
+      /app/variant-import-tool/data/raw/${PED_FILE_NAME}
+      ${MONGO_BASE_URL}
+      ${VARIANT_TYPE}
+      ${UAT_MODE}
+      --pipeline-version ${PIPELINE_VERSION}
+      ${ACCESS_GROUP}
+      --database-name ${DATABASE_NAME}
+      --exomiser-run ${EXOMISER_RUN}
+      --liftover-path ${LIFTOVER_PATH}"
+    volumes:
+      - ./source:/app/variant-import-tool
+      - ./data:/app/variant-import-tool/data
+    networks:
+      - bab_network
+      - mongo_default
+
+volumes:
+  data:
+    driver: local
+networks:
+  bab_network:
+    external: true
+  mongo_default:
+    external: true

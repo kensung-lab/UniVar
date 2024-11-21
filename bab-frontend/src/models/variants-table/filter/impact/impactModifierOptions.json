@@ -1,0 +1,21 @@
+[
+  { "label": "Coding sequence variant", "value": "coding_sequence_variant" },
+  { "label": "Mature miRNA variant", "value": "mature_miRNA_variant" },
+  { "label": "5 prime UTR variant", "value": "5_prime_UTR_variant" },
+  { "label": "3 prime UTR variant", "value": "3_prime_UTR_variant" },
+  { "label": "Non coding transcript exon variant", "value": "non_coding_transcript_exon_variant" },
+  { "label": "Intron variant", "value": "intron_variant" },
+  { "label": "NMD transcript variant", "value": "NMD_transcript_variant" },
+  { "label": "Non coding transcript variant", "value": "non_coding_transcript_variant" },
+  { "label": "Coding transcript variant", "value": "coding_transcript_variant" },
+  { "label": "Upstream gene variant", "value": "upstream_gene_variant" },
+  { "label": "Downstream gene variant", "value": "downstream_gene_variant" },
+  { "label": "TFBS ablation", "value": "TFBS_ablation" },
+  { "label": "TFBS amplification", "value": "TFBS_amplification" },
+  { "label": "TF binding site variant", "value": "TF_binding_site_variant" },
+  { "label": "Regulatory region ablation", "value": "regulatory_region_ablation" },
+  { "label": "Regulatory region amplification", "value": "regulatory_region_amplification" },
+  { "label": "Regulatory region variant", "value": "regulatory_region_variant" },
+  { "label": "Intergenic variant", "value": "intergenic_variant" },
+  { "label": "Sequence variant", "value": "sequence_variant" }
+]

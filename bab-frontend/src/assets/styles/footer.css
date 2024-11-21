@@ -1,0 +1,27 @@
+.app_footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-right: 10px;
+    background: #fff;
+    z-index: 999;
+    margin-top: 10px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+    text-align: right;
+    font-size: 12px;
+}
+
+body.body--dark .app_footer{
+    background: #092b63;
+    color: white;
+}
+
+.license-message{
+    float: left;
+    margin-left: 10px;
+}
+
+.license-message a{
+    margin-left: 10px;
+}

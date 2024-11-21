@@ -1,0 +1,4 @@
+#Family ID	Individual ID	Paternal ID	Maternal ID	Sex	Phenotype
+FAMILY_DEMO	demo1	demo2	demo3	2	2
+FAMILY_DEMO	demo3	0	0	2	1
+FAMILY_DEMO	demo2	0	0	1	1

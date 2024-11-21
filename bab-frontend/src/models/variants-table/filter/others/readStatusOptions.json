@@ -1,0 +1,5 @@
+[
+  { "label": "All", "value": null },
+  { "label": "Read", "value": 1 },
+  { "label": "Unread", "value": 0 }
+]

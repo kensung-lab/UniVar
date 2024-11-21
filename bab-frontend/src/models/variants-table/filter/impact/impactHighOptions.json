@@ -1,0 +1,12 @@
+[
+  { "label": "Transcript ablation", "value": "transcript_ablation" },
+  { "label": "Splice acceptor variant", "value": "splice_acceptor_variant" },
+  { "label": "Splice donor variant", "value": "splice_donor_variant" },
+  { "label": "Stop gained", "value": "stop_gained" },
+  { "label": "Frameshift variant", "value": "frameshift_variant" },
+  { "label": "Stop lost", "value": "stop_lost" },
+  { "label": "Start lost", "value": "start_lost" },
+  { "label": "Transcript amplification", "value": "transcript_amplification" },
+  { "label": "Feature elongation", "value": "feature_elongation" },
+  { "label": "Feature truncation", "value": "feature_truncation" }
+]

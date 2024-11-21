@@ -1,0 +1,1 @@
+{"$schema":"http://json-schema.org/draft-06/schema#","type":"object","properties":{"ensembl_exon":{"type":"array","items":{"type":"object","properties":{"start":{"type":"number"},"end":{"type":"number"},"ENST_ID":{"type":"string"},"EXON_ID":{"type":"number"},"IS_CODING":{"type":"number"}},"required":["start","end","ENST_ID","EXON_ID","IS_CODING"],"additionalProperties":false}}}}

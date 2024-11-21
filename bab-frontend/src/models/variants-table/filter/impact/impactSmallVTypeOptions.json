@@ -1,0 +1,5 @@
+[
+  { "label": "SNP", "value": "snp" },
+  { "label": "indel", "value": "indel" },
+  { "label": "any", "value": null }
+]

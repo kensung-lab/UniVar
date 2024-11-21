@@ -1,0 +1,168 @@
+{
+  "revel": {
+    "open": false,
+    "custom_value": ""
+  },
+  "cadd_phred" : {
+    "open": false,
+    "custom_value": ""
+  },
+  "constraint_mis_z": {
+    "open": false,
+    "custom_value": ""
+  },
+  "constraint_oe_lof_upper": {
+    "open": false,
+    "custom_value": ""
+  },
+  "polyphen_score": {
+    "open": false,
+    "custom_value": ""
+  },
+  "sift_score": {
+    "open": false,
+    "custom_value": ""
+  },
+  "highest_exomiser_scombi": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_ad_exgenescombi": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_ar_exgenescombi": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_xd_exgenescombi": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_xr_exgenescombi": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_mt_exgenescombi" : {
+    "open": false,
+    "custom_value": ""
+  },
+  "highest_exomiser_spheno": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_ad_exgenespheno": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_ar_exgenespheno": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_xd_exgenespheno": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_xr_exgenespheno": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_mt_exgenespheno" : {
+    "open": false,
+    "custom_value": ""
+  },
+
+  "highest_exomiser_gene_combined_score" : {
+    "open": false,
+    "custom_value": ""
+  },
+  "highest_exomiser_gene_pheno_score" : {
+    "open": false,
+    "custom_value": ""
+  },
+
+  "quality": {
+    "open": false,
+    "custom_value": ""
+  },
+  "len": {
+    "open": false,
+    "custom_value": ""
+  },
+  "highest_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomad_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomad_eas_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv3_af_eas": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv3_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "dgv_gold_outer": {
+    "open": false,
+    "custom_value": ""
+  },
+  "dgv_gold_inner": {
+    "open": false,
+    "custom_value": ""
+  },
+  "hkbc": {
+    "open": false,
+    "custom_value": ""
+  },
+  "one_kg_eas": {
+    "open": false,
+    "custom_value": ""
+  },
+  "one_kg_sur_eas": {
+    "open": false,
+    "custom_value": ""
+  },
+  "one_kg": {
+    "open": false,
+    "custom_value": ""
+  },
+  "one_kg_sur": {
+    "open": false,
+    "custom_value": ""
+  },
+  "constraint_syn_z": {
+    "open": false,
+    "custom_value": ""
+  },
+  "constraint_oe_mis_upper": {
+    "open": false,
+    "custom_value": ""
+  },
+  "highest_splice_ai": {
+    "open": false,
+    "custom_value": ""
+  },
+  "spliceai_pred_ds_ag": {
+    "open": false,
+    "custom_value": ""
+  },
+  "spliceai_pred_ds_al": {
+    "open": false,
+    "custom_value": ""
+  },
+  "spliceai_pred_ds_dg": {
+    "open": false,
+    "custom_value": ""
+  },
+  "spliceai_pred_ds_dl": {
+    "open": false,
+    "custom_value": ""
+  }
+}

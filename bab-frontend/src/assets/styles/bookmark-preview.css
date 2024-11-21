@@ -1,0 +1,59 @@
+.bookmark-preview-container{
+    padding: 8px;
+}
+
+.bookmark-preview-category{
+    padding-right: 10px;
+}
+
+.bookmark-preview-title{
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+    border-bottom: 2px dotted #8c8c8c;
+    margin-bottom: 5px;
+    font-family: "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.bookmark-preview-title i{
+    color: #4285f4;
+}
+
+.bookmark-preview-unit{
+    font-size: 13px;
+    font-family: 'Mulish', sans-serif;
+}
+
+.bookmark-preview-frozen{
+    margin-bottom: 10px;
+}
+
+.bookmark-preview-button{
+    margin-right: 2px;
+    padding-bottom: 2px;
+    color: #4285f4;
+}
+
+.bookmark-preview-group{
+    font-size: 13px;
+    font-family: 'Mulish', sans-serif;
+    width: 100%;
+    margin-top: 5px;
+    padding-top: 2px;
+}
+
+.bookmark-preview-sort{
+    padding-bottom: 5px;
+}
+
+.bookmark-preview-filters{
+    padding-bottom: 20px;
+}
+
+.bookmark-preview-more{
+    width: 20px;
+    transform: rotate(90deg);
+    margin-top: 5px;
+    margin-left: 18px;
+}

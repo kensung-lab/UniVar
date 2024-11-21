@@ -1,0 +1,13 @@
+{
+  "min": 1,
+  "max": 5,
+  "step": 1,
+  "markerList" : [
+    { "label": "0"  , "value" : 1, "db_value" :  0},
+    { "label": "1‰" , "value" : 2, "db_value" :  0.001},
+    { "label": "1%" , "value" : 3, "db_value" :  0.01},
+    { "label": "5%" , "value" : 4, "db_value" :  0.05},
+    { "label": "1"  , "value" : 5, "db_value" :  null}
+  ],
+  "conditions" : "$lte"
+}

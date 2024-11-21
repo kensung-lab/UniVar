@@ -1,0 +1,26 @@
+[
+  {
+    "label": "\uD83D\uDD34 Sufficient Evidence for Haploinsufficiency",
+    "value": "sufficient"
+  },
+  {
+    "label": "\uD83D\uDFE0 Emerging Evidence for Haploinsufficiency",
+    "value": "emerging"
+  },
+  {
+    "label": "\uD83D\uDFE1 Little Evidence for Haploinsufficiency",
+    "value": "little"
+  },
+  {
+    "label": "\uD83D\uDFE3 Gene Associated with Autosomal Recessive Phenotype",
+    "value": "autosomal"
+  },
+  {
+    "label": "Dosage Sensitivity Unlikely",
+    "value": "unlikely"
+  },
+  {
+    "label": "No Evidence for Haploinsufficiency",
+    "value": "no"
+  }
+]

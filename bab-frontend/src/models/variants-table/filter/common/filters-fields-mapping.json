@@ -1,0 +1,77 @@
+{
+  "scenario": [
+    "scenario"
+  ],
+  "frequency": [
+    "highest_af",
+    "gnomad_af",
+    "gnomad_eas_af",
+    "gnomadv3_af_eas",
+    "gnomadv3_af",
+    "dgv_gold_outer",
+    "dgv_gold_inner",
+    "hkbc",
+    "one_kg_eas",
+    "one_kg_sur_eas",
+    "one_kg",
+    "one_kg_sur"
+  ],
+  "quality": [
+    "pass_filter",
+    "quality"
+  ],
+  "impact": [
+    "snv_type",
+    "is_coding",
+    "is_exonic",
+    "impact",
+    "sv_type",
+    "p_lof",
+    "hkgi_high_impact"
+  ],
+  "pathogenicity": [
+    "clingen_hi",
+    "clingen_ts",
+    "constraint_oe_mis_upper",
+    "constraint_syn_z",
+    "is_pathogenic",
+    "revel",
+    "constraint_mis_z",
+    "constraint_oe_lof_upper",
+    "polyphen_pred",
+    "sift_pred",
+    "polyphen_score",
+    "sift_score",
+    "clnsig",
+    "cadd_phred",
+    "highest_splice_ai",
+    "spliceai_pred_ds_ag",
+    "spliceai_pred_ds_al",
+    "spliceai_pred_ds_dg",
+    "spliceai_pred_ds_dl"
+  ],
+  "repeats": [
+    "is_repeat"
+  ],
+  "prioritization": [
+    "highest_exomiser_scombi",
+    "exomiser_ad_exgenescombi",
+    "exomiser_ar_exgenescombi",
+    "exomiser_xd_exgenescombi",
+    "exomiser_xr_exgenescombi",
+    "exomiser_mt_exgenescombi",
+    "highest_exomiser_spheno",
+    "exomiser_ad_exgenespheno",
+    "exomiser_ar_exgenespheno",
+    "exomiser_xd_exgenespheno",
+    "exomiser_xr_exgenespheno",
+    "exomiser_mt_exgenespheno"
+  ],
+  "others": [
+    "is_read",
+    "note",
+    "variant_type",
+    "len",
+    "caller"
+  ]
+}

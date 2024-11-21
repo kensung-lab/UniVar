@@ -1,0 +1,13 @@
+{
+  "min": 1,
+  "max": 5,
+  "step": 1,
+  "markerList" : [
+    { "label": "-5"  , "value" : 1, "db_value" :  -5 },
+    { "label": "-2"  , "value" : 2, "db_value" :  -2},
+    { "label":  "0"  , "value" : 3, "db_value" :  0},
+    { "label": "2"  , "value" : 4, "db_value" :  2},
+    { "label": "5"  , "value" : 5, "db_value" :  null}
+  ],
+  "conditions" : "$gte"
+}

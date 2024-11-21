@@ -1,0 +1,53 @@
+.pipeline-info-tabs {
+    display: block;
+    width: 100%
+}
+
+.q-tab-panels{
+    width: 100%;
+}
+
+.pipeline-info-table{
+    width: 100%;
+    padding: 5px 20px
+}
+
+.pipeline-info-table th.title {
+    padding-left: 5px;
+    background: #4285F4;
+}
+
+.pipeline-info-table th {
+    text-align: left;
+    border-bottom: 1px solid black;
+    font-size: 16px;
+    background: #81acf1;
+    color: white;
+    padding: 2px;
+}
+
+.pipeline-info-table tr td{
+    width: 50%
+}
+
+.pipeline-info-table tr:hover, .pipeline-info-table tr:nth-child(even):hover {
+    background: #89b2ff;
+    color: white;
+    font-weight: bold;
+}
+
+.pipeline-info-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+body.body--dark .pipeline-info-table tr:nth-child(even) {
+    background-color: #737373;
+}
+
+.pipeline-version{
+    background: #f2f2f2;
+}
+
+body.body--dark .pipeline-version{
+    background: #737373;
+}

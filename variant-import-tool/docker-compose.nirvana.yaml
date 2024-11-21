@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  nirvana:
+    image: ghcr.io/hkgi-bioinformatics/nirvana-env:1.0.0
+    env_file:
+      - .env
+    environment:
+      VCF_FILE_NAME: ${VCF_FILE_NAME}
+      JSON_FILE_NAME: ${JSON_FILE_NAME}
+    command: /bin/bash /app/nirvana.sh
+    volumes:
+      - ./data:/app/data
+      - ./nirvana.sh:/app/nirvana.sh
+      - ./nirvana:/nirvana_data
+    networks:
+      - bab_network
+      - mongo_default
+
+volumes:
+  data:
+    driver: local
+networks:
+  bab_network:
+    external: true
+  mongo_default:
+    external: true
