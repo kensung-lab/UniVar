@@ -178,7 +178,7 @@ export class PipelineService {
           ),
       unique_string,
     );
-    const samplePath = `${process.env.UPLOAD_FILE_PATH}/raw/${databaseName}/`;
+    const samplePath = `${process.env.UPLOAD_FILE_PATH}/raw/`;
     let variantFileCounts = 0;
     const snpLocation: string[] = [];
     const svLocation: string[] = [];
@@ -216,20 +216,19 @@ export class PipelineService {
     // snp files
     const snpControlFile: any = {};
     if (files.snp && files.snp.length > 0) {
-      const tempSnpLocation =
-        samplePath +
-        getVariantFileName(
-          await getFileName(uploadFilesRequest.probandId, files.snp[0]),
-          unique_string,
-        );
+      const snpFileName = getVariantFileName(
+        await getFileName(uploadFilesRequest.probandId, files.snp[0]),
+        unique_string,
+      );
+      const tempSnpLocation = samplePath + snpFileName;
       await this.storeFilesToLocal({
         filePath: tempSnpLocation,
         fileBuffer: files.snp[0].buffer,
       });
       snpLocation.push(tempSnpLocation);
 
-      snpControlFile.ped_file_name = tempPedLocation;
-      snpControlFile.vcf_file_name = tempSnpLocation;
+      snpControlFile.ped_file_name = pedFileName;
+      snpControlFile.vcf_file_name = snpFileName;
       snpControlFile.variant_type = 'snp_vcf';
       snpControlFile.brand = BRAND_SKIP_EXOMISER;
 
@@ -242,17 +241,16 @@ export class PipelineService {
     if (files.sv && files.sv.length > 0) {
       const count = variantFileCounts;
       for (const svFile of files.sv) {
-        const tempSvFileLocation =
-          samplePath +
-          getVariantFileName(
-            await getFileName(
-              uploadFilesRequest.probandId,
-              svFile,
-              'sv',
-              svCallers,
-            ),
-            unique_string,
-          );
+        const svFileName = getVariantFileName(
+          await getFileName(
+            uploadFilesRequest.probandId,
+            svFile,
+            'sv',
+            svCallers,
+          ),
+          unique_string,
+        );
+        const tempSvFileLocation = samplePath + svFileName;
         console.log(tempSvFileLocation);
         await this.storeFilesToLocal({
           filePath: tempSvFileLocation,
@@ -260,8 +258,8 @@ export class PipelineService {
         });
         svLocation.push(tempSvFileLocation);
         svControlFiles.push({
-          ped_file_name: tempPedLocation,
-          vcf_file_name: tempSvFileLocation,
+          ped_file_name: pedFileName,
+          vcf_file_name: svFileName,
           variant_type: 'sv_json',
           brand: BRAND_UNIVAR,
         });
@@ -299,56 +297,56 @@ export class PipelineService {
       }
     }
 
-    // // 5. insert to database collection for pipeline execution
-    // const session = await this.DatabasesModel.startSession();
-    // try {
-    //   session.startTransaction();
-    //   const databases = new Databases();
-    //   databases.database_name = databaseName;
-    //   databases.display_name = databaseName;
-    //   databases.is_ready = false;
-    //   databases.access_group = [unique_string];
-    //   databases.email = userInfo.email;
-    //   databases.complete_num = variantFileCounts;
-    //   databases.brand = BRAND_UNIVAR;
-    //   databases.create_time = new Date();
-    //   if (vcfHeader) {
-    //     databases.vcf_header = vcfHeader;
-    //   }
+    // 5. insert to database collection for pipeline execution
+    const session = await this.DatabasesModel.startSession();
+    try {
+      session.startTransaction();
+      const databases = new Databases();
+      databases.database_name = databaseName;
+      databases.display_name = databaseName;
+      databases.is_ready = false;
+      databases.access_group = [unique_string];
+      databases.email = userInfo.email;
+      databases.complete_num = variantFileCounts;
+      databases.brand = BRAND_UNIVAR;
+      databases.create_time = new Date();
+      if (vcfHeader) {
+        databases.vcf_header = vcfHeader;
+      }
 
-    //   if (pedLocation.length > 0) {
-    //     databases.pedLocation = pedLocation;
-    //   }
+      if (pedLocation.length > 0) {
+        databases.pedLocation = pedLocation;
+      }
 
-    //   if (svLocation.length > 0) {
-    //     databases.svVcfLocation = svLocation;
-    //   }
+      if (svLocation.length > 0) {
+        databases.svVcfLocation = svLocation;
+      }
 
-    //   if (hpoLocation.length > 0) {
-    //     databases.hpoLocation = hpoLocation;
-    //     databases.hpos = hpoTerms.replace('\r', '').split('\n');
-    //   }
+      if (hpoLocation.length > 0) {
+        databases.hpoLocation = hpoLocation;
+        databases.hpos = hpoTerms.replace('\r', '').split('\n');
+      }
 
-    //   if (snpLocation.length > 0) {
-    //     databases.snpVcfLocation = snpLocation;
-    //   }
+      if (snpLocation.length > 0) {
+        databases.snpVcfLocation = snpLocation;
+      }
 
-    //   const doc = new this.DatabasesModel(databases);
-    //   await this.loggingHelperService.performanceLogAndSaveMongo(
-    //     doc,
-    //     userInfo.preferred_username,
-    //     uploadFilesRequest.track_number,
-    //     'insert_database',
-    //     COMMON_DATABASE,
-    //     DATABASE_MODEL_NAME,
-    //     databases,
-    //   );
-    //   await session.commitTransaction();
-    // } catch (e) {
-    //   await session.abortTransaction();
-    // }
+      const doc = new this.DatabasesModel(databases);
+      await this.loggingHelperService.performanceLogAndSaveMongo(
+        doc,
+        userInfo.preferred_username,
+        uploadFilesRequest.track_number,
+        'insert_database',
+        COMMON_DATABASE,
+        DATABASE_MODEL_NAME,
+        databases,
+      );
+      await session.commitTransaction();
+    } catch (e) {
+      await session.abortTransaction();
+    }
 
-    // session.endSession();
+    session.endSession();
 
     // 6. action logging
     this.loggingHelperService.actionLog(
