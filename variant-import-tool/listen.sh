@@ -26,6 +26,8 @@ echo "$(date): Starting to monitor $MONITOR_DIR for new files..."
   done
 
   echo "Run Complete"
-  ./complete.sh "$filepath"
+  any_filepath=$(find "$folder_path" -type f | head -n 1)
+  echo any_file $any_filepath
+  ./complete.sh "$any_filepath"
 
 done
