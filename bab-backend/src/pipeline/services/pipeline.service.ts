@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { randomUUID } from 'crypto';
 import { parse } from 'csv-parse/sync';
 import { Model } from 'mongoose';
+import * as fs from 'fs';
 import {
   ACTION_TYPE,
   BaseRequest,
@@ -76,6 +77,21 @@ export class PipelineService {
     private readonly httpService: HttpService,
   ) {}
 
+  private async storeFilesToLocal(fileInfo: {
+    filePath: string;
+    fileBuffer?: Buffer;
+    fileString?: string;
+  }) {
+    const { filePath, fileBuffer, fileString } = fileInfo;
+    const folderPath = filePath.split('/').slice(0, -1).join('/');
+    await fs.promises.mkdir(folderPath, { recursive: true });
+    if (fileBuffer) {
+      await fs.promises.writeFile(filePath, fileBuffer);
+    } else if (fileString) {
+      fs.writeFileSync(filePath, fileString, 'utf8');
+    }
+  }
+
   async uploadFiles(
     uploadFilesRequest: UploadFilesRequest,
     files: {
@@ -148,8 +164,6 @@ export class PipelineService {
 
     // generate UUID
     let anySnp = false;
-    const snpControlFile: any = { variants: [], brand: BRAND_SKIP_EXOMISER };
-    const svControlFile: any = { variants: [], brand: BRAND_UNIVAR };
     const unique_string =
       new Date().getTime() + '-' + randomUUID().split('-').pop();
     const databaseName = getDatabaseName(
@@ -164,8 +178,7 @@ export class PipelineService {
           ),
       unique_string,
     );
-    const s3BucketKeyPrefix =
-      process.env.PIPELINE_DATA_KEY + databaseName + '/';
+    const samplePath = `${process.env.UPLOAD_FILE_PATH}/samples/${databaseName}/raw/`;
     let variantFileCounts = 0;
     const snpLocation: string[] = [];
     const svLocation: string[] = [];
@@ -178,34 +191,12 @@ export class PipelineService {
       files?.ped?.length > 0
         ? files.ped[0].originalname
         : `${uploadFilesRequest.probandId}_${unique_string}.ped`;
-    await this.s3Service.uploadToLocal(
-      process.env.PIPELINE_BUCKET,
-      s3BucketKeyPrefix + pedFileName,
-      pedInfo,
-    );
-    snpControlFile.ped = [
-      getFullBucketPath(
-        process.env.PIPELINE_BUCKET,
-        s3BucketKeyPrefix,
-        pedFileName,
-      ),
-    ];
-
-    svControlFile.ped = [
-      getFullBucketPath(
-        process.env.PIPELINE_BUCKET,
-        s3BucketKeyPrefix,
-        pedFileName,
-      ),
-    ];
-
-    pedLocation.push(
-      getFullBucketPath(
-        process.env.PIPELINE_BUCKET,
-        s3BucketKeyPrefix,
-        pedFileName,
-      ),
-    );
+    let tempPedLocation = samplePath + pedFileName;
+    await this.storeFilesToLocal({
+      filePath: tempPedLocation,
+      fileBuffer: pedInfo as Buffer,
+    });
+    pedLocation.push(tempPedLocation);
 
     // hpos
     if (hpoTerms || (files.hpo?.length > 0 && files.hpo[0].buffer)) {
@@ -213,66 +204,46 @@ export class PipelineService {
         ? databaseName + '.hpo'
         : files.hpo[0].originalname;
       const hpoBuffer = hpoTerms || files.hpo[0].buffer;
-      await this.s3Service.uploadToLocal(
-        process.env.PIPELINE_BUCKET,
-        s3BucketKeyPrefix + hpoFileName,
-        Buffer.from(hpoBuffer.toString().replace('\r', '')),
-      );
+      const tempHpoLocation = samplePath + hpoFileName;
+      await this.storeFilesToLocal({
+        filePath: tempHpoLocation,
+        fileBuffer: Buffer.from(hpoBuffer.toString().replace('\r', '')),
+      });
 
-      hpoLocation.push(
-        getFullBucketPath(
-          process.env.PIPELINE_BUCKET,
-          s3BucketKeyPrefix,
-          hpoFileName,
-        ),
-      );
+      hpoLocation.push(samplePath + hpoFileName);
     }
 
+    // snp files
+    const snpControlFile: any = {};
     if (files.snp && files.snp.length > 0) {
-      await this.s3Service.uploadToLocal(
-        process.env.PIPELINE_BUCKET,
-        s3BucketKeyPrefix +
-          getVariantFileName(
-            await getFileName(uploadFilesRequest.probandId, files.snp[0]),
-            unique_string,
-          ),
-        files.snp[0].buffer,
-      );
-      const tempSnpLocation = getFullBucketPath(
-        process.env.PIPELINE_BUCKET,
-        s3BucketKeyPrefix,
+      const tempSnpLocation =
+        samplePath +
         getVariantFileName(
           await getFileName(uploadFilesRequest.probandId, files.snp[0]),
           unique_string,
-        ),
-      );
+        );
+      await this.storeFilesToLocal({
+        filePath: tempSnpLocation,
+        fileBuffer: files.snp[0].buffer,
+      });
       snpLocation.push(tempSnpLocation);
-      snpControlFile.variants = [tempSnpLocation];
+
+      snpControlFile.ped_file_name = tempPedLocation;
+      snpControlFile.vcf_file_name = tempSnpLocation;
+      snpControlFile.variant_type = 'snp_vcf';
+      snpControlFile.brand = BRAND_SKIP_EXOMISER;
 
       variantFileCounts++;
       anySnp = true;
     }
 
+    // sv files
+    const svControlFiles: any[] = [];
     if (files.sv && files.sv.length > 0) {
       const count = variantFileCounts;
       for (const svFile of files.sv) {
-        await this.s3Service.uploadToLocal(
-          process.env.PIPELINE_BUCKET,
-          s3BucketKeyPrefix +
-            getVariantFileName(
-              await getFileName(
-                uploadFilesRequest.probandId,
-                svFile,
-                'sv',
-                svCallers,
-              ),
-              unique_string,
-            ),
-          svFile.buffer,
-        );
-        const tempSvFileLocation = getFullBucketPath(
-          process.env.PIPELINE_BUCKET,
-          s3BucketKeyPrefix,
+        const tempSvFileLocation =
+          samplePath +
           getVariantFileName(
             await getFileName(
               uploadFilesRequest.probandId,
@@ -281,10 +252,19 @@ export class PipelineService {
               svCallers,
             ),
             unique_string,
-          ),
-        );
+          );
+        console.log(tempSvFileLocation);
+        await this.storeFilesToLocal({
+          filePath: tempSvFileLocation,
+          fileBuffer: svFile.buffer,
+        });
         svLocation.push(tempSvFileLocation);
-        svControlFile.variants.push(tempSvFileLocation);
+        svControlFiles.push({
+          ped_file_name: tempPedLocation,
+          vcf_file_name: tempSvFileLocation,
+          variant_type: 'sv_json',
+          brand: BRAND_UNIVAR,
+        });
         if (count == variantFileCounts && !anySnp) {
           vcfHeader = await getVCFHeader(svFile.buffer);
         }
@@ -301,74 +281,74 @@ export class PipelineService {
     );
 
     // 4. upload control file
+    const controlFilePath = `${process.env.UPLOAD_FILE_PATH}/control_files/${databaseName}/`;
     if (files.snp && files.snp.length > 0) {
-      await this.s3Service.uploadToLocal(
-        process.env.PIPELINE_BUCKET,
-        process.env.PIPELINE_CONTROL_KEY + databaseName + '.snv.json',
-        JSON.stringify(snpControlFile),
-      );
+      await this.storeFilesToLocal({
+        filePath: controlFilePath + 'snp.json',
+        fileString: JSON.stringify(snpControlFile),
+      });
     }
     if (files.sv && files.sv.length > 0) {
-      await this.s3Service.uploadToLocal(
-        process.env.PIPELINE_BUCKET,
-        process.env.PIPELINE_CONTROL_KEY + databaseName + '.ssv.json',
-        JSON.stringify(svControlFile),
-      );
-    }
-    
-    // // TESTING
-    // return new JobInformation(unique_string);
-
-    // 5. insert to database collection for pipeline execution
-    const session = await this.DatabasesModel.startSession();
-    try {
-      session.startTransaction();
-      const databases = new Databases();
-      databases.database_name = databaseName;
-      databases.display_name = databaseName;
-      databases.is_ready = false;
-      databases.access_group = [unique_string];
-      databases.email = userInfo.email;
-      databases.complete_num = variantFileCounts;
-      databases.brand = BRAND_UNIVAR;
-      databases.create_time = new Date();
-      if (vcfHeader) {
-        databases.vcf_header = vcfHeader;
+      let index = 1;
+      for (const svControlFile of svControlFiles) {
+        await this.storeFilesToLocal({
+          filePath: controlFilePath + 'sv_' + index + '.json',
+          fileString: JSON.stringify(svControlFile),
+        });
+        index++;
       }
-
-      if (pedLocation.length > 0) {
-        databases.pedLocation = pedLocation;
-      }
-
-      if (svLocation.length > 0) {
-        databases.svVcfLocation = svLocation;
-      }
-
-      if (hpoLocation.length > 0) {
-        databases.hpoLocation = hpoLocation;
-        databases.hpos = hpoTerms.replace('\r', '').split('\n');
-      }
-
-      if (snpLocation.length > 0) {
-        databases.snpVcfLocation = snpLocation;
-      }
-
-      const doc = new this.DatabasesModel(databases);
-      await this.loggingHelperService.performanceLogAndSaveMongo(
-        doc,
-        userInfo.preferred_username,
-        uploadFilesRequest.track_number,
-        'insert_database',
-        COMMON_DATABASE,
-        DATABASE_MODEL_NAME,
-        databases,
-      );
-      await session.commitTransaction();
-    } catch (e) {
-      await session.abortTransaction();
     }
 
-    session.endSession();
+    // // 5. insert to database collection for pipeline execution
+    // const session = await this.DatabasesModel.startSession();
+    // try {
+    //   session.startTransaction();
+    //   const databases = new Databases();
+    //   databases.database_name = databaseName;
+    //   databases.display_name = databaseName;
+    //   databases.is_ready = false;
+    //   databases.access_group = [unique_string];
+    //   databases.email = userInfo.email;
+    //   databases.complete_num = variantFileCounts;
+    //   databases.brand = BRAND_UNIVAR;
+    //   databases.create_time = new Date();
+    //   if (vcfHeader) {
+    //     databases.vcf_header = vcfHeader;
+    //   }
+
+    //   if (pedLocation.length > 0) {
+    //     databases.pedLocation = pedLocation;
+    //   }
+
+    //   if (svLocation.length > 0) {
+    //     databases.svVcfLocation = svLocation;
+    //   }
+
+    //   if (hpoLocation.length > 0) {
+    //     databases.hpoLocation = hpoLocation;
+    //     databases.hpos = hpoTerms.replace('\r', '').split('\n');
+    //   }
+
+    //   if (snpLocation.length > 0) {
+    //     databases.snpVcfLocation = snpLocation;
+    //   }
+
+    //   const doc = new this.DatabasesModel(databases);
+    //   await this.loggingHelperService.performanceLogAndSaveMongo(
+    //     doc,
+    //     userInfo.preferred_username,
+    //     uploadFilesRequest.track_number,
+    //     'insert_database',
+    //     COMMON_DATABASE,
+    //     DATABASE_MODEL_NAME,
+    //     databases,
+    //   );
+    //   await session.commitTransaction();
+    // } catch (e) {
+    //   await session.abortTransaction();
+    // }
+
+    // session.endSession();
 
     // 6. action logging
     this.loggingHelperService.actionLog(
@@ -1049,7 +1029,10 @@ export class PipelineService {
         break;
     }
 
-    const sampileFile = await this.s3Service.getFromLocal('/usr/src/app/sample', key);
+    const sampileFile = await this.s3Service.getFromLocal(
+      '/usr/src/app/sample',
+      key,
+    );
     this.loggingHelperService.actionLog(
       userInfo.preferred_username,
       baseRequest.track_number,

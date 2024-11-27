@@ -8,3 +8,6 @@
 /bab-backend/*.md
 /bab-frontend/*.md
 /bab-backend/sample
+
+/data/**
+/listener/**
