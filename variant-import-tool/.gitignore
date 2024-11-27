@@ -1,2 +1,6 @@
 *.md
 .env
+
+/data/raw/**
+/data/annotated/**
+/data/control_files/**

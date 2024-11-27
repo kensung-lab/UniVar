@@ -178,7 +178,7 @@ export class PipelineService {
           ),
       unique_string,
     );
-    const samplePath = `${process.env.UPLOAD_FILE_PATH}/samples/${databaseName}/raw/`;
+    const samplePath = `${process.env.UPLOAD_FILE_PATH}/raw/${databaseName}/`;
     let variantFileCounts = 0;
     const snpLocation: string[] = [];
     const svLocation: string[] = [];
