@@ -12,7 +12,7 @@ import csv
 import os
 
 # default parameters
-DEFAULT_PROCESS_NUM = 10
+DEFAULT_PROCESS_NUM = 50
 
 # variant type
 SNP_VCF = 'snp_vcf'
@@ -46,11 +46,8 @@ class VariantImportTool(object):
             raise NotImplementedError('Not Implemented Handler Error')
 
         sys.stdout.write("Start loading data\n")
-        sys.stdout.write("load_data start\n")
         handler.load_data()
-        sys.stdout.write("load_data completed\n")
         handler.complete_loading()
-        sys.stdout.write("complete_loading completed\n")
         sys.stdout.write("Variant Import Tool completed in %ds\n" % (time() - start_time))
 
     def _get_database_name(self, database_name, file_names, uat_mode):
