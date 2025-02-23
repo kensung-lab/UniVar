@@ -30,9 +30,19 @@ class VariantImportTool(object):
         if database_path == 'MONGO_BASE_URL':
             database_path = os.environ['MONGO_BASE_URL']
 
+        # @Deprecated
         # always assume the file name format as <patient_id>_<family_type><(_<family_member_id>)+>_<time_or_some_unqiue_text>.vcf.gz
+        # @Now
+        # always assume the file name format as <patient_id>_<family_type>_<time_or_some_unqiue_text>.vcf.gz
+        # for sv it may be this format s3://<somepath>/<patient_id>_<family_type>_<time_or_some_unqiue_text>.vcf.gz#<source>
+        if variant_file_path.startswith('s3://'):
+            variant_file_path = variant_file_path.split('/')[-1]
+            if not source:
+                source = variant_file_path.split('#')[-1] if '#' in variant_file_path else None
+            variant_file_path = '.'.join([variant_file_path.split('.')[0], source, 'json', 'gz'])
+
         file_names = variant_file_path.split('/')[-1].split('.')
-        proband_id = proband_id if proband_id else file_names[0].split('_')[0]
+        proband_id = proband_id if proband_id else '_'.join(file_names[0].split('_')[:-2])
         process_num = process_num if process_num else DEFAULT_PROCESS_NUM
         if variant_type == SNP_VCF:
             handler = SNPVCF2JSON(variant_file_path, database_path, self._get_sample_infos(ped_file_path, proband_id), self._get_database_name(database_name, file_names, uat_mode), result_folder, pipeline_version, proband_id, access_group, uat_mode, process_num, liftover_path)
@@ -90,6 +100,7 @@ class VariantImportTool(object):
                         pedigree_infos.append(pedigree_info)
                     sample_info = {}
                     sample_info['sample_id'] = row[1].replace('_','-')
+                    sample_info['act_sample'] = row[1]
                     sample_info['index'] = index
                     sample_info['has_father'] = False
                     sample_info['has_mother'] = False
@@ -104,7 +115,7 @@ class VariantImportTool(object):
         return self._sample_infos
     
     def _get_relationship(self, pedigree_infos, sample_obj, detail_list, proband_id):
-        is_proband = sample_obj['sample_id'] == proband_id
+        is_proband = sample_obj['sample_id'] == proband_id.replace('_','-')
         sample_obj['info'] = 'other' if not is_proband else 'proband'
         for pedigree_info in pedigree_infos:
             if pedigree_info['Child'] == sample_obj['sample_id']:

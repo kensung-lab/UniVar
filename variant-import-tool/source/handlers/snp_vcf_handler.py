@@ -631,7 +631,7 @@ class SNPVCF2JSON(VariantHandler):
         # get the sample order
         for header in self.header_arr:
             if header not in ['#CHROM','POS','ID','REF','ALT','QUAL','FILTER','INFO', 'FORMAT']:
-                self.sample_order.append(header)
+                self.sample_order.append(header.replace('_','-'))
         
         # create the database object as dict
         database = self._get_database(self.database_path)

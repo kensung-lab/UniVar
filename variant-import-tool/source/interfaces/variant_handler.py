@@ -191,9 +191,9 @@ https://test-univar.bab.dev.hkgi-dataplatform.com/variant-table
                 sample_obj = {}
                 sample_obj['sample_id'] = sample['index'] + 1
                 sample_obj['family_id'] = sample['family_id']
-                sample_obj['name'] = sample['sample_id']
-                sample_obj['paternal_id'] = sample['father']['sample_id'] if sample['has_father'] else '-9'
-                sample_obj['maternal_id'] = sample['mother']['sample_id'] if sample['has_mother'] else '-9'
+                sample_obj['name'] = sample['act_sample']
+                sample_obj['paternal_id'] = sample['father']['act_sample'] if sample['has_father'] else '-9'
+                sample_obj['maternal_id'] = sample['mother']['act_sample'] if sample['has_mother'] else '-9'
                 if self.uat_mode:
                     sample_obj['display_family_id'] = self.db_name
                     display_name = "sample" + str(sample_count)
@@ -542,7 +542,6 @@ https://test-univar.bab.dev.hkgi-dataplatform.com/variant-table
     def _order_format_list(self, sample_order, data_list, in_order):
         # Combine the data_values and data_samples using zip()
         combined_data = list(zip(data_list, in_order))
-
         # Sort the combined_data based on the sample_order values
         sorted_data = sorted(combined_data, key=lambda x: sample_order.index(x[1]))
 
