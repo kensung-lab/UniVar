@@ -88,7 +88,7 @@ class SVJSON2JSON(VariantHandler):
         if self.already_success:
             return
         self._load_header()
-        self._load_samples(self.header['samples'])
+        self._load_samples([sample.replace("_", "-") for sample in self.header['samples']])
 
         # Read the CSV file in chunks using multiprocessing
         start_time = time()
@@ -359,7 +359,7 @@ class SVJSON2JSON(VariantHandler):
             line = line + '}'
             header = json.loads(line)
             self.header = header['header']
-            self.sample_order = self.header['samples']
+            self.sample_order = [sample.replace("_", "-") for sample in self.header['samples']]
 
     def _remove_existing(self):
         database = self._get_database(self.database_path)
