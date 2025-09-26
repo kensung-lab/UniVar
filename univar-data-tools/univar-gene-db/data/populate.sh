@@ -12,7 +12,7 @@ log() {
 
 #==========================VERSION INFO================================#
 ENSEMBL_VERSION=113
-MANE_VERSION=1.3
+MANE_VERSION=1.4
 GNOMAD_LATEST_VERSION=4.1
 GNOMAD_V2_VERSION=2.1.1
 #==========================VERSION INFO================================#

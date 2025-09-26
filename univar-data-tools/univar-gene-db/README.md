@@ -25,15 +25,16 @@ cd data
 # then replace the updated filename in index.ts
 ```
 
-## Data Source
-1. [Homo_sapiens.GRCh38.110.entrez.tsv](https://ftp.ensembl.org/pub/release-110/tsv/homo_sapiens/Homo_sapiens.GRCh38.110.entrez.tsv.gz)
-2. [Homo_sapiens.GRCh38.110.gene.bed](bash/ensembl_gene.sh)
-3. [MANE.GRCh38.v1.1.summary.txt](https://ftp.ncbi.nlm.nih.gov/refseq/MANE/MANE_human/release_1.1/MANE.GRCh38.v1.1.summary.txt.gz)
+## Data Source (some data need to massage, detail please see [populate.sh](./data/populate.sh))
+1. [Homo_sapiens.GRCh38.113.entrez.tsv.gz](https://ftp.ensembl.org/pub/release-113/tsv/homo_sapiens/Homo_sapiens.GRCh38.113.entrez.tsv.gz)
+2. [Homo_sapiens.GRCh38.113.gff3.gz](https://ftp.ensembl.org/pub/release-113/gff3/homo_sapiens/Homo_sapiens.GRCh38.113.gff3.gz)
+3. [MANE.GRCh38.v1.4.summary.txt.gz](https://ftp.ncbi.nlm.nih.gov/refseq/MANE/MANE_human/release_1.4/MANE.GRCh38.v1.4.summary.txt.gz)
 4. [pHI.pTS.gene.35917817.tsv](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9742861/)
 5. [ClinGen_gene_curation_list_GRCh38.tsv](https://ftp.clinicalgenome.org/ClinGen_gene_curation_list_GRCh38.tsv)
 6. [Gene Constraint](https://gnomad.broadinstitute.org/downloads#v2-constraint)
 7. [gnomad.v2.1.1.lof_metrics.by_transcript.txt](https://storage.googleapis.com/gcp-public-data--gnomad/release/2.1.1/constraint/gnomad.v2.1.1.lof_metrics.by_transcript.txt.bgz) (from [Gnomad](https://gnomad.broadinstitute.org/downloads/))
-8. [Galaxy1-\[UCSC_Main_on_Human__wgEncodeGencodeRefSeqV44_(genome)\].tabular](https://genome.ucsc.edu/cgi-bin/hgTables?hgsid=1791973638_aANkQaPR855xCtxTpHeABIO47YlF&clade=mammal&org=Human&db=hg38&hgta_group=genes&hgta_track=refSeqComposite&hgta_table=wgEncodeGencodeRefSeqV44&hgta_regionType=genome&position=chr14%3A95%2C086%2C244-95%2C158%2C010&hgta_outputType=primaryTable&hgta_outFileName=) (From UCSC Table Browser)
+8. [gnomad.v4.1.constraint_metrics.tsv](https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1/constraint/gnomad.v4.1.constraint_metrics.tsv) (from [Gnomad](https://gnomad.broadinstitute.org/downloads/))
+9. [Galaxy1-\[UCSC_Main_on_Human__wgEncodeGencodeRefSeqV44_(genome)\].tabular](https://genome.ucsc.edu/cgi-bin/hgTables?hgsid=1791973638_aANkQaPR855xCtxTpHeABIO47YlF&clade=mammal&org=Human&db=hg38&hgta_group=genes&hgta_track=refSeqComposite&hgta_table=wgEncodeGencodeRefSeqV44&hgta_regionType=genome&position=chr14%3A95%2C086%2C244-95%2C158%2C010&hgta_outputType=primaryTable&hgta_outFileName=) (From UCSC Table Browser)
 
 ## Example Dot Env File
 ```.env
