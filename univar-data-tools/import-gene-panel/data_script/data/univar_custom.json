@@ -1,0 +1,3611 @@
+{
+    "id": "univar_custom_panel_1",
+    "name": "(univar)clingen_haploinsufficiency",
+    "version": "0.0.1",
+    "genes": [
+    {"gene_data": {
+      "gene_symbol": "ACD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ACSL4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ACTC1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AKT3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ASTN2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ATP8A2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ATR"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BCLAF1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BRAF"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CACNA1C"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CAMK2A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CASP10"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CASZ1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CDC42BPB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CHRM3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CNTN4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CNTN6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CNTNAP2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COL11A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CRKL"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CRYBB2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CSMD1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CTNND2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DCHS1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DIP2A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DIS3L2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DKC1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DLG2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DNAJC21"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DNMT3A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DPP6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DSG2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EDNRB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ELAVL2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EMX2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ERMARD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FOXP2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GABRA1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GABRG2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GALNT12"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GJA5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GJA8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GNB1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GRIN2A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HDAC4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HIVEP3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HMGA2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ITSN1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KATNAL2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KCNQ1OT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KDM5B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KDM6B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LMTK3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MAGEL2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MAOA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MAP2K2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MEG3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MTAP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MYH10"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MYLK"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NEDD9"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NODAL"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NR4A2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NXF5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PAK2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PAX8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PHF2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PHF3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "POLD1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "POLE"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PPP2R5D"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RALGAPB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RB1CC1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RIMS1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RPH3A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RPL15"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SALL1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SEMA3A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SH2B1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SHANK1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SIM1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC16A12"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC4A10"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SNURF"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SPEN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SRCAP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SYP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TAB2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TAF13"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TBX2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TBX20"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TCF7L2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TDGF1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TERT"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TMLHE"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TNNI3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TP63"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TRRAP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "UBN2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "VEGFA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "YAP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "YTHDC1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ZFPM2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ZNF41"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ZNF674"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ZWILCH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ARCN1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BMP4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BRWD3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CAMK2B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CCNQ"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CHAMP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CIC"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CLCN4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DLG3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DMRT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DSC2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GDI1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GIGYF2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GPHN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GRIA3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LMNA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LRP5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PAK3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PGK1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PHF21A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PHIP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PIGA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PTHLH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RAD51D"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SDHAF2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SETD2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SHANK2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC17A8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SMARCA4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SYN1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TBX1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TGFBR1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TGFBR2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TSPAN7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ZNF711"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AAGAB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ABCD1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ACVRL1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ADNP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AFF2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AHDC1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ALX4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ANK2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ANKRD11"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ANOS1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AP1S2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "APC"
+    }},
+    {"gene_data": {
+      "gene_symbol": "APOB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AR"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ARHGEF9"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ARID1A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ARID1B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ARID2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ARSL"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ARX"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ASH1L"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ASXL1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ASXL3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ATM"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ATP7A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ATRX"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AUTS2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AVPR2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AXIN2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BAG3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BAP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BARD1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BCL11A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BCOR"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BMPR1A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BMPR2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BRCA1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BRCA2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BRIP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BTK"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CACNA1A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CAMTA1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CASK"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CD40LG"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CDH1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CDKL5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CDKN1B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CDKN1C"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CHD2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CHD7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CHD8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CHEK2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CHM"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CHRDL1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CLCN5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CNKSR2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COL1A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COL2A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COL3A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COL4A5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COL5A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CREBBP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CTCF"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CTNNB1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CUL3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CUL4B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CYBB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CYLD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DCX"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DDX3X"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DICER1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DLL1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DMD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DSCAM"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DSP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DYRK1A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EBP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EDA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EFNB1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EFTUD2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EHMT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ELN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ENG"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EP300"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ERF"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EXT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EXT2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EYA1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EYA4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "F8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "F9"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FANCB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FBN1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FGD1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FGF10"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FGFR1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FLCN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FLG"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FLNA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FLNC"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FMR1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FOXC1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FOXC2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FOXF1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FOXG1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FOXL2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FOXP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FRMD7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FTSJ1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FZD4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GATA2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GATA3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GATA4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GATA6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GATAD2B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GCH1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GDF5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GK"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GLA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GLI2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GLI3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GLMN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GNAS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GPC3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GRIN2B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "H1-4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HCCS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HDAC8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HIVEP2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HMBS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HNF1B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HNRNPK"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HOXD13"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HPRT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IDS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IGF1R"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IKBKG"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IL1RAPL1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IQSEC2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IRF6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "JAG1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KANSL1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KAT6A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KAT6B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KCNH2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KCNQ1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KCNQ2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KDM5C"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KDM6A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KIF11"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KMT2A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KMT2B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KMT2C"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KMT2D"
+    }},
+    {"gene_data": {
+      "gene_symbol": "L1CAM"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LAMP2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LDLR"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LEMD3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LHX4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LMX1B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MAGT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MAX"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MBD5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MECP2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MED13L"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MEF2C"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MEIS2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MEN1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MID1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MITF"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MLH1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MNX1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MSH2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MSH6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MSX1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MTM1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MYBPC3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MYCN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MYT1L"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NAA15"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NBEA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NBN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NCKAP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NDP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NEXMIF"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NF1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NF2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NFIA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NHS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NIPBL"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NKX2-5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NOG"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NR0B1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NR3C2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NR5A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NRXN1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NSD1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NSDHL"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NYX"
+    }},
+    {"gene_data": {
+      "gene_symbol": "OCRL"
+    }},
+    {"gene_data": {
+      "gene_symbol": "OFD1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "OPHN1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "OTC"
+    }},
+    {"gene_data": {
+      "gene_symbol": "OTX2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PAFAH1B1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PAX2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PAX3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PAX6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PAX9"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PBX1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PCDH19"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PDHA1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PHEX"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PHF6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PHF8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PITX2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PKD1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PKD2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PLP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PMP22"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PMS2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "POGZ"
+    }},
+    {"gene_data": {
+      "gene_symbol": "POLR1D"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PORCN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PQBP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PRPS1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PRRT2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PTCH1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PTCHD1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PTEN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PTPN11"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PURA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RAB39B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RAD51C"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RAI1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RASA1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RB1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RET"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RP2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RPS17"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RPS19"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RPS24"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RPS26"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RPS6KA3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RS1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RUNX1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SALL4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SATB2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SCN1A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SCN2A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SCN5A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SDHB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SDHC"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SDHD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SETBP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SETD1A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SETD5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SF3B4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SGCE"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SH2D1A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SHANK3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SHH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SHOX"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SIN3A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SIX3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC16A2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC2A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC35A2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC6A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC6A8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC9A6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SMAD3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SMAD4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SMARCB1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SMC1A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SMS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SON"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SOX10"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SOX11"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SOX2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SOX5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SPAST"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SPINK1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SPRED1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SRY"
+    }},
+    {"gene_data": {
+      "gene_symbol": "STK11"
+    }},
+    {"gene_data": {
+      "gene_symbol": "STS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "STXBP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SYNGAP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TBL1XR1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TBR1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TBX22"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TBX3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TBX4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TBX5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TCF12"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TCF20"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TCF4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TCOF1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TFAP2B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TGIF1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TIMM8A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TMEM127"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TNRC6B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TP53"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TRAPPC2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TRIO"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TRIP12"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TRPS1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TSC1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TSC2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TTN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TWIST1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "UBE2A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "UBE3A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "UPF3B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "USP9X"
+    }},
+    {"gene_data": {
+      "gene_symbol": "VHL"
+    }},
+    {"gene_data": {
+      "gene_symbol": "WAC"
+    }},
+    {"gene_data": {
+      "gene_symbol": "WDR45"
+    }},
+    {"gene_data": {
+      "gene_symbol": "WT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "XIAP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "XIST"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ZBTB18"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ZC4H2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ZDHHC9"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ZEB2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ZIC2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ZIC3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ZMYND11"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ZNF462"
+    }},
+    {"gene_data": {
+      "gene_symbol": "A4GALT"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AARS2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AASS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ABAT"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ABCB11"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ABCC8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ABCG5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ABCG8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ABHD12"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ACAD8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ACADM"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ACADSB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ACADVL"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ACOX1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ACP5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ACSF3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ADA2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ADAM9"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ADAMTS13"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ADAMTS17"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ADAMTS18"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ADAMTS2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ADAMTSL2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ADGRG1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ADGRV1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ADSL"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AGA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AGK"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AGPAT2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AGRN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AGT"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AGXT"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AHCY"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AHI1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AICDA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AIMP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ALAD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ALDH1A3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ALDH3A2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ALDH4A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ALDH5A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ALDOA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ALG1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ALG12"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ALG2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ALG6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ALMS1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ALS2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AMH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AMN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ANGPTL3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ANKS6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ANTXR2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AP4B1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "AP4S1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "APOC2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ARFGEF2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ARG1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ARL6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ARL6IP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ARSA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ASAH1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ASL"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ASPA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ASPH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ASPM"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ATCAY"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ATF6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ATP13A2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ATP2A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ATP6V0A2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ATP6V0A4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ATP7B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ATPAF2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "B3GALNT2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "B3GALT6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "B4GALT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "B4GALT7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "B9D1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BBS12"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BBS5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BBS7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BCHE"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BCKDHB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BCKDK"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BCS1L"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BIN1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BLM"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BLNK"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BMPER"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BPNT2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BRAT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BSND"
+    }},
+    {"gene_data": {
+      "gene_symbol": "BTD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "C19orf12"
+    }},
+    {"gene_data": {
+      "gene_symbol": "C1QB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CA12"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CA5A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CA8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CABP2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CABP4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CANT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CAPN3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CASQ2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CATSPER2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CBS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CC2D2A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CCBE1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CCDC103"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CCDC39"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CCDC40"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CCDC8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CCN6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CCT5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CD19"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CD27"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CD36"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CD3D"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CD3E"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CD3G"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CD59"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CD8A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CDAN1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CDH23"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CDHR1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CDIN1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CDK5RAP2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CDK6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CDT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CEBPE"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CENPJ"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CEP164"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CEP290"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CEP78"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CERS3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CFAP418"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CFAP53"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CFD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CFL2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CFTR"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CHAT"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CHKB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CHMP1A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CHST6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CHSY1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CIDEC"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CLCF1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CLCNKA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CLCNKB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CLDN14"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CLMP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CLN3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CLN8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CLPP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CLRN1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CNGB1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CNNM4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CNTN1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CNTN2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COG1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COG4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COG7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COG8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COL4A3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COLEC11"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COLQ"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COQ2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CORO1A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COX10"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COX14"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COX15"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COX20"
+    }},
+    {"gene_data": {
+      "gene_symbol": "COX6B1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CPLANE1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CPN1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CPS1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CPT1A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CRADD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CRIPT"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CRPPA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CRTAP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CSF2RA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CSF2RB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CSPP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CSTB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CTC1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CTDP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CTH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CTNS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CUBN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CYB5A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CYP21A2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CYP24A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CYP27A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CYP4F22"
+    }},
+    {"gene_data": {
+      "gene_symbol": "CYP4V2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "D2HGDH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DARS2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DBH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DBT"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DCLRE1C"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DCXR"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DDB2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DDHD1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DDOST"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DGKE"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DGUOK"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DHCR7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DHODH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DMP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DNAAF1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DNAAF11"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DNAH11"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DNAH5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DNAI1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DNAI2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DNAJC6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DOCK7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DOCK8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DOK7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DPAGT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DPM1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DPM3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DPYD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DPYS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DSC3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DSE"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DSG4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DYM"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DYNC2H1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "DYNC2I1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EARS2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EIF2AK3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EIF2B1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EIF2B3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EIF4A3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ENO3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ENPP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EPB42"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EPCAM"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EPM2A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EPS8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ERCC1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ERCC2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ERCC3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ERCC5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ERCC6L2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ERCC8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ESCO2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ESPN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ETFB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ETFDH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EVC2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EXOSC3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EXPH5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "EYS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "F10"
+    }},
+    {"gene_data": {
+      "gene_symbol": "F13A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "F13B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "F5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "F7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FA2H"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FADD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FAH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FAM161A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FAM20C"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FAN1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FANCA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FANCC"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FANCD2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FANCE"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FANCF"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FANCG"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FANCI"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FARS2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FASLG"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FBP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FBXO7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FGD4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FGF3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FKBP14"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FLVCR2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FOLR1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FOXE1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FOXRED1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FSHB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FTCD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FXN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "FYCO1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "G6PC3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GAA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GALC"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GALK1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GALNS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GALNT3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GALT"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GAMT"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GAN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GATAD1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GBA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GBA2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GBE1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GCDH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GCSH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GFER"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GFM1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GIPC3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GLB1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GLDC"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GLIS3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GLRB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GLUL"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GMPPA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GNPAT"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GNRH1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GNS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GORAB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GP1BB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GP6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GPC6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GPD1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GPIHBP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GPR179"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GPSM2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GPX4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GRHPR"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GRIK2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GRIP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GRM1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GRM6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GRXCR1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GTF2H5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GUSB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "GYS2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "H6PD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HBA1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HBA2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HEXB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HFE"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HFM1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HGF"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HGSNAT"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HJV"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HLCS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HPGD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HPS1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HPS3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HPSE2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HSD17B3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HSD17B4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HSD3B7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HSPG2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "HYLS1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IDUA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IFT140"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IFT27"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IFT43"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IGHMBP2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IGLL1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IL10RA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IL17RA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IL21R"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IL2RA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "INPP5E"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IRAK4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ITCH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ITGA3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ITGB2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ITK"
+    }},
+    {"gene_data": {
+      "gene_symbol": "IYD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "JAM3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KARS1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KCNJ1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KCNV2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KCTD7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KERA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KHDC3L"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KIF1C"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KIF7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KIFBP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "KISS1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LAMA1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LAMA2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LAMA3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LAMC2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LARGE1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LBR"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LCA5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LCT"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LEPR"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LFNG"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LHX3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LIG4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LINS1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LIPA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LMAN1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LMBR1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LOXHD1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LPAR6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LPIN2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LRAT"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LRBA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LRP2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LRPAP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LRPPRC"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LYRM7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "LYST"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MALT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MAN2B1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MARVELD2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MASP2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MC2R"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MCCC1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MCEE"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MCFD2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MCPH1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "METTL23"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MFRP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MFSD8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MGP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MKKS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MKS1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MLC1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MLPH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MLYCD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MMAA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MMAB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MMACHC"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MMADHC"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MMUT"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MOCS2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MPDZ"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MPLKIP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MSH3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MSRB3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MTFMT"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MTHFR"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MTMR2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MTO1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MTR"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MTRR"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MTTP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MUTYH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MYL2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MYO15A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MYO1E"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MYO3A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MYO5A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "MYO5B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NAT8L"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NBAS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NCF1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NCF2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NCF4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NDE1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NDRG1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NDUFA10"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NDUFAF1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NDUFAF2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NDUFAF5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NDUFB3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NDUFS4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NDUFS6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NDUFS7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NDUFS8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NDUFV1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NDUFV2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NEK1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NGLY1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NHP2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NKX3-2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NPC1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NPHP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NPHP4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NPHS1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "NTHL1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "OAT"
+    }},
+    {"gene_data": {
+      "gene_symbol": "OBSL1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "OCA2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "OCLN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ORC4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ORC6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "OSTM1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "OTOA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "OTOF"
+    }},
+    {"gene_data": {
+      "gene_symbol": "OTOGL"
+    }},
+    {"gene_data": {
+      "gene_symbol": "OXCT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "P3H1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PAH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PARK7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PAX1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PC"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PCARE"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PCCA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PCDH15"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PCYT1A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PDE6C"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PDHX"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PDP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PDSS2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PDX1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PEPD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PEX1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PEX11B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PEX14"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PEX16"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PEX26"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PEX3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PEX7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PGAP3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PGM1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PGM3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PHC1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PHKB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PHKG2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PHYH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PIGN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PIGO"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PIGW"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PINK1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PIP5K1C"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PLA2G6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PLCB1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PLEKHG5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PLOD1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PLOD2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PLOD3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PMM2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PNP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "POLH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "POMP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "POMT2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "POR"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PPIB"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PPIP5K1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PPT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PRCD"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PREPL"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PRG4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PRKN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PROP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PSAT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PSPH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PTPRQ"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PTS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PXDN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "PYCR1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "QDPR"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RAB27A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RAB28"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RAB3GAP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RAB3GAP2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RAG1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RAG2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RARS2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RAX"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RBBP8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RBP3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RDX"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RELN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RETREG1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RFX6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RIN2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RIPK4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RMND1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RMRP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RNASEH2A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RNF168"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ROBO3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ROGDI"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RPGRIP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RSPH1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RSPH4A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RSPO4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "RTTN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SACS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SAMD9"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SBF2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SCARF2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SDCCAG8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SDHAF1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SEC23B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SEPSECS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SERAC1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SERPINA1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SERPINB6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SERPINB7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SERPINE1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SERPINF1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SGCG"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SGSH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SH3TC2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SI"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SIL1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC12A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC12A3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC13A5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC17A5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC24A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC25A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC25A13"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC25A19"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC2A10"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC30A10"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC34A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC34A2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC35C1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC35D1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC37A4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC38A8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC3A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC52A3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC5A1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC6A3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC7A7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLC7A9"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SLURP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SMOC1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SMOC2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SNAP29"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SOBP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SOST"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SPATA7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SPEG"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SPG21"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SPG7"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SPINK5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SRD5A2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ST14"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ST3GAL5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "STIL"
+    }},
+    {"gene_data": {
+      "gene_symbol": "STRC"
+    }},
+    {"gene_data": {
+      "gene_symbol": "STT3A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "STUB1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "STX11"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SUCLG1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SUMF1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SURF1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SYNE4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "SYT14"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TACSTD2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TAF2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TBC1D20"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TBCE"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TCIRG1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TCN2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TCTN1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TCTN2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TDP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TECPR2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TECTA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TFR2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TGM1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TGM5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TJP2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TMC6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TMC8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TMCO1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TMEM231"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TMEM237"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TMEM67"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TMPRSS3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TMPRSS6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TNFRSF11B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TNNT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TPK1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TPO"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TPRN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TRAPPC9"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TRDN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TRHR"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TRIM2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TRIM32"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TRIM37"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TRIOBP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TRIP4"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TRMT10A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TRMU"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TRPM1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TSEN2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TSEN54"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TSPEAR"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TTC19"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TTC21B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TTC37"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TTC7A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TTC8"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TTLL5"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TUBGCP6"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TUFM"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TUSC3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TWIST2"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TYMP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TYROBP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "TYRP1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "UBE2T"
+    }},
+    {"gene_data": {
+      "gene_symbol": "UBE3B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "UBR1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "UPB1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "UROS"
+    }},
+    {"gene_data": {
+      "gene_symbol": "USH1C"
+    }},
+    {"gene_data": {
+      "gene_symbol": "USH1G"
+    }},
+    {"gene_data": {
+      "gene_symbol": "USH2A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "UVSSA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "VLDLR"
+    }},
+    {"gene_data": {
+      "gene_symbol": "VPS13A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "VPS13B"
+    }},
+    {"gene_data": {
+      "gene_symbol": "VPS37A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "VPS53"
+    }},
+    {"gene_data": {
+      "gene_symbol": "WDPCP"
+    }},
+    {"gene_data": {
+      "gene_symbol": "WDR35"
+    }},
+    {"gene_data": {
+      "gene_symbol": "WDR62"
+    }},
+    {"gene_data": {
+      "gene_symbol": "WDR72"
+    }},
+    {"gene_data": {
+      "gene_symbol": "WHRN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "WNT7A"
+    }},
+    {"gene_data": {
+      "gene_symbol": "WRAP53"
+    }},
+    {"gene_data": {
+      "gene_symbol": "WRN"
+    }},
+    {"gene_data": {
+      "gene_symbol": "WWOX"
+    }},
+    {"gene_data": {
+      "gene_symbol": "XDH"
+    }},
+    {"gene_data": {
+      "gene_symbol": "XPA"
+    }},
+    {"gene_data": {
+      "gene_symbol": "XPC"
+    }},
+    {"gene_data": {
+      "gene_symbol": "XPNPEP3"
+    }},
+    {"gene_data": {
+      "gene_symbol": "XYLT1"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ZBTB24"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ZFYVE26"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ZMYND15"
+    }},
+    {"gene_data": {
+      "gene_symbol": "ZNF141"
+    }}
+  ]
+  }
+  

@@ -1,0 +1,7 @@
+[
+  { "label": "deleterious", "value": "deleterious" },
+  { "label": "deleterious low confidence", "value": "deleterious_low_confidence" },
+  { "label": "tolerated low confidence", "value": "tolerated_low_confidence" },
+  { "label": "tolerated", "value": "tolerated" },
+  { "label": "no value", "value": null }
+]

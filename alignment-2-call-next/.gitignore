@@ -1,0 +1,35 @@
+# Ignore Nextflow work directory
+work/
+
+# Ignore Nextflow temp directory
+.nextflow
+
+# Ignore Nextflow logs
+*.nextflow.log
+
+# Ignore Nextflow reports
+reports/
+
+# Ignore Nextflow timeline
+timeline.html
+
+# Ignore Nextflow trace
+trace.txt
+
+# Ignore Nextflow DAG
+dag.png
+
+# Ignore Nextflow cache
+.cache/
+
+# Ignore temporary files
+*.tmp
+
+# Ingore statistics folder
+stat
+
+# Ingore data file
+*.yml
+!example_param.yml
+.env
+

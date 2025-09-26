@@ -1,0 +1,38 @@
+@use './colors.sass' as *;
+
+.variant-genotypes-container {
+    min-width: 450px;
+}
+
+.detail-header {
+    width: 100%;
+    word-wrap: break-word;
+    background-color: $primary;
+    padding: 5px;
+    font-weight: bold;
+    color: $white;
+}
+.detail-subheader{
+    font-weight: bold;
+    border-bottom: 1px solid $gray-8;
+    padding-left: 10px;
+}
+
+.variant-genotypes-container .detail-row {
+    font-size: 12px;
+    padding: 2px;
+    border-bottom: 1px solid $gray-8;
+}
+
+body.body--dark .detail-header {
+    background-color: #00409b;
+    color: white;
+}
+
+.variant-genotypes-container .genotypeM {
+    border: 1px dotted #626262;
+}
+
+body.body--dark .variant-genotypes-container .genotypeM {
+    border: 1px dotted white;
+}

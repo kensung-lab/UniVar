@@ -1,0 +1,7 @@
+[
+  { "label": "probably damaging", "value": "probably_damaging" },
+  { "label": "possibly damaging", "value": "possibly_damaging" },
+  { "label": "benign", "value": "benign" },
+  { "label": "unknown", "value": "unknown" },
+  { "label": "no value", "value": null }
+]

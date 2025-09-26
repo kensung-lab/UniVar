@@ -1,0 +1,12 @@
+{
+  "min": 1,
+  "max": 4,
+  "step": 1,
+  "markerList" : [
+    { "label": "0"  , "value" : 1, "db_value" :  0 },
+    { "label": "0.35" , "value" : 2, "db_value" :  0.35 },
+    { "label": "0.5" , "value" : 3, "db_value" :  0.5 },
+    { "label": "2"  , "value" : 4, "db_value" :  null}
+  ],
+  "conditions" : "$lte"
+}

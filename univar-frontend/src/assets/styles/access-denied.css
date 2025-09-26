@@ -1,0 +1,11 @@
+.error-msg{
+    text-align: center;
+    font-size: 23px;
+    margin-top: 40px;
+    font-family: 'Mulish', sans-serif;
+}
+
+.error-msg i{
+    padding-bottom: 5px;
+    font-size: 26px
+}

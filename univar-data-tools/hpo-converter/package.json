@@ -1,0 +1,30 @@
+{
+  "name": "hpo-converter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsx src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "fix": "fix-esm-import-path dist/index.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "fix-esm-import-path": "^1.10.3",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "mongoose": "^8.18.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}

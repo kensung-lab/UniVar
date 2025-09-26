@@ -1,0 +1,466 @@
+@use './colors.sass' as *;
+
+.variants-table {
+  width: 100%;
+}
+
+.q-tr.variants-table-header {
+  background-color: $primary-1;
+  color: $primary;
+}
+
+.variants-table thead tr th {
+  position: sticky;
+  z-index: 3;
+  border-top: 2px solid $gray-5;
+  border-bottom: 2px solid $gray-5;
+}
+
+.variants-table-th:after {
+  width: 10px;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  display: inline-block;
+  position: absolute;
+  content: '';
+  cursor: col-resize;
+}
+.variants-table-th:before {
+  width: 10px;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  display: inline-block;
+  position: absolute;
+  content: '';
+  cursor: col-resize;
+}
+
+.variants-table thead tr:first-child th {
+  top: 0;
+}
+
+.variants-table tbody {
+  scroll-margin-top: 42px;
+}
+
+.variants-table tbody .variants-select-sticky {
+  position: sticky;
+  left: 32px;
+  z-index: 2;
+}
+
+.variants-table tbody .variants-expand-sticky {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  min-width: 38px;
+}
+
+.variants-table tbody .variants-select-sticky-note {
+  position: sticky;
+  left: 83px;
+  z-index: 2;
+}
+
+.variants-table tbody .variantsSelectSticky {
+  position: sticky;
+  left: 38px;
+  z-index: 3;
+  padding: 0 0 0 5px;
+}
+
+.variants-table tr .variants-expand-header {
+  position: sticky;
+  left: 0;
+  z-index: 5;
+  min-width: 38px;
+}
+
+.variants-table tr .variants-select-sticky-header {
+  position: sticky;
+  left: 38px;
+  z-index: 5;
+  padding: 0 0 0 5px;
+}
+
+.variants-table tr .variants-note-header {
+  position: sticky;
+  left: 83px;
+  z-index: 5;
+  min-width: 46px;
+}
+
+.variants-table-column-label {
+  margin-right: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.variants-tableInside {
+  width: 76vw;
+  z-index: 1;
+}
+
+.geneTableInside {
+  z-index: 1;
+}
+
+.table-header-col {
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+tr.q-tr td.variantsDetailsBtn {
+  cursor: pointer;
+  padding: 0 0 0 10px;
+  /*min-width: 60px;*/
+}
+
+.variantsDetailsTable {
+  text-align: center;
+}
+
+.geneNoteBox {
+  width: 400px;
+  height: 260px;
+}
+
+.geneNoteBox .q-field__control {
+  height: 170px;
+}
+
+.note_textarea {
+  margin-bottom: 10px;
+}
+
+.tablePopup a {
+  text-decoration: none;
+  color: #4285f4;
+  cursor: alias;
+}
+
+.tablePopup a:hover {
+  text-decoration: underline;
+  color: #3970c7;
+}
+
+.bottom-parent {
+  font-size: 13px;
+  width: 100%;
+}
+
+.bottom-left {
+  float: left;
+}
+
+.bottom-right {
+  float: right;
+  padding-right: 30px;
+}
+
+.genotypeM {
+  width: 13px;
+  height: 10px;
+}
+.q-table__card .genotypeM {
+  border: 1px dotted #626262;
+}
+
+.q-table__card--dark .genotypeM {
+  border: 1px dotted #ffffff;
+}
+
+.dot {
+  margin: 1px 2px;
+  padding: 4px;
+  width: 8px;
+  height: 8px;
+  background-color: #bbb;
+  border-radius: 100%;
+}
+
+.genotypeM_affected {
+  background-color: $negative;
+}
+
+.genotypeM_not_affected {
+  background-color: $positive;
+}
+
+.longRefStr {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resize-width {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resize-border {
+  top: 0;
+  right: 0;
+  width: 1px;
+  position: absolute;
+  cursor: col-resize;
+  user-select: none;
+  height: 42px;
+  padding: 0 1px;
+  // background-color: $primary-7;
+}
+
+.variants-tableColumnLabel {
+  margin-right: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.variants-tableColumn {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.q-tooltip {
+  max-width: 1000px !important;
+}
+
+.geneTableInside .q-table thead {
+  background-color: #0f9d58;
+}
+
+.sortedKey {
+  font-size: 12px;
+  background-color: #1f3932;
+  border-radius: 15px;
+  width: 19px;
+  display: inline-block;
+  cursor: url('@/assets/img/delete_sweep.svg'), auto;
+  color: white;
+}
+
+.variants-table .q-table__top {
+  display: none;
+}
+
+.element-center {
+  text-align: center;
+}
+
+.cursor-pointer {
+  text-transform: none !important;
+}
+
+.variants-table-container {
+  position: relative;
+  padding: 0 8px 30px 20px;
+}
+
+.loading-spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body.body--dark .loading-spinner {
+  background-color: #595959cc;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.variants-table-spinner {
+  color: #4285f4;
+}
+
+.variant-details-box {
+  max-height: 350px;
+  width: 300px;
+  padding: 0 !important;
+}
+
+.variant-details-box .detail-header {
+  width: 299px;
+  word-wrap: break-word;
+  background-color: $primary;
+  padding: 5px;
+  font-weight: bold;
+  color: white;
+}
+
+.variant-details-box .detail-row {
+  border-bottom: 1px solid #777777;
+  margin-bottom: 0;
+}
+
+.variant-details-box.detail-row .position {
+  width: 200px;
+  word-wrap: break-word;
+}
+
+.variant-details-box .detail-row .row {
+  padding: 0 10px 10px 5px;
+}
+
+.variant-details-box .detail-row:hover {
+  background: #89b2ff;
+  color: white;
+}
+
+.variant-details-dialog-container {
+  background: white;
+  min-height: 300px;
+  min-width: 90vw;
+  max-height: 80vh;
+  overflow-y: scroll;
+  padding: 10px 20px;
+}
+
+body.body--dark .variant-details-dialog-container {
+  background: black;
+}
+
+.table-popup-container {
+  width: 100%;
+}
+
+.table-popup-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.table-popup-container .nav-icon {
+  transform: rotate(90deg);
+}
+
+.top-parent {
+  width: 100%;
+  height: 33px;
+  display: block;
+}
+
+.top-left {
+  float: left;
+}
+
+.top-right {
+  float: right;
+}
+
+.variantsDetailsBtn button {
+  color: rgba(66, 133, 244, 0.64);
+}
+
+.table-popup-container .q-table__middle {
+  border-radius: 0 !important;
+}
+
+.cut-text-container {
+  width: 280px;
+  max-height: 100px;
+  line-height: 20px;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-line-clamp: 2;
+  -moz-line-clamp: 2;
+  -ms-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+body.body--dark .q-banner__content {
+  background: #383838;
+  color: white;
+}
+
+body.body--dark .q-banner__avatar {
+  background: #383838;
+  min-width: 0 !important;
+}
+
+div.resize-ref {
+  position: absolute;
+  cursor: col-resize;
+  width: 2px;
+  top: 0;
+  background-color: #00409b;
+  user-select: none;
+  height: 90%;
+  z-index: 5;
+}
+
+body.body--dark div.resize-ref {
+  background-color: #b9f1ff;
+}
+
+.q-table thead th,
+.q-table tbody td {
+  padding: 7px 6px;
+}
+
+.variant-row,
+.variant-column {
+  background-color: #ffffff;
+}
+
+.variant-row.read,
+.variant-column.read {
+  background-color: #d1e7ff;
+}
+
+.variant-row.clicked,
+.variant-column.clicked {
+  background-color: #afffed;
+}
+
+body.body--dark .variant-row,
+body.body--dark .variant-column {
+  background-color: #1d1d1d;
+}
+
+body.body--dark .variant-row.read,
+body.body--dark .variant-column.read {
+  background-color: #383838;
+}
+
+.geneDetailPosition {
+  line-break: anywhere;
+}
+
+.box-shadow-none {
+  box-shadow: none;
+}
+
+table.q-table thead tr, table.q-table tbody td {
+  height: 42px;
+}
+
+.q-btn.note-icon {
+  color: $gray-4;
+}
+
+.q-btn.note-icon.noted {
+  color: $secondary;
+}

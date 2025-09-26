@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "Nodenext",
+    "target": "esnext",
+    "moduleResolution": "nodenext",
+    "outDir": "./dist",
+    "strict": true
+  },
+  "include": ["src/**/*"]
+}

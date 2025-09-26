@@ -1,0 +1,64 @@
+{
+  "name": "univar-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build:development": "vite build --mode development",
+    "build:staging": "vite build --mode staging",
+    "build:production": "vite build --mode production",
+    "preview": "vite preview",
+    "test:unit": "vitest run --reporter verbose",
+    "test:variants-table": "vitest --run variants-table --reporter verbose",
+    "test:cov": "vitest run --coverage",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "@fontsource/montserrat": "^5.2.6",
+    "@fontsource/open-sans": "^5.2.6",
+    "@quasar/extras": "^1.17.0",
+    "axios": "^1.11.0",
+    "idlejs": "^3.0.0",
+    "igv": "^3.5.0",
+    "keycloak-js": "^26.2.0",
+    "quasar": "^2.18.2",
+    "sortablejs": "^1.15.6",
+    "sprintf-js": "^1.1.3",
+    "vue": "^3.5.19",
+    "vue-cookie-accept-decline": "^6.1.0",
+    "vue-draggable-next": "^2.3.0",
+    "vue-router": "^4.5.1",
+    "vue3-tour": "^1.0.3",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.33.0",
+    "@quasar/vite-plugin": "^1.10.0",
+    "@rushstack/eslint-patch": "^1.12.0",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vitest/coverage-istanbul": "^3.2.4",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "eslint": "^9.33.0",
+    "eslint-plugin-vue": "^10.4.0",
+    "jsdom": "^26.1.0",
+    "prettier": "^3.6.2",
+    "sass": "^1.90.0",
+    "vite": "^7.1.3",
+    "vitest": "^3.2.4"
+  },
+  "pnpm": {
+    "overrides": {
+      "esbuild@<0.25.0": ">=0.25.0"
+    },
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@scarf/scarf",
+      "core-js",
+      "esbuild"
+    ]
+  }
+}

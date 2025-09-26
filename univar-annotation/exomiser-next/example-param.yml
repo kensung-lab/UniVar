@@ -1,0 +1,8 @@
+proband_id: '<proband id>'
+ped_path: 'path to ped file'
+hpo_path: 'path to hpo file'
+access_group: "access group name"
+exomiser_run: <$name of this exomiser run>
+vcf_files: ['path/to/raw/<proband_id>_<solo|duo|trio|m4...>_<unique_string>.vcf.gz','path/to/raw/<proband_id>_<solo|duo|trio|m4...>_<unique_string>.<sv_caller>.vcf.gz',...]
+mongo_base_url: <$mongo_base_url>
+database_name: <$database name>

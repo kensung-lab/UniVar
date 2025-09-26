@@ -1,0 +1,18 @@
+services:
+  univar-backend:
+    user: ${USER_ID}:${GROUP_ID}
+    image: univar-backend:demo
+    ports:
+      - '8080:${NEST_PORT}' #host hardcode to anything you like
+    env_file:
+      - .env
+    volumes:
+      - ./temp/export_data:${EXPORT_FILE_PATH}
+      - ./sample_files:${EXAMPLE_FILES_PATH}
+      - ${DATA_DIR}:${DATA_DIR}
+    networks:
+      - univar_network
+
+networks:
+  univar_network:
+    external: true

@@ -1,0 +1,35 @@
+.samplesTitle{
+    font-size: 17px;
+    font-weight: bold;
+}
+.topEle{
+    margin-left: 15px;
+}
+
+.topEleBtn{
+    text-transform: capitalize;
+}
+
+.topEleBtn span{
+    text-transform: capitalize;
+}
+
+.badge{
+    margin-left: 10px;
+}
+
+.samplesHeader{
+    cursor: pointer;
+}
+
+.samplesSelect{
+    text-align: center;
+}
+
+.cram_file{
+    width: 250px;
+}
+
+.hidden{
+    display: none;
+}

@@ -1,0 +1,13 @@
+services:
+  univar-frontend:
+    platform: "linux/amd64"
+    image: univar-frontend:demo
+    ports:
+      - "5173:80"
+    restart: unless-stopped
+    networks:
+      - univar_network
+
+networks:
+  univar_network:
+    external: true

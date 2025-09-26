@@ -1,0 +1,119 @@
+@use './colors.sass' as *;
+
+@font-face {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('@/assets/font/Mulish.woff2') format('woff2');
+}
+
+.app_logo{
+    height: 60px;
+    width: 140px;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+.cuhk_logo{
+    height: 60px;
+    width: 86px;
+}
+
+.app_header{
+    font-size: 20px;
+    height: 100%;
+    align-items: center;
+}
+
+.app_title{
+    padding-left: 20px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.app_title a{
+    color: white;
+    text-decoration: none;
+}
+
+@media (max-width: 550px) {
+    .app_title{
+        font-size: 17px;
+    }
+}
+
+.q-toolbar.header-toolbar{
+    background: $primary-9;
+    height: 3rem;
+    padding: 0.5rem 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+.logo span {
+    color: $info-3; /* Teal accent */
+}
+
+.header_account{
+    min-width: 130px;
+}
+
+.header-username{
+    margin: 0 10px;
+    text-transform: none;
+    font-size: 16px;
+}
+
+.header_list{
+    min-width: 130px;
+}
+
+.header_menuItem a{
+    color: black;
+    text-decoration: none;
+}
+
+.header_account .header_account_btn{
+    height: 73px;
+    width: 100%;
+}
+
+.dark_mode{
+    height: 100%
+}
+
+.dark_mode button{
+    height: 73px;
+    width: 150px;
+}
+
+.dark_mode i{
+    margin-right: 5px;
+}
+.login {
+    background-color: $secondary;
+    height: 100%;
+    margin-right: 10px;
+}
+
+.login i {
+    margin-right: 5px;
+}
+
+.login > .q-btn, .user_manual > .q-btn {
+    height: 2.1rem;
+    padding: 0.3rem 1rem;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.3s;
+    text-transform: none;
+}

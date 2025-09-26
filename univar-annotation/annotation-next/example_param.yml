@@ -1,0 +1,11 @@
+in_sv_files:
+  - /path/to/proband_id_solo|duo|trio_unique-string.caller1.vcf.gz
+  - /path/to/proband_id_solo|duo|trio_unique-string.caller2.vcf.gz
+in_snp_file: /path/to/proband_id_solo|duo|trio_unique-string.vcf.gz
+output_name: proband_id_solo|duo|trio_unique-string
+ped_path: /path/to/ped_file
+access_group: <access_group>
+database_name: <database_name_of_this_run>
+variant_import_tool: /path/to/variant_import_tool
+data_dir: /path/to/data_location
+mongo_base_url: <mongodb_url>

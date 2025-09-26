@@ -1,0 +1,142 @@
+.upload-container{
+    padding: 20px 20px 30px 20px;
+    width: 100%;
+}
+
+.file-group{
+    margin-bottom: 20px;
+}
+
+.upload-group{
+    background: #dfeaff;
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
+    display: none;
+}
+
+.optional-group{
+    background: #eff8ff;
+    padding: 10px;
+}
+
+.select-hpo{
+    background: #f1f1f1;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.required-group{
+    background: #ffeeee;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.ped_group_container{
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.each_ped_group{
+    margin-top: 10px;
+}
+
+.add_ped_btn{
+    margin-top: 10px;
+}
+
+.body--dark .upload-group{
+    background: #7993c8
+}
+.body--dark .optional-group{
+    background: #b5ceff
+}
+
+.remark-message{
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #505050;
+    margin-bottom: 10px;
+}
+
+.remark-message i{
+    font-size: 23px;
+    margin-right: 5px;
+    vertical-align: bottom;
+}
+
+.upload-btn{
+    width: 155px !important;
+    margin-left: 10px;
+}
+
+.example-file{
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #0d47a1;
+    text-align: center;
+}
+
+.example-file i{
+    font-size: 25px;
+}
+
+.format-message{
+    padding-left: 5px;
+    font-size: 12px;
+    color: gray;
+}
+
+.file-format{
+    color: black;
+    margin-bottom: 2px;
+    font-size: 13px;
+}
+
+.hpo_message{
+    display: none;
+    padding-left: 9px;
+    margin-top: 8px;
+    font-size: 12px;
+    color: gray;
+}
+
+.hpo_tree{
+    border: 1px solid #9e9e9e;
+}
+
+.clicked_hpo{
+    border-left: 1px solid #b6b6b6;
+    background: #e9e9e9;
+    padding: 10px;
+}
+
+.clicked_title{
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #000;
+}
+
+.clicked_hpo_terms{
+    cursor: pointer;
+}
+
+.clicked_hpo_terms:hover{
+    background: #d5d5d5;
+    transition: 0.2s all
+}
+
+.filtered_hpo{
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.filtered_hpo i{
+    color : #027BE3
+}
+.q-card .ped_group_container .q-field__marginal{
+    height: 56px;
+}

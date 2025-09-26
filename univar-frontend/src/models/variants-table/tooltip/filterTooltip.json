@@ -1,0 +1,35 @@
+{
+  "quality": {
+    "pass_filter": "Quality filters passed/failed in variant calling (VCF FILTER field).",
+    "qualityScore": "Quality score for the assertion made in ALT (VCF QUAL field)."
+  },
+  "impact": {
+    "snv": {
+      "is_coding": "Does the variant fall in a coding region for at least 1 transcript?",
+      "is_exonic": "Does the variant fall in an exonic region for at least 1 transcript?",
+      "snv_high": "IMPACT HIGH: The variant is assumed to have high (disruptive) impact in the protein, probably causing protein truncation, loss of function or triggering nonsense mediated decay.",
+      "snv_med": "IMPACT MODERATE: A non-disruptive variant that might change protein effectiveness.",
+      "snv_low": "IMPACT LOW: Assumed to be mostly harmless or unlikely to change protein behaviour.",
+      "snv_modifier": "IMPACT MODIFIER: Usually non-coding variants or variants affecting non-coding genes, where predictions are difficult or there is no evidence of impact."
+    },
+    "sv": {
+      "type": "Type of structural variants"
+    },
+    "univar_high_impact": [
+      "- impact = high",
+      "- ClinVar Classification = pathogenic or likely pathogenic ",
+      "- impact = medium and [polyphen score > 0.85 or SIFT score < 0.05 or CADD > 20 or REVEL > 0.5]"
+    ]
+  },
+  "evidence": {
+    "clingen_hi": "ClinGen haploinsufficiency evidence classification",
+    "clingen_ts": "ClinGen triplosensitivity evidence classification"
+  },
+  "pathogenicity": {
+    "polyphen_pred": "Polyphen prediction of pathogenicity",
+    "sift_pred": "SIFT prediction of pathogenicity",
+    "polyphen_score": "Polyphen prediction of pathogenicity. The higher, the more deleterious.",
+    "sift_score": "SIFT prediction of pathogenicity. The lower, the more deleterious.",
+    "clinical_interpretation": "Reported SV in Decipher/Clinvar"
+  }
+}

@@ -1,0 +1,5 @@
+[
+  { "label": "Predicted impact on splicing", "value": "predicted_impact" },
+  { "label": "Not informative", "value": "no_info" },
+  { "label": "No impact on splicing", "value": "no_impact" }
+]

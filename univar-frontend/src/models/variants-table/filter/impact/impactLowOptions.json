@@ -1,0 +1,10 @@
+[
+  { "label": "Splice donor 5th base variant", "value": "splice_donor_5th_base_variant" },
+  { "label": "Splice region variant", "value": "splice_region_variant" },
+  { "label": "Splice donor region variant", "value": "splice_donor_region_variant" },
+  { "label": "Splice polypyrimidine tract variant", "value": "splice_polypyrimidine_tract_variant" },
+  { "label": "Incomplete terminal codon variant", "value": "incomplete_terminal_codon_variant" },
+  { "label": "Start retained variant", "value": "start_retained_variant" },
+  { "label": "Stop retained variant", "value": "stop_retained_variant" },
+  { "label": "Synonymous variant", "value": "synonymous_variant" }
+]

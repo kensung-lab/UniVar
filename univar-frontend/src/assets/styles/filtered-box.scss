@@ -1,0 +1,65 @@
+@use './colors.sass' as *;
+
+.filtered-box{
+    padding: 5px;
+    font-size: 14px;
+    font-family: 'Mulish', sans-serif;
+}
+
+.filtered-box:hover{
+    background: $primary-1;
+}
+
+.filtered-box-field{
+    cursor: pointer;
+}
+
+.filtered-box-view-only{
+    font-size: 14px;
+    font-family: 'Mulish', sans-serif;
+}
+
+
+.filtered-box-field .delete_icon{
+    color: $negative;
+    font-weight: bold;
+    font-size: 16px;
+    padding-bottom: 2px;
+}
+
+.filtered-ele{
+    margin-left: 6px;
+    margin-right: 6px;
+    word-wrap: break-word;
+}
+
+.filtered-box-icon{
+    padding-bottom: 2px;
+    color: $info;
+}
+
+.panel-element{
+    cursor: zoom-out;
+    padding: 0 10px;
+}
+
+.panel-element:hover{
+    background: #565656;
+    color: white;
+}
+
+.filtered-panels{
+    cursor: default;
+}
+
+.remove-panels{
+    background: #afafaf;
+    color: white;
+    padding: 0 6px;
+    border-radius: 10px;
+}
+
+.remove-panels:hover{
+    cursor: zoom-out;
+    background: indianred;
+}

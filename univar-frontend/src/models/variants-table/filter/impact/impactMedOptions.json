@@ -1,0 +1,6 @@
+[
+  { "label": "Inframe insertion", "value": "inframe_insertion" },
+  { "label": "Inframe deletion", "value": "inframe_deletion" },
+  { "label": "Missense variant", "value": "missense_variant" },
+  { "label": "Protein altering variant", "value": "protein_altering_variant" }
+]

@@ -1,0 +1,137 @@
+
+
+.landing-container {
+    background: linear-gradient(135deg, #1B263B, #00A8E8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 70px 20px 20px;
+    position: relative;
+    overflow: hidden;
+    height: calc(100vh - 58px - 50px - 10vh - 11vh - 3.5vh - 2.5vh - 2.2rem); 
+    /* 100vh - footer - header - action padding -  */
+}
+.landing-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: url('@/assets/img/dna-svgrepo-com.svg');
+    background-repeat: repeat-x;
+    background-position-y: bottom;
+    background-size: 70vh;
+    z-index: 0;
+}
+
+.landing-container h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7vh;
+    color: #FFFFFF;
+    margin: 0;
+    z-index: 1;
+}
+.landing-container h1 span {
+    color: #00A8E8;
+}
+.landing-container p {
+    font-size: 3vh;
+    color: rgba(255, 255, 255, 0.8);
+    z-index: 1;
+}
+
+.landing-buttons{
+    font-size: 15px;
+    text-align: center;
+    padding: 70px 100px 0 100px
+}
+
+.landing-action{
+    padding: 45px;
+}
+
+.landing-inner{
+    padding: 30px;
+    font-family: 'Mulish', sans-serif;
+    background: #e8e8e8;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+    text-decoration: underline;
+}
+
+.landing-inner:hover{
+    background: #cad4ff;
+    transition: 0.2s all;
+}
+
+.landing-inner i{
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.run-job {
+    z-index: 1;
+    margin: 6vh 0;
+}
+.run-job > .cta {
+    background: #FFD700;
+    color: #1B263B;
+    padding: 2.3vh 2.5vw;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 600;
+    transition: background 0.3s;
+    font-family: 'Open Sans', sans-serif;
+}
+.run-job > .cta:hover {
+    background: #FFCA28;
+}
+
+/* Action Cards */
+.actions {
+    padding: 4vh 0px;
+}
+
+.card {
+    background: #FFFFFF;
+    border: 1px solid #ECEFF1;
+    border-radius: 8px;
+    padding: 1.5vh;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, border 0.3s;
+    margin:0px 10px;
+}
+
+.card-remove-a {
+    text-decoration-line: none;
+    text-decoration-color: none;
+}
+
+.card:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    border-color: #00A8E8;
+}
+.card i {
+    font-size: 5vh;
+    color: #00A8E8;
+}
+.card h3 {
+    font-size: 3vh;
+    font-weight: 600;
+    margin: 0;
+    color: black;
+}
+.card p {
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
+    font-size: 2.5vh;
+    color: #757575;
+}

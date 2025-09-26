@@ -1,0 +1,5 @@
+[
+  { "label": "Pathogenic", "value": "pathogenic" },
+  { "label": "Neutral", "value": "neutral" },
+  { "label": "Bengin", "value": "bengin" }
+]

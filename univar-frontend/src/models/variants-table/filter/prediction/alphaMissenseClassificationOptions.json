@@ -1,0 +1,5 @@
+[
+  { "label": "Likely Pathogenic", "value": "likely_pathogenic" },
+  { "label": "Ambiguous", "value": "ambiguous" },
+  { "label": "Likely bengin", "value": "likely_benign" }
+]

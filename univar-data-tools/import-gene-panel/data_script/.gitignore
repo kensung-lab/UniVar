@@ -1,0 +1,3 @@
+data/*
+!data/populate.sh
+!data/univar_custom.json

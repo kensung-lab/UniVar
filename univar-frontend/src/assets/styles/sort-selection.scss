@@ -1,0 +1,143 @@
+@use './colors.sass' as *;
+
+.groupBreak{
+    width: 100%;
+    margin-bottom: 3px;
+}
+
+.column-element{
+    border-radius: 1px;
+    cursor: all-scroll;
+    padding: 2px 2px 2px 6px;
+    margin: 2px 2px 2px 0;
+    font-family: 'Mulish', sans-serif;
+    align-items: center;
+}
+
+.column-element:hover{
+    background-color: #cecece;
+    transition: 0.2s;
+}
+
+.dragArea {
+    max-height: 480px;
+    min-height: 480px;
+    overflow-y: scroll;
+    border-top: 1px solid #000000;
+    margin-top: 2px;
+}
+
+.dragging-box{
+    margin-top: 10px;
+    width: 100%;
+}
+.dragging-box .q-field__control{
+    height: 40px;
+    margin-right: 10px;
+}
+
+.dragging-group-title{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.ghost{
+    background-color: #4285F4 !important;
+    color: white;
+    border: 1px solid #000000;
+}
+
+
+.hover-icon {
+    cursor: pointer;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    float: right;
+}
+
+.hover-icon-left{
+    float: left;
+    margin-right: 5px;
+    color: black;
+}
+
+.hover-icon::before {
+    font-weight: 900;
+    font-size: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.clear-icon::before{
+    font-family: 'Material Icons', serif;
+    content: '\e14c';
+    color: $negative;
+}
+
+.view-icon::before{
+    font-family: 'Material Icons', serif;
+    content: '\e3ba';
+    color: $positive-4;
+}
+.view-icon::before:hover {
+    color: $positive
+}
+
+.disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.column-category{
+    float: right;
+    font-size: 11px;
+    color: $white;
+    padding: 0 6px;
+    border-radius: 3px;
+}
+
+.category-label-basic{
+    background: #4285F4;
+}
+
+.category-label-genomic{
+    background: #F4B400;
+}
+
+.category-label-prioritization{
+    background: #0F9D58;
+}
+
+.category-label-quality{
+    background: #DB4437;
+}
+
+.category-label-frequency{
+    background: #1F3932;
+}
+
+.category-label-effect{
+    background: rgba(183, 138, 138, 0.84);
+}
+
+.category-label-evidence{
+    background: rgba(225, 132, 255, 0.84);
+}
+
+.select-category{
+    float: right;
+    margin-right: 10px;
+}
+
+.column-selection-notice{
+    font-family: Mulish, sans-serif;
+    font-size: 15px;
+}
+
+.not-draggable {
+    cursor: default;
+    background: $gray-1;
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "label": "none",
+    "value": "none",
+    "desc": "All variants that are present in at least one of the selected individuals."
+  },
+  {
+    "label": "any scenario",
+    "value": "any",
+    "desc": "Any scenario : dominant/recessive/de novo/ compound het/ x linked"
+  },
+  {
+    "label": "dominant",
+    "value": "0",
+    "desc": "Dominant : variants that are present in all affected individuals, and absent in the non affected ones."
+  },
+  {
+    "label": "recessive",
+    "value": "1",
+    "desc": "Recessive : variants homozygous in affected individuals, carried by their parents, but absent in non affected individuals."
+  },
+  {
+    "label": "de novo",
+    "value": "2",
+    "desc": "De novo : variants present in all affected individuals, but not carried by the parents."
+  },
+  {
+    "label": "compound het",
+    "value": "3",
+    "desc": "Compound heterozygous : pairs of variants affecting the same gene, one being carried by one parent, the second by the other parent, and both present in affected individuals. There may be several combinations of pairs; each affected sample carries at least one."
+  },
+  {
+    "label": "x linked",
+    "value": "4",
+    "desc": "X-linked : recessive impact variants present on chromosome X only. Carried by either affected sons and their mother, or by affected daughters (homozygous) and both their parents(and the father is affected). For dominant X-linked variants, use the 'dominant' scenario while filtering on 'chrX' in the Location search bar. "
+  }
+]

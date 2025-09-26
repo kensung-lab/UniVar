@@ -1,0 +1,41 @@
+.dashboard-table{
+    margin-top: 20px;
+}
+
+.q-processing{
+    width: 25px;
+    height: 25px;
+    color: #ffffff;
+    margin-right: 4px;
+    filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(198deg) brightness(108%) contrast(100%); /** #ffffff */
+}
+
+.process_success, .process_delete{
+    margin-right: 2px;
+    font-size: 25px !important;
+}
+
+.variant-table-btn, .sample-name-btn{
+    cursor: pointer;
+}
+
+.sample-name-btn:hover{
+    color: #0d47a1;
+}
+
+.dashboard-table tr{
+    cursor: pointer;
+}
+
+.delete-sample{
+    z-index: 100;
+}
+
+.url-btn {
+    margin: 10px;
+}
+
+.job-description {
+    font-size: 16px;
+    font-weight: bold;
+}

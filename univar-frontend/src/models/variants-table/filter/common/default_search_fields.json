@@ -1,0 +1,22 @@
+[
+  { "field": "is_coding" , "type" : "boolean"},
+  { "field": "is_exonic" , "type" : "boolean"},
+  { "field": "is_read" , "type" : "boolean"},
+  { "field": "note" , "type" : "boolean"},
+  { "field": "is_pathogenic" , "type" : "boolean"},
+  { "field": "univar_high_impact" , "type" : "boolean"},
+  { "field": "scenario" , "type" : "string"},
+  { "field": "pass_filter" , "type" : "array"},
+  { "field": "quality" , "type" : "number"},
+  { "field": "snv_type" , "type" : "string"},
+  { "field": "impact" , "type" : "array"},
+  { "field": "sv_type" , "type" : "string"},
+  { "field": "p_lof" , "type" : "array"},
+  { "field": "clnsig" , "type" : "array"},
+  { "field": "clingen_hi" , "type" : "array"},
+  { "field": "clingen_ts" , "type" : "array"},
+  { "field": "polyphen_pred" , "type" : "array"},
+  { "field": "sift_pred" , "type" : "array"},
+  { "field": "variant_type" , "type" : "string"},
+  { "field": "caller" , "type" : "string"}
+]

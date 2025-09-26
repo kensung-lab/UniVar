@@ -1,0 +1,440 @@
+{
+  "revel": {
+    "open": false,
+    "custom_value": ""
+  },
+  "cadd_phred" : {
+    "open": false,
+    "custom_value": ""
+  },
+  "constraint_v2_mis_z": {
+    "open": false,
+    "custom_value": ""
+  },
+  "constraint_v2_syn_z": {
+    "open": false,
+    "custom_value": ""
+  },
+  "constraint_v2_oe_lof_upper": {
+    "open": false,
+    "custom_value": ""
+  },
+  "constraint_v2_oe_mis_upper": {
+    "open": false,
+    "custom_value": ""
+  },
+  "constraint_v4_mis_z": {
+    "open": false,
+    "custom_value": ""
+  },
+  "constraint_v4_syn_z": {
+    "open": false,
+    "custom_value": ""
+  },
+  "constraint_v4_oe_lof_upper": {
+    "open": false,
+    "custom_value": ""
+  },
+  "constraint_v4_oe_mis_upper": {
+    "open": false,
+    "custom_value": ""
+  },
+  "am_pathogenicity": {
+    "open": false,
+    "custom_value": ""
+  },
+  "polyphen_score": {
+    "open": false,
+    "custom_value": ""
+  },
+  "sift_score": {
+    "open": false,
+    "custom_value": ""
+  },
+  "highest_exomiser_scombi": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_ad_exgenescombi": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_ar_exgenescombi": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_xd_exgenescombi": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_xr_exgenescombi": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_mt_exgenescombi" : {
+    "open": false,
+    "custom_value": ""
+  },
+  "highest_exomiser_spheno": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_ad_exgenespheno": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_ar_exgenespheno": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_xd_exgenespheno": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_xr_exgenespheno": {
+    "open": false,
+    "custom_value": ""
+  },
+  "exomiser_mt_exgenespheno" : {
+    "open": false,
+    "custom_value": ""
+  },
+
+  "highest_exomiser_gene_combined_score" : {
+    "open": false,
+    "custom_value": ""
+  },
+  "highest_exomiser_gene_pheno_score" : {
+    "open": false,
+    "custom_value": ""
+  },
+
+  "quality": {
+    "open": false,
+    "custom_value": ""
+  },
+  "len": {
+    "open": false,
+    "custom_value": ""
+  },
+  "highest_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2e_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2e_afr_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2e_amr_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2e_asj_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2e_eas_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2e_fin_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2e_nfe_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2e_oth_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2e_sas_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2g_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2g_afr_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2g_amr_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2g_asj_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2g_eas_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2g_fin_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2g_nfe_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2g_oth_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2g_sas_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv3g_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv3g_afr_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv3g_amr_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv3g_asj_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv3g_eas_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv3g_fin_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv3g_mid_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv3g_nfe_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv3g_oth_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv3g_sas_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4e_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4e_afr_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4e_amr_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4e_asj_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4e_eas_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4e_fin_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4e_mid_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4e_nfe_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4e_oth_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4e_sas_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4g_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4g_afr_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4g_amr_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4g_asj_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4g_eas_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4g_fin_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4g_mid_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4g_nfe_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4g_oth_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4g_sas_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "dgv_gold_outer": {
+    "open": false,
+    "custom_value": ""
+  },
+  "dgv_gold_inner": {
+    "open": false,
+    "custom_value": ""
+  },
+  "hkbc": {
+    "open": false,
+    "custom_value": ""
+  },
+  "one_kg_eas": {
+    "open": false,
+    "custom_value": ""
+  },
+  "one_kg_sur_eas": {
+    "open": false,
+    "custom_value": ""
+  },
+  "one_kg": {
+    "open": false,
+    "custom_value": ""
+  },
+  "one_kg_sur": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2_sv_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2_sv_afr_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2_sv_amr_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2_sv_eas_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2_sv_eur_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv2_sv_oth_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4_sv_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4_sv_afr_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4_sv_ami_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4_sv_amr_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4_sv_asj_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4_sv_eas_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4_sv_fin_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4_sv_mid_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4_sv_nfe_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4_sv_oth_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "gnomadv4_sv_sas_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "han_sv_af": {
+    "open": false,
+    "custom_value": ""
+  },
+  "highest_splice_ai": {
+    "open": false,
+    "custom_value": ""
+  },
+  "spliceai_pred_ds_ag": {
+    "open": false,
+    "custom_value": ""
+  },
+  "spliceai_pred_ds_al": {
+    "open": false,
+    "custom_value": ""
+  },
+  "spliceai_pred_ds_dg": {
+    "open": false,
+    "custom_value": ""
+  },
+  "spliceai_pred_ds_dl": {
+    "open": false,
+    "custom_value": ""
+  },
+  "supp": {
+    "open": false,
+    "custom_value": ""
+  }
+}

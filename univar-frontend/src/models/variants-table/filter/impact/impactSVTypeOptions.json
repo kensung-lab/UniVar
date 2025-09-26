@@ -1,0 +1,8 @@
+[
+  { "label": "Any", "value": null },
+  { "label": "INS", "value": "INS" },
+  { "label": "DEL", "value": "DEL" },
+  { "label": "DUP", "value": "DUP" },
+  { "label": "INV", "value": "INV" },
+  { "label": "BND", "value": "BND" }
+]

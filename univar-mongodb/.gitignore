@@ -1,0 +1,7 @@
+# ignore data folder
+mongo-data
+
+# ignore secret files
+mongo-root-password
+mongo-keyfile
+mongo-univar-backend-password

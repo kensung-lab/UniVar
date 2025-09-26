@@ -1,0 +1,34 @@
+@use './colors.sass' as *;
+
+.license-message{
+    float: left;
+    margin-left: 10px;
+}
+
+.license-message a{
+    margin-left: 10px;
+}
+
+footer.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    
+    background: $primary-9;
+    padding: 20px;
+    text-align: center;
+    font-size: 12px;
+}
+footer.footer a {
+    color: $info-3;
+    text-decoration: none;
+}
+footer.footer a:hover {
+    color: $info-1;
+}
+footer > .footer-content {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

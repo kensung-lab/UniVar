@@ -1,0 +1,8 @@
+folder_fastq: /path/to/fastq_folder
+data_dir: /path/to/data_folder
+tools_path: /path/to/tools
+ped_file: /path/to/ped
+project_name: <project_name>
+univar_flag: true
+# For run CNVkit (need an conda environment that contain installed package for R)
+r_env_path: <source to active conda>

@@ -1,0 +1,25 @@
+#!/bin/sh 
+
+## 1. only process the reads mapped to autosomes [YES]
+## 2. QC > 30 [YES]
+## 3. paired [YES]
+## 4. length 20-600 [YES]
+
+if [ $# -ne 2 ];then
+        echo "usage: sh $0 <run> <output>"
+        echo "Eg. sh $0 bam_file bed_file"
+        exit 1
+fi 
+
+bam=$1
+
+# samtools view $1 | awk '$9>0{print $3, $4-1, $4+$9-1, $9, $1}' OFS="\t"  > $2
+#samtools view $1 | awk '(  \
+#                        $3~/^chr[0-9]{1,2}$/ &&  \
+#                        $5>=30 &&  \
+#                        $7=="=" &&  \
+#                        $9>=20 &&  \
+#                        $9<=600) \
+#                    {print $3, $4-1, $4+$9-1, $9}' OFS="\t"  > $2
+
+samtools view $1 | awk '($7=="=" && $9>0 ) {print $3, $4-1, $4+$9-1, $9}' OFS="\t"  > $2 

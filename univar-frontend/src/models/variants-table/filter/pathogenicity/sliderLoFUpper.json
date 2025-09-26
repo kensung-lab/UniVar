@@ -1,0 +1,12 @@
+{
+  "min": 0,
+  "max": 1,
+  "step": 0.05,
+  "custom_maker": [
+    { "value": 0, "label": 0 },
+    { "value": 0.35, "label": 0.35 },
+    { "value": 0.6, "label": 0.6 },
+    { "value": 1, "label": 1 }
+  ],
+  "conditions": "$lte"
+}
