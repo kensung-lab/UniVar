@@ -1,6 +1,6 @@
 services:
   configsvr:
-    image: mongo:8.0.6-noble
+    image: mongo:8.0.14-noble
     user: ${UID_GID}
     container_name: configsvr
     command: ["mongod", "--configsvr", "--replSet", "configReplSet", "--port", "27017", "--bind_ip_all", "--wiredTigerJournalCompressor", "zstd", "--zstdDefaultCompressionLevel", "14", "--wiredTigerCollectionBlockCompressor", "zstd", "--wiredTigerCacheSizeGB", "2", "--dbpath", "/data/db", "--keyFile", "/key/mongo-keyfile"]
@@ -13,7 +13,7 @@ services:
       - mongos_internal
 
   shard1:
-    image: mongo:8.0.6-noble
+    image: mongo:8.0.14-noble
     user: ${UID_GID}
     container_name: shard1
     command: ["mongod", "--shardsvr", "--replSet", "shard1ReplSet", "--port", "27017", "--bind_ip_all", "--wiredTigerJournalCompressor", "zstd", "--zstdDefaultCompressionLevel", "14", "--wiredTigerCollectionBlockCompressor", "zstd", "--wiredTigerCacheSizeGB", "32", "--dbpath", "/data/db", "--keyFile", "/key/mongo-keyfile"]
@@ -26,7 +26,7 @@ services:
       - mongos_internal
 
   shard2:
-    image: mongo:8.0.6-noble
+    image: mongo:8.0.14-noble
     user: ${UID_GID}
     container_name: shard2
     command: ["mongod", "--shardsvr", "--replSet", "shard2ReplSet", "--port", "27017", "--bind_ip_all", "--wiredTigerJournalCompressor", "zstd", "--zstdDefaultCompressionLevel", "14", "--wiredTigerCollectionBlockCompressor", "zstd", "--wiredTigerCacheSizeGB", "32", "--dbpath", "/data/db", "--keyFile", "/key/mongo-keyfile"]
@@ -39,7 +39,7 @@ services:
       - mongos_internal
 
   shard3:
-    image: mongo:8.0.6-noble
+    image: mongo:8.0.14-noble
     user: ${UID_GID}
     container_name: shard3
     command: ["mongod", "--shardsvr", "--replSet", "shard3ReplSet", "--port", "27017", "--bind_ip_all", "--wiredTigerJournalCompressor", "zstd", "--zstdDefaultCompressionLevel", "14", "--wiredTigerCollectionBlockCompressor", "zstd", "--wiredTigerCacheSizeGB", "32", "--dbpath", "/data/db", "--keyFile", "/key/mongo-keyfile"]
@@ -52,7 +52,7 @@ services:
       - mongos_internal
 
   shard4:
-    image: mongo:8.0.6-noble
+    image: mongo:8.0.14-noble
     user: ${UID_GID}
     container_name: shard4
     command: ["mongod", "--shardsvr", "--replSet", "shard4ReplSet", "--port", "27017", "--bind_ip_all", "--wiredTigerJournalCompressor", "zstd", "--zstdDefaultCompressionLevel", "14", "--wiredTigerCollectionBlockCompressor", "zstd", "--wiredTigerCacheSizeGB", "32", "--dbpath", "/data/db", "--keyFile", "/key/mongo-keyfile"]
@@ -65,7 +65,7 @@ services:
       - mongos_internal
 
   mongos:
-    image: mongo:8.0.6-noble
+    image: mongo:8.0.14-noble
     user: ${UID_GID}
     container_name: mongos
     command: ["mongos", "--keyFile", "/key/mongo-keyfile", "--configdb", "configReplSet/configsvr:27017", "--port", "27017", "--bind_ip_all"]

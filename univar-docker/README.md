@@ -1,43 +1,19 @@
-# Unified Variant Interpretation Platform (UniVar)
+# UniVar Docker
 
-## Background
-The Unified Variant Interpretation Platform is a tool that enhances rare disease diagnosis through robust filtering and unified analysis of SNVs, INDELs, CNVs, and SVs.
+## Description
 
-## Overview 
-This [repository][github-repositories] contains the [documentation][univar-doc] for the project, which is located in the [univar-doc][univar-doc] directory. Other related modules are included as subfolder within this project.
+This [repository][github-repositories] contains the external custom [Dockerfile][dockerfile] files for the [Unified Variant Interpretation Platform][univar].
 
-## Usage
-To use the [Unified Variant Interpretation Platform][univar], follow these steps:
+## Requirement
 
-1. Clone the [repository][github-repositories] to your local machine.
-2. Install the required dependencies as described in the [documentation][univar-doc].
-3. Run the application using the specified command or script.
+- [Docker][docker] 28.4.0+
 
-## Contributing
-Contributions to this [repository][github-repositories] are welcome. If you find any issues or have suggestions for improvement, please feel free to create a pull request or submit an issue.
+## How to build docker image
 
-## Project Structure
-
-### Subfolder
-- [univar-doc][univar-doc]: Contains the documentation for the [Unified Variant Interpretation Platform][univar].
-- [univar-mongodb](./univar-mongodb/): Contains initialization database scripts for the [Unified Variant Interpretation Platform][univar].
-- [univar-data-tools](./univar-data-tools/): Contains base data for the [Unified Variant Interpretation Platform][univar] database.
-  - [hpo-converter](./univar-data-tools/hpo-converter/): Contains scripts to import [HPO Terms][hpo-website] into the database.
-  - [import-gene-panel](./univar-data-tools/import-gene-panel/): Contains scripts to import gene panels into the database.
-  - [univar-gene-db](./univar-data-tools/univar-gene-db/): Contains scripts to import gene-related information into the database.
-- [univar-annotation](./univar-annotation/): Contains the annotation pipeline and related data for the [Unified Variant Interpretation Platform][univar].
-  - [annotation-next](./univar-annotation/annotation-next/): Contains the annotation pipeline implemented in [Nextflow][nextflow].
-  - [data-source](./univar-annotation/data-source/): Contains scripts to download the required data for the annotation pipeline.
-  - [exomiser-next](./univar-annotation/exomiser-next/): Contains the Exomiser pipeline implemented in [Nextflow][nextflow].
-  - [pipeline-scripts](./univar-annotation/pipeline-scripts/): Contains all pipeline running scripts.
-- [univar-frontend](./univar-frontend/): Contains the user interface for the [Unified Variant Interpretation Platform][univar].
-- [univar-backend](./univar-backend/): Contains the backend logic for the user interface of the [Unified Variant Interpretation Platform][univar].
-- [variant-import-tool](./variant-import-tool/): Contains the script to convert [vcf][vcf] to [MongoDB][mongo-db].
-- [alignment-2-call-next](./alignment-2-call-next/): *Optional.* Contains the alignment pipeline converting [fastq][fastq] files to [vcf][vcf] files (can be replaced with any pipeline that generates [vcf][vcf]).
-- [univar-docker](./univar-docker/): Contains all of the external custom required Dockerfile for the [Unified Variant Interpretation Platform][univar].
-
-## Citation
-- Cherie C.Y. Au-Yeung, Yuen-Ting Cheung, Joshua Y.T. Cheng, Ken W.H. Ip, Sau-Dan Lee, Victor Y.T. Yang, Amy Y.T. Lau, Chit K.C. Lee, Peter K.H. Chong, King Wai Lau, Jurgen T.J. van Lunenburg, Damon F.D. Zheng, Brian H.M. Ho, Crystal Tik, Kingsley K.K. Ho, Ramesh Rajaby, Chun-Hang Au, Mullin H.C. Yu, Wing-Kin Sung* (2025). UniVar: A variant interpretation platform enhancing rare disease diagnosis through robust filtering and unified analysis of SNV, INDEL, CNV, and SV. Computers in Biology and Medicine. [https://doi.org/10.1016/j.compbiomed.2024.109560](https://doi.org/10.1016/j.compbiomed.2024.109560)
+```sh
+cd ${to any folder}
+docker build -t ${docker_image_name}$ .
+```
 
 [comment]: <Below is the information for other markdown to reference>
 

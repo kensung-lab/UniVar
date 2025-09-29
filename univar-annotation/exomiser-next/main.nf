@@ -145,7 +145,7 @@ process concat_vcfs {
 // run Exomiser
 process exomiser {
     memory '20 GB'
-    container 'exomiser-env:1.0.0' // can find the docker file under pipeline-script/exomiser-env
+    container 'exomiser-env:1.0.0'
     publishDir "data/results/exomiser", mode: 'copy'
 
     input:
@@ -165,6 +165,7 @@ process exomiser {
 
     script:
     """
+        #!/bin/sh
         # prepare exomiser YML
         HPO=\$(grep -v "^#" $hpo_file | awk "{print \\"'\\"\\\$0\\"'\\"}" | paste -s -d, -)
         #e.g. HPO="'HP:0001249','HP:0000028','HP:0002058','HP:0000369','HP:0001999','HP:0000729','HP:0001252','HP:0011344','HP:0011343','HP:0001263'"
