@@ -116,7 +116,7 @@
             </template>
 
             <div class='format-message'>
-              <div class='file-format'>[Multiple files] Only accept .vfc.gz format</div>
+              <div class='file-format'>[Multiple files] Only accept .vcf.gz format</div>
             </div>
           </div>
         </div>

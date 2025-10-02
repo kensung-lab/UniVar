@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VEP_VERSION=113
+VEP_VERSION=115
 URL=https://ftp.ensembl.org/pub/release-${VEP_VERSION}/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
 
 filename=${URL##*/}

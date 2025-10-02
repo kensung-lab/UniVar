@@ -1,13 +1,12 @@
 #!/bin/bash
 set -euo pipefail
 
-VEP_VERSION=113
-URL=https://ftp.ensembl.org/pub/release-${VEP_VERSION}/variation/indexed_vep_cache/homo_sapiens_merged_vep_113_GRCh38.tar.gz
+VEP_VERSION=115
+URL=https://ftp.ensembl.org/pub/release-${VEP_VERSION}/variation/indexed_vep_cache/homo_sapiens_merged_vep_${VEP_VERSION}_GRCh38.tar.gz
 
 tarball="${URL##*/}"
 basename="${tarball%.tar.gz}"
-sq="$basename.squashfs"
-
+# sq="$basename.squashfs"
 
 echo "Downloading..."
 wget --xattr -O "$tarball" "$URL"
@@ -22,7 +21,6 @@ mv "$dir"/homo_sapiens_merged homo_sapiens_merged
 # mksquashfs "$dir" "$sq" -all-root
 
 echo "Cleaning up..."
-rm -rf "$tarball"
-
+rm -rf "$tarball" "$dir"
 
 #end

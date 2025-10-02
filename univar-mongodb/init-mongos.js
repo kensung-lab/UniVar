@@ -53,13 +53,15 @@ db.pipelineversion.insertOne({
     version: "1.0.2",
     dbs: {
       AlphaMissense: "2023-08-03",
+      ensembl: "115",
       cadd: "1.7",
       cgd: "2025-02-24",
-      clinvar: "2025-02-17",
-      exomiser: "2410",
+      clinvar: "2025-09-28",
+      exomiser: "2508",
       flag_lrg: "2021-03-30",
       gnomad_v2: "v2.1.1",
       gnomad_v4: "v4.1",
+      PolyPhen2: "2.2.3",
       ReMM: "0.4",
       revel: "1.3",
       splice_ai: "1.3",
@@ -69,7 +71,7 @@ db.pipelineversion.insertOne({
     tools: {
       exomiser: "14.1.0",
       "variant-import-tool": "1.0.2",
-      VEP: "113",
+      VEP: "115",
     },
   },
   structural_variant: {
@@ -77,9 +79,10 @@ db.pipelineversion.insertOne({
     dbs: {
       "1000_genomes_project": "1000 Genomes 30x on GRCh38",
       "1000_genomes_project (Inhouse caller)": "2023-03-21",
-      clinvar: "2025-02-06",
+      clinvar: "2025-09-28",
       dgv_gold: "2016-06-15",
-      exomiser: "2410",
+      ensembl: "115",
+      exomiser: "2508",
     },
     tools: {
       exomiser: "14.1.0",
@@ -89,8 +92,8 @@ db.pipelineversion.insertOne({
   },
   univar_gene_version: {
     detail: {
-      clingen: "2025-02-22",
-      ensembl: "113",
+      clingen: "2025-10-01",
+      ensembl: "115",
       gnomad_v2_constraint: "2.1.1",
       gnomad_v4_constraint: "4.1",
       MANE: "1.4",

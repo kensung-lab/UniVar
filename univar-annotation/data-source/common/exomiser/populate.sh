@@ -3,7 +3,7 @@
 set -euo pipefail
 
 EXOMISER_VERSION=14.1.0
-DATA_VERSION=2502
+DATA_VERSION=2508
 URL_PREFIX=https://data.monarchinitiative.org/exomiser
 GITHUB_PREFIX=https://github.com/exomiser/Exomiser/releases/download
 TEMP_URL_PREFIX=https://g-879a9f.f5dc97.75bc.dn.glob.us

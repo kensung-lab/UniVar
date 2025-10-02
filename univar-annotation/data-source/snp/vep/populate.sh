@@ -2,7 +2,7 @@
 set -euo pipefail
 
 GIT_REPO=https://github.com/Ensembl/VEP_plugins
-RELEASE=release/113
+RELEASE=release/115
 
 
 echo "Fetching VEP plugins from git repo..."

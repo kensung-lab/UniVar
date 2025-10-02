@@ -99,20 +99,21 @@ process vep {
     tmp=./
     mkdir -p "\$tmp"
     trap 'rm -rf "\$tmp"' RETURN
+    # almost --everything but not AF
     docker run --rm \
             -v "\$(readlink ${vep_data})":/opt/vep-data:ro \
             -v "\$(readlink ${in_vcf_file})":/inputs/in.vcf.gz:ro \
             -v "\$tmp":/data \
             --user \$(id -u):\$(id -g) \
-        ensemblorg/ensembl-vep:release_113.3 \
+        ensemblorg/ensembl-vep:release_115.2 \
         vep \
         --cache \
         --merged \
         --offline \
-        --dir_cache /opt/vep-data/cache \
+        --dir_cache /opt/vep-data/cache_115 \
         --fasta /opt/vep-data/fasta/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz \
         --vcf \
-        --everything \
+        --sift b --polyphen b --ccds --hgvs --symbol --numbers --domains --regulatory --canonical --protein --biotype --pubmed --uniprot --mane --tsl --appris --variant_class --gene_phenotype --mirna \
         --verbose \
         --no_stats \
         --buffer_size 250000 \
@@ -135,7 +136,8 @@ process vep {
         --custom /opt/vep-data/gnomad/gnomadv2/gnomad.exomes.r2.1.1.sites.liftover_grch38.vcf.bgz,gnomadv2e,vcf,exact,0,AF,AF_afr,AF_amr,AF_asj,AF_eas,AF_fin,AF_nfe,AF_oth,AF_sas \
         --custom /opt/vep-data/gnomad/gnomadv2/gnomad.genomes.r2.1.1.sites.liftover_grch38.vcf.bgz,gnomadv2g,vcf,exact,0,AF,AF_afr,AF_amr,AF_asj,AF_eas,AF_fin,AF_nfe,AF_oth,AF_sas \
         --custom /opt/vep-data/gnomad/gnomadv3/gnomad.genomes.v3.1.2.sites.vcf.bgz,gnomadv3g,vcf,exact,0,AF,AF_afr,AF_amr,AF_ami,AF_asj,AF_eas,AF_fin,AF_mid,AF_nfe,AF_oth,AF_sas \
-        --custom /opt/vep-data/CoLoRSdb/CoLoRSdb.GRCh38.v1.2.0.deepvariant.glnexus.vcf.gz,colorsdb,vcf,exact,0,AF,NS
+        --custom /opt/vep-data/gnomad/gnomadv4/exomes/gnomad.exomes.v4.1.sites.vcf.bgz,gnomadv4e,vcf,exact,0,AF,AF_afr,AF_amr,AF_ami,AF_asj,AF_eas,AF_fin,AF_mid,AF_nfe,AF_oth,AF_sas \
+        --custom /opt/vep-data/gnomad/gnomadv4/genomes/gnomad.genomes.v4.1.sites.vcf.bgz,gnomadv4g,vcf,exact,0,AF,AF_afr,AF_amr,AF_ami,AF_asj,AF_eas,AF_fin,AF_mid,AF_nfe,AF_oth,AF_sas
     """
 }
 
@@ -156,7 +158,7 @@ process vcfanno {
 
         m4 \
         -D __CLINVAR_DIR__=/data/clinvar \
-        -D __CLINVAR_VERSION__=20250330 \
+        -D __CLINVAR_VERSION__=20250928 \
         "${vcfanno_template}" \
         > "\$conf" 
 

@@ -11,7 +11,7 @@ log() {
 }
 
 #==========================VERSION INFO================================#
-ENSEMBL_VERSION=113
+ENSEMBL_VERSION=115
 MANE_VERSION=1.4
 GNOMAD_LATEST_VERSION=4.1
 GNOMAD_V2_VERSION=2.1.1
@@ -66,7 +66,8 @@ PHI_PTS_URL=https://pmc.ncbi.nlm.nih.gov/articles/instance/9742861/bin
 PHI_PTS_FILE=NIHMS1819123-supplement-14.xlsx
 PHI_PTS_OUTPUT=pHI.pTS.gene.35917817.tsv
 
-wget -c --xattr -O "$PHI_PTS_FILE" --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" "$PHI_PTS_URL/$PHI_PTS_FILE"
+# below link may not work, sometime need to download manually
+wget -c --xattr -O "$PHI_PTS_FILE" --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" "$PHI_PTS_URL/$PHI_PTS_FILE"
 xlsx2csv -d tab "$PHI_PTS_FILE" temp.tsv
 sed ':a;N;$!ba;s/\n/ /' temp.tsv | sed ':a;N;$!ba;s/\n/ /' | sed 's/"//g' > $PHI_PTS_OUTPUT
 rm $PHI_PTS_FILE temp.tsv

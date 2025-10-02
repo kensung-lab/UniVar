@@ -6,9 +6,9 @@ import 'dotenv/config';
 
 // versioning (Update EVERY TIME !!!!!)
 const UNIVAR_GENE_PANEL_VERSION = '1.0.2';
-const CLINGEN_PANEL_VERSION = '25-09-2025';
-const PANEL_UK_VERSION = '25-09-2025';
-const PANEL_AU_VERSION = '25-09-2025';
+const CLINGEN_PANEL_VERSION = '01-10-2025';
+const PANEL_UK_VERSION = '01-10-2025';
+const PANEL_AU_VERSION = '01-10-2025';
 const CUSTOM_PANEL_VERSION = '1.0.0';
 
 // DB Flag

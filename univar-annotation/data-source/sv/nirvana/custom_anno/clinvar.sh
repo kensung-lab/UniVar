@@ -16,7 +16,7 @@ NIVANA_REF=$1
 SRC=https://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited
 
 FILE=variant_summary.txt.gz
-VERSION=20250330
+VERSION=20250928
 
 NIRVANA_HEADER=$(cat << EOM
 #title=clinvar_custom								

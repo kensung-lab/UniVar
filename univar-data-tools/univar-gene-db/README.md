@@ -26,8 +26,8 @@ cd data
 ```
 
 ## Data Source (some data need to massage, detail please see [populate.sh](./data/populate.sh))
-1. [Homo_sapiens.GRCh38.113.entrez.tsv.gz](https://ftp.ensembl.org/pub/release-113/tsv/homo_sapiens/Homo_sapiens.GRCh38.113.entrez.tsv.gz)
-2. [Homo_sapiens.GRCh38.113.gff3.gz](https://ftp.ensembl.org/pub/release-113/gff3/homo_sapiens/Homo_sapiens.GRCh38.113.gff3.gz)
+1. [Homo_sapiens.GRCh38.115.entrez.tsv.gz](https://ftp.ensembl.org/pub/release-115/tsv/homo_sapiens/Homo_sapiens.GRCh38.115.entrez.tsv.gz)
+2. [Homo_sapiens.GRCh38.115.gff3.gz](https://ftp.ensembl.org/pub/release-115/gff3/homo_sapiens/Homo_sapiens.GRCh38.115.gff3.gz)
 3. [MANE.GRCh38.v1.4.summary.txt.gz](https://ftp.ncbi.nlm.nih.gov/refseq/MANE/MANE_human/release_1.4/MANE.GRCh38.v1.4.summary.txt.gz)
 4. [pHI.pTS.gene.35917817.tsv](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9742861/)
 5. [ClinGen_gene_curation_list_GRCh38.tsv](https://ftp.clinicalgenome.org/ClinGen_gene_curation_list_GRCh38.tsv)

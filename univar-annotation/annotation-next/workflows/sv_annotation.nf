@@ -104,7 +104,7 @@ process nirvana {
     """
         info_tags=\$(zgrep -w '^##INFO=<ID' "${input_vcf}" | perl -pe 's/^##INFO=<ID=([^,]+).+\$/\$1/g' | sed -z 's/\\n/,/g;s/,\$//')
 
-        dotnet /usr/src/Nirvana/Nirvana.dll -c ${nirvana_path}/Cache/GRCh38/Both -r ${nirvana_path}/Homo_sapiens.GRCh38.Nirvana.dat \
+        dotnet /usr/src/Nirvana/Nirvana.dll -c ${nirvana_path}/Cache/GRCh38/Both -r ${nirvana_path}/References/Homo_sapiens.GRCh38.Nirvana.dat \
         --sd ${nirvana_path}/SupplementaryAnnotation/GRCh38 --sd ${nirvana_path}/custom_anno \
         -i ${input_vcf} --vcf-info="\$info_tags" --ins-window-size=150 --bnd-window-size=150 -o output
 

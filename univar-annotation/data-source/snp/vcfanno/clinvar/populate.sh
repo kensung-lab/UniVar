@@ -3,7 +3,7 @@ set -euo pipefail
 
 SRC=https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38
 DEST=vcf_GRCh38
-VERSION=20250330
+VERSION=20250928
 
 FILES=(
     clinvar_$VERSION.vcf.gz.md5

@@ -7,10 +7,12 @@ log() {
 
 populate_AlphaMissense() {
     echo "Downloading..."
-    wget -c --xattr https://zenodo.org/records/8208688/files/AlphaMissense_hg38.tsv.gz?download=1
+    wget -c --xattr https://zenodo.org/records/10813168/files/AlphaMissense_hg38.tsv.gz?download=1
+
+    mv 'AlphaMissense_hg38.tsv.gz?download=1' AlphaMissense_hg38.tsv.gz
 
     echo "Indexing..."
-    tabix -f -s 1 -b 3 -e 3 AlphaMissense_hg38.tsv.gz
+    tabix -f -s1 -b2 -e2 AlphaMissense_hg38.tsv.gz
     
 }
 
@@ -19,7 +21,7 @@ populate_ReMM() {
     wget -c --xattr https://kircherlab.bihealth.org/download/ReMM/ReMM.v0.4.hg38.tsv.gz
 
     echo "Indexing..."
-    tabix -f -s 1 -b 3 -e 3 ReMM.v0.4.hg38.tsv.gz
+    tabix -s1 -b2 -e2 -f  ReMM.v0.4.hg38.tsv.gz
     
 }
 

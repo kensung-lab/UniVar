@@ -9,26 +9,26 @@ import "dotenv/config";
 // DB Versions
 const UPDATE_PIPELINE_VERSION = "1.0.2";
 const UNIVAR_GENE_DATABASE_VERSION = "1.0.2";
-const ENSEMBL_VERSION = "113";
+const ENSEMBL_VERSION = "115";
 const PHI_VERSION = "2022-08-04";
-const CLINGEN_VERSION = "2025-02-22";
+const CLINGEN_VERSION = "2025-10-01";
 const GNOMAD_V2_LOF_METRICS_VERSION = "2.1.1";
 const GNOMAD_V4_LOF_METRICS_VERSION = "4.1";
 const MANE_VERSION = "1.4";
 
 // File Paths
 const ENSEMBL_DB_PATH =
-  process.env.DATA_SRC_PATH + "Homo_sapiens.GRCh38.113.entrez.tsv";
-const NCBI_DB_PATH = process.env.DATA_SRC_PATH + "MANE.GRCh38.v1.4.summary.txt";
+  process.env.DATA_SRC_PATH + `Homo_sapiens.GRCh38.${ENSEMBL_VERSION}.entrez.tsv`;
 const ENTREZ_SYMBOL_DB_PATH =
-  process.env.DATA_SRC_PATH + "Homo_sapiens.GRCh38.113.gene.bed";
+  process.env.DATA_SRC_PATH + `Homo_sapiens.GRCh38.${ENSEMBL_VERSION}.gene.bed`;
+const NCBI_DB_PATH = process.env.DATA_SRC_PATH + `MANE.GRCh38.v${MANE_VERSION}.summary.txt`;
 const PHI_DB_PATH = process.env.DATA_SRC_PATH + "pHI.pTS.gene.35917817.tsv";
 const CLINGEN_DB_PATH =
   process.env.DATA_SRC_PATH + "ClinGen_gene_curation_list_GRCh38.tsv";
 const GNOMAD_V2_LOF_METRICS_DB_PATH =
-  process.env.DATA_SRC_PATH + "gnomad.v2.1.1.lof_metrics.by_transcript.txt";
+  process.env.DATA_SRC_PATH + `gnomad.v${GNOMAD_V2_LOF_METRICS_VERSION}.lof_metrics.by_transcript.txt`;
 const GNOMAD_V4_LOF_METRICS_DB_PATH =
-  process.env.DATA_SRC_PATH + "gnomad.v4.1.constraint_metrics.tsv";
+  process.env.DATA_SRC_PATH + `gnomad.v${GNOMAD_V4_LOF_METRICS_VERSION}.constraint_metrics.tsv`;
 const EXTRA_REFSEQ_PATH =
   process.env.DATA_SRC_PATH +
   "Galaxy1-UCSC_Main_on_Human_wgEncodeGencodeRefSeqV47_genome.tabular";

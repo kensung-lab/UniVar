@@ -12,8 +12,8 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-SRC=https://ftp.ensembl.org/pub/release-110/gff3/homo_sapiens
-FILE=Homo_sapiens.GRCh38.110.gff3.gz
+SRC=https://ftp.ensembl.org/pub/release-115/gff3/homo_sapiens
+FILE=Homo_sapiens.GRCh38.115.gff3.gz
 
 NIVANA_REF=$1
 
