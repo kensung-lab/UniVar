@@ -18,6 +18,6 @@ export async function onActive() {
   store.commit('updateAutoRefreshToken',   
     setInterval(async () => {
       await store.getters.getApiService.getKeycloakToken();
-    }, 10 * 60 * 1000), // auto renew the session each 10 mins
+    }, 10 * 60 * 1000), // auto renew the session each 10 minutes
   );
 }

@@ -1,84 +1,133 @@
-# Alignment and Calling Pipeline with Nextflow
+# Contributing to UniVar
 
-## Background
+Thank you for your interest in contributing to **UniVar**! We welcome contributions from the community to improve this [Unified Variant Interpretation Platform][univar]. Whether it's fixing a bug, adding a feature, improving documentation, or enhancing the pipelines, your help makes UniVar better for everyone.
 
-### Description
+## Ways to Contribute
 
-This project is using the [Nextflow][nextflow] to create alignment and calling pipeline.
+### Reporting Bugs
 
-## Requirements
+- **Before reporting**: Search [existing issues](https://github.com/kensung-lab/UniVar/issues) to see if it's already reported.
+- **How to report**:
+  1. Open a new issue at [Issues](https://github.com/kensung-lab/UniVar/issues/new).
+  2. Use the "Bug report" template.
+  3. Provide:
+     - A clear title (e.g., "Annotation pipeline fails on large [SV][sv] [VCFs][vcf]").
+     - Steps to reproduce.
+     - Expected vs. actual behavior.
+     - Environment details (e.g., [Nextflow][nextflow] version, OS).
+     - Screenshots or logs if possible.
+- Label it with `bug` for visibility.
 
-1. [Nextflow][nextflow] 25.04.7+
-2. [bwa-mem][bwa] 0.7.19+
-3. [samtools][samtools] 1.21+
-4. [bcftools][bcftools] 1.21+
-5. [Python][python] 3.13+
-6. [Surveyor][surveyor] 0.9+
-7. [DeepVariant][deepvariant] 1.9+ (docker)
-8. [CNVkit][cnvkit] 0.9.12+
-9. [GLnexus][glnexus] 1.4.1+
+### Suggesting Features
 
-## Usage
+- **Before suggesting**: Check [discussions](https://github.com/kensung-lab/UniVar/discussions) or issues for similar ideas.
+- **How to suggest**:
+  1. Open a new issue using the "Feature request" template.
+  2. Describe the feature, why it's useful, and any mockups or references.
+  3. Label it with `enhancement`.
+- We prioritize features that enhance usability, performance, or support for more variant types.
 
-First, prepare a [YAML][yaml] file with all the required parameters, detail as [Parameter Section](#param)
+### Submitting Pull Requests (PRs)
 
-Now, you can run the pipeline using:
+We love PRs! Follow these steps to get your contribution merged:
 
-```sh
-nextflow run -params-file <yaml_path> main.nf
-```
-
-## Warning
-
-**As the somatic pipeline is not fully tested, please only use it for germline alignment and variant calling.**
-
-## Parameters
-
-Can follow the [Example Parameters YAML](example_param.yml)
-
-## Required Parameters
-
-| Key          | Description                                                | example                     |
-| ------------ | ---------------------------------------------------------- | --------------------------- |
-| data_dir     | location contain all data including input and output       | /path/to/directory          |
-| tools_path   | location of the calling tools                              | /path/to/directory          |
-| project_name | The project name of this sample belong                     | abc                         |
-| folder_fastq | location of the folder contain the fastq for alignment     | /path/to/directory          |
-| ped_file     | location of the ped file for these fastq file relationship | /path/to/directory/file.ped |
-| r_env_path   | to init cnvkit conda environment (installed r packages)    | /path/to/.init_conda        |
-
-### Sample of `r_env_path` file
+1. **Fork the repository** and clone your fork:
 
 ```sh
-# >>> conda initialize >>>
- # !! Contents within this block are managed by 'conda init' !!
- __conda_setup="$('/mnt/sda/software/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
- if [ $? -eq 0 ]; then
-     eval "$__conda_setup"
- else
-     if [ -f "/mnt/sda/software/miniconda3/etc/profile.d/conda.sh" ]; then
-         . "/mnt/sda/software/miniconda3/etc/profile.d/conda.sh"
-     else
-         export PATH="/mnt/sda/software/miniconda3/bin:$PATH"
-     fi
- fi
- unset __conda_setup
- # <<< conda initialize <<<
+git clone https://github.com/your-username/UniVar.git
+cd UniVar
 ```
 
-## Scripts folder
+2. **Create a feature branch** from `main`:
 
-The scripts folder contain all the script as in the parameter `tools_path`. Also, please include below run-able in this folder
+```sh
+git checkout -b feature/your-feature-name
+```
 
-1. SurVeyor's cluster (as name clusterer)
-2. GLnexus cli (as name glnexus_cli)
+3. **Make your changes**:
+
+- Follow our [coding standards](#coding-standards) below.
+- Update documentation if needed (e.g., in `univar-doc/`).
+- Add tests for new features or bug fixes.
+
+4. **Commit your changes**:
+
+- Use descriptive messages: `git commit -m "Add support for custom gene panels in Exomiser"`.
+- Push to your fork: `git push origin feature/your-feature-name`.
+
+5. **Open a PR**:
+
+- Go to [Pull Requests](https://github.com/kensung-lab/UniVar/pulls) and click "New pull request".
+- Link to the related issue (e.g., "Closes #123").
+- Describe what you changed and why.
+
+6. **What to expect**:
+
+- We'll review promptly and may request changes.
+- Ensure your PR passes CI checks (if set up).
+- Once approved, we'll merge it!
+
+**Tips**:
+
+- Keep PRs small and focused—one feature or bug fix per PR.
+- For pipeline changes (e.g., [Nextflow][nextflow] workflows), test on a sample dataset.
+
+## Development Setup
+
+To contribute to the codebase:
+
+1. **Prerequisites**:
+
+- [Git][git], [Docker][docker], [Nextflow][Nextflow].
+- [Node.js][node-js] (for frontend/backend).
+- [Python][python] (for data tools).
+
+2. **Clone and install**:
+
+```sh
+git clone https://github.com/kensung-lab/UniVar.git
+cd UniVar
+```
+
+- For frontend: `cd univar-frontend && npm install && npm run dev`.
+- For backend: `cd univar-backend && npm install && npm run start:dev`.
+- For pipelines: `nextflow run univar-annotation/annotation-next -profile docker`.
+
+3. See [Installation Guide](univar-doc/installation.md) for full details.
+
+## Coding Standards
+
+- **JavaScript/TypeScript**: Follow [ESLint][es-lint] rules (configured in repo). Use Prettier for formatting.
+- **Nextflow**: Use semantic versioning for modules; add clear params and docs.
+- **Python**: PEP 8 style; use black for formatting.
+- **Markdown**: Consistent headings, links via references.
+- **Commits**: Conventional commits (e.g., `feat: add SV filtering`).
+
+## Testing
+
+- **Unit tests**: Run `npm test` in frontend/backend.
+- **Pipeline tests**: Use sample data in `tests/` folders.
+- **Manual testing**: Upload sample [VCFs][vcf] to web/local instance.
+
+## Code of Conduct
+
+We follow the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/). Harassment or discrimination will not be tolerated.
+
+## Questions?
+
+- Join [GitHub Discussions](https://github.com/kensung-lab/UniVar/discussions) for general chat.
+- [Email us](mailto:yantszcheng@cuhk.edu.hk) for private queries.
+
+Thanks for contributing! 🎉
 
 [comment]: <Below is the information for other markdown to reference>
 [Bioinformation Related]: ========================================================
 [snp]: https://www.genome.gov/genetics-glossary/Single-Nucleotide-Polymorphisms "Single Nucleotide Polymorphisms"
+[indel]: https://www.sciencedirect.com/topics/medicine-and-dentistry/indel-mutation "indel Mutation"
 [sv]: https://www.ncbi.nlm.nih.gov/dbvar/content/overview/ "Structural Variation"
+[cnv]: https://www.genome.gov/genetics-glossary/Copy-Number-Variation-CNV "​Copy Number Variation"
 [str]: https://en.wikipedia.org/wiki/STR_analysis "Short tandem repeat"
-[mitro]: https://www.genome.gov/genetics-glossary/Mitochondrial-DNA "​MITOCHONDRIAL DNA"
+[mitro]: https://www.genome.gov/genetics-glossary/Mitochondrial-DNA "MITOCHONDRIAL DNA"
 [cram]: https://en.wikipedia.org/wiki/CRAM_(file_format) "Compressed Reference-oriented Alignment Map"
 [vcf]: https://samtools.github.io/hts-specs/VCFv4.5.pdf "Variant Call Format"
 [ped]: https://gatk.broadinstitute.org/hc/en-us/articles/360035531972-PED-Pedigree-format "Pedigree format"
@@ -86,13 +135,12 @@ The scripts folder contain all the script as in the parameter `tools_path`. Also
 [gene]: https://www.genome.gov/genetics-glossary/Gene "Gene"
 [exomiser]: https://github.com/exomiser/Exomiser "Exomiser"
 [gene-panel]: https://www.genomicseducation.hee.nhs.uk/genotes/knowledge-hub/gene-panel-sequencing/ "Gene Panel"
-[allele-frequency]: https://en.wikipedia.org/wiki/Allele_frequency "Allele frequency"
+[allele-frequency]: https://en.wikipedia.org/Allele_frequency "Allele frequency"
 [exomiser-variant-tsv]: https://exomiser.readthedocs.io/en/latest/advanced_analysis.html#outputformats-1 "Exomiser Variant TSV"
 [dna-sequencing]: https://www.genome.gov/genetics-glossary/DNA-Sequencing "DNA Sequencing"
 [short-read-sequencing]: https://www.genomicseducation.hee.nhs.uk/genotes/knowledge-hub/short-read-sequencing/ "Short Read Sequencing"
 [fast5]: https://help.nanoporetech.com/en/articles/6629603-what-is-a-fast5-file "fast5"
 [fastq]: https://en.wikipedia.org/wiki/FASTQ_format "fastq"
-[igv]: https://www.igv.org/ "Integrative Genomics Viewer"
 [IT Related]: ====================================================================
 [ci-cd]: https://www.redhat.com/en/topics/devops/what-is-ci-cd "CI/CD"
 [ci]: https://www.ibm.com/topics/continuous-integration "Continuous Integration"
@@ -136,6 +184,7 @@ The scripts folder contain all the script as in the parameter `tools_path`. Also
 [axios]: https://github.com/axios/axios "Axios"
 [axios-response-interceptors]: https://axios-http.com/docs/interceptors "Response Interceptors"
 [Docker Related]: ====================================================================
+[docker]: https://www.docker.com/ "Docker"
 [docker-image]: https://docs.docker.com/get-started/overview/#images "Docker image"
 [docker-registry]: https://docs.docker.com/registry/ "Docker Registry"
 [container-image-digest]: https://docs.digitalocean.com/glossary/digest/ "Container Image Digest"
@@ -191,6 +240,11 @@ The scripts folder contain all the script as in the parameter `tools_path`. Also
 [mongo-db]: https://www.mongodb.com/ "MongoDB"
 [swagger]: https://swagger.io/solutions/getting-started-with-oas/ "Swagger"
 [sonarqube]: https://www.sonarsource.com/products/sonarqube/ "SonarQube"
+[External Bioinformatics Application Related]: ==================================================
+[igv]: https://www.igv.org/ "Integrative Genomics Viewer"
+[vep]: https://asia.ensembl.org/info/docs/tools/vep/index.html "Ensembl Variant Effect Predictor"
+[vcfanno]: https://github.com/brentp/vcfanno "vcfanno"
+[nirvana]: https://illumina.github.io/NirvanaDocumentation "Nirvana"
 [nextflow]: https://www.nextflow.io/ "Nextflow"
 [bwa]: https://github.com/lh3/bwa "BWA"
 [samtools]: https://github.com/samtools/samtools "samtools"
@@ -201,10 +255,5 @@ The scripts folder contain all the script as in the parameter `tools_path`. Also
 [glnexus]: https://github.com/dnanexus-rnd/GLnexus "GLnexus"
 [Internal Application Related]: ==================================================
 [univar]: https://github.com/kensung-lab/UniVar "UniVar"
-[univar-frontend]: https://github.com/kensung-lab/univar-frontend "UniVar Frontend"
-[univar-backend]: https://github.com/kensung-lab/univar-backend "UniVar Backend"
-[variant-import-tool]: https://github.com/kensung-lab/variant-import-tool "Variant Import tool"
-[s3-proxy-service]: https://github.com/kensung-lab/s3-proxy-service "S3 Proxy Service"
-[univar-anno]: https://github.com/kensung-lab/univar-annotation "UniVar Annotation Pipeline"
-[Internal Application Guide]: ==================================================
-[Internal Application Links]: ==================================================
+[univar-doc]: ./univar-doc/ "UniVar Document"
+[upload_page]: https://univar.live/upload "Upload Page"

@@ -10,6 +10,7 @@ import {
   EXOMISER_COLUMN_LIST,
   ExportTsvVariant,
   ExportType,
+  GENE_OBJS_COLUMN_NAME,
   MAX_EXPORT_NUMBER,
   UserInfo,
   VCF_HEADER_NAME,
@@ -58,8 +59,6 @@ export class AgendaService {
 
   async exportTsv(job: Job<any>, done: (error?: Error) => void) {
     const { exportRequest, userInfo } = job.attrs.data;
-
-    console.log('exportTsv start', userInfo);
 
     await checkSelectedDatabaseExist(
       this.databaseService,
@@ -127,6 +126,10 @@ export class AgendaService {
           new_key_object[key] = null;
         }
       }
+      if ('gene_symbol' in exportRequest.columns) {
+        exportRequest.columns[GENE_OBJS_COLUMN_NAME] = 1;
+      }
+
       for (
         let ii = 0;
         ii < promiseTotalFilteredCount;

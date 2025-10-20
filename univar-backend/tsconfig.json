@@ -1,15 +1,14 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "nodenext",
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es6",
+    "target": "es2024",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
     "strict": true,
     "incremental": true,
     "esModuleInterop": true,
@@ -19,6 +18,10 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
+    "moduleResolution": "node16",
+    "paths": {
+      "src/*": ["./src/*"]
+    },
     "plugins": [
       {
         "name": "@nestjs/swagger"

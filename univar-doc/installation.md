@@ -1,84 +1,93 @@
-# Alignment and Calling Pipeline with Nextflow
+# Installation Guide
 
-## Background
+This guide provides an overview for setting up [UniVar][univar] locally for development, testing, or production use. [UniVar][univar] is a full-stack application with modular components. For detailed instructions on each part, refer to the README.md files in the respective subfolders.
 
-### Description
+**Note**: This is for advanced users. For quick web access, use the [live demo](https://univar.live/upload) without installation. If you're new, start with the [User Guide (PDF)](user-guide.pdf).
 
-This project is using the [Nextflow][nextflow] to create alignment and calling pipeline.
+## Prerequisites
 
-## Requirements
+Ensure you have:
 
-1. [Nextflow][nextflow] 25.04.7+
-2. [bwa-mem][bwa] 0.7.19+
-3. [samtools][samtools] 1.21+
-4. [bcftools][bcftools] 1.21+
-5. [Python][python] 3.13+
-6. [Surveyor][surveyor] 0.9+
-7. [DeepVariant][deepvariant] 1.9+ (docker)
-8. [CNVkit][cnvkit] 0.9.12+
-9. [GLnexus][glnexus] 1.4.1+
+- [Git][git]
+- [Node.js (v18+)][node-js] with [pnpm][p-npm]
+- [Docker][docker] and [Docker Compose][docker-compose] (recommended)
+- [Nextflow][nextflow] 25.04.7+
+- [MongoDB][mongo-db] 8+
+- [Python][python] 3.13+
+- [Java][java] 21+ (for [Nextflow][nextflow])
 
-## Usage
+Verify: `node --version`, `docker --version`, etc.
 
-First, prepare a [YAML][yaml] file with all the required parameters, detail as [Parameter Section](#param)
-
-Now, you can run the pipeline using:
+## Step 1: Clone the Repository
 
 ```sh
-nextflow run -params-file <yaml_path> main.nf
+git clone https://github.com/kensung-lab/UniVar.git
+cd UniVar
 ```
 
-## Warning
+## Step 2: Set Up the Database (MongoDB)
 
-**As the somatic pipeline is not fully tested, please only use it for germline alignment and variant calling.**
+- **Local**: Install and start [MongoDB][mongo-db] (see [MongoDB docs][install-mongo]).
+- **Docker**: Use the `docker-compose.yml` in [univar-mongodb](../univar-mongodb/) for containerized setup. Alternatively, use the `mongo_start.sh` and `mongo_stop.sh` shell scripts to manage the [MongoDB][mongo-db] container.
+- **Initialize**: See [univar-mongodb/README.md](../univar-mongodb/README.md) for scripts to set up collections.
 
-## Parameters
+Set `MONGO_URI` in backend `.env`.
 
-Can follow the [Example Parameters YAML](example_param.yml)
+## Step 3: Prepare Data and Databases
 
-## Required Parameters
+- **HPO, Gene Panels, Genes**: Run import scripts in [univar-data-tools/README.md](../univar-data-tools/README.md) and its subfolders (hpo-converter, import-gene-panel, univar-gene-db).
+- **Annotation Databases**: Download via scripts in [univar-annotation/README.md](../univar-annotation/README.md). These are specifically for the annotation pipeline.
 
-| Key          | Description                                                | example                     |
-| ------------ | ---------------------------------------------------------- | --------------------------- |
-| data_dir     | location contain all data including input and output       | /path/to/directory          |
-| tools_path   | location of the calling tools                              | /path/to/directory          |
-| project_name | The project name of this sample belong                     | abc                         |
-| folder_fastq | location of the folder contain the fastq for alignment     | /path/to/directory          |
-| ped_file     | location of the ped file for these fastq file relationship | /path/to/directory/file.ped |
-| r_env_path   | to init cnvkit conda environment (installed r packages)    | /path/to/.init_conda        |
+## Step 4: Set Up the Backend
 
-### Sample of `r_env_path` file
+- Navigate: `cd univar-backend`
+- Follow [univar-backend/README.md](../univar-backend/README.md) for installation, `.env` config, and running (e.g., `pnpm install && pnpm run start:dev`).
+- Configure the upload folder in `.env` (e.g., `UPLOAD_DIR=/path/to/uploads`) where user [VCFs][vcf] will be placed.
 
-```sh
-# >>> conda initialize >>>
- # !! Contents within this block are managed by 'conda init' !!
- __conda_setup="$('/mnt/sda/software/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
- if [ $? -eq 0 ]; then
-     eval "$__conda_setup"
- else
-     if [ -f "/mnt/sda/software/miniconda3/etc/profile.d/conda.sh" ]; then
-         . "/mnt/sda/software/miniconda3/etc/profile.d/conda.sh"
-     else
-         export PATH="/mnt/sda/software/miniconda3/bin:$PATH"
-     fi
- fi
- unset __conda_setup
- # <<< conda initialize <<<
-```
+## Step 5: Set Up the Frontend
 
-## Scripts folder
+- Navigate: `cd univar-frontend`
+- Follow [univar-frontend/README.md](../univar-frontend/README.md) for installation and dev server (e.g., `pnpm install && pnpm run dev`).
 
-The scripts folder contain all the script as in the parameter `tools_path`. Also, please include below run-able in this folder
+## Step 6: Docker Deployment
 
-1. SurVeyor's cluster (as name clusterer)
-2. GLnexus cli (as name glnexus_cli)
+- See [univar-docker/README.md](../univar-docker/README.md) for building and running with [`docker-compose`][docker-compose].
+- Ensure all UniVar [Docker images][docker-image] from [univar-docker](../univar-docker/) are built and available on the server for pipeline execution.
+
+## Step 7: Pipelines
+
+These are essential for local variant processing and storage in [MongoDB][mongo-db], which the backend/frontend relies on for display, filtering, and ordering.
+
+- **Annotation**: Follow [univar-annotation/README.md](../univar-annotation/README.md), including subfolders like [annotation-next](../univar-annotation/annotation-next/) and [exomiser-next](../univar-annotation/exomiser-next/). This runs the full annotation pipeline on raw [VCF][vcf].gz files ([SNVs][snp]/[SVs][sv] with [VEP][vep], [VCFanno][vcfanno], [Nirvana][nirvana]; prioritization with [Exomiser][exomiser]). Configure pipeline arguments to point to the backend's upload folder for monitoring new [VCFs][vcf].
+- **Variant Import**: Follow [variant-import-tool/README.md](../variant-import-tool/README.md). This imports the annotated [VCF][vcf]/[JSON][json] output from the annotation pipeline into [MongoDB][mongo-db] for querying. Place the tool on the server in a designated location and configure the annotation pipeline arguments to point to this location.
+- **Pipeline Scripts**: To monitor the backend-specified upload folder. Running these scripts will trigger [Nextflow][nextflow] workflows for annotation on new uploads.
+- **Alignment-to-Calling** (Optional): See [alignment-2-call-next/README.md](../alignment-2-call-next/README.md) if starting from [FASTQ][fastq] files to generate initial [VCFs][vcf].
+
+## Step 8: Running the Full Stack
+
+1. Start [MongoDB][mongo-db].
+2. Prepare data/databases (Step 3).
+3. Start backend and frontend (Steps 4-5).
+4. Run pipeline-scripts (Step 7) to monitor uploads and trigger annotation.
+5. Upload a sample [VCF][vcf] via frontend; it will be processed automatically, imported to [MongoDB][mongo-db], and displayed for filtering/ordering.
+6. Access frontend at `http://localhost:5173`. The UI will display, filter, and order data from [MongoDB][mongo-db] based on annotated fields.
+
+## Troubleshooting
+
+- Connection issues: Check env vars and ports.
+- Pipeline errors: Verify [Java][java]/[Docker][docker]; see subfolder READMEs.
+- For more, check [FAQ](faq.md) or [GitHub Issues](https://github.com/kensung-lab/UniVar/issues).
+
+Last updated: October 2025.
 
 [comment]: <Below is the information for other markdown to reference>
 [Bioinformation Related]: ========================================================
 [snp]: https://www.genome.gov/genetics-glossary/Single-Nucleotide-Polymorphisms "Single Nucleotide Polymorphisms"
+[indel]: https://www.sciencedirect.com/topics/medicine-and-dentistry/indel-mutation "indel Mutation"
 [sv]: https://www.ncbi.nlm.nih.gov/dbvar/content/overview/ "Structural Variation"
+[cnv]: https://www.genome.gov/genetics-glossary/Copy-Number-Variation-CNV "​Copy Number Variation"
 [str]: https://en.wikipedia.org/wiki/STR_analysis "Short tandem repeat"
-[mitro]: https://www.genome.gov/genetics-glossary/Mitochondrial-DNA "​MITOCHONDRIAL DNA"
+[mitro]: https://www.genome.gov/genetics-glossary/Mitochondrial-DNA "MITOCHONDRIAL DNA"
 [cram]: https://en.wikipedia.org/wiki/CRAM_(file_format) "Compressed Reference-oriented Alignment Map"
 [vcf]: https://samtools.github.io/hts-specs/VCFv4.5.pdf "Variant Call Format"
 [ped]: https://gatk.broadinstitute.org/hc/en-us/articles/360035531972-PED-Pedigree-format "Pedigree format"
@@ -86,13 +95,12 @@ The scripts folder contain all the script as in the parameter `tools_path`. Also
 [gene]: https://www.genome.gov/genetics-glossary/Gene "Gene"
 [exomiser]: https://github.com/exomiser/Exomiser "Exomiser"
 [gene-panel]: https://www.genomicseducation.hee.nhs.uk/genotes/knowledge-hub/gene-panel-sequencing/ "Gene Panel"
-[allele-frequency]: https://en.wikipedia.org/wiki/Allele_frequency "Allele frequency"
+[allele-frequency]: https://en.wikipedia.org/Allele_frequency "Allele frequency"
 [exomiser-variant-tsv]: https://exomiser.readthedocs.io/en/latest/advanced_analysis.html#outputformats-1 "Exomiser Variant TSV"
 [dna-sequencing]: https://www.genome.gov/genetics-glossary/DNA-Sequencing "DNA Sequencing"
 [short-read-sequencing]: https://www.genomicseducation.hee.nhs.uk/genotes/knowledge-hub/short-read-sequencing/ "Short Read Sequencing"
 [fast5]: https://help.nanoporetech.com/en/articles/6629603-what-is-a-fast5-file "fast5"
 [fastq]: https://en.wikipedia.org/wiki/FASTQ_format "fastq"
-[igv]: https://www.igv.org/ "Integrative Genomics Viewer"
 [IT Related]: ====================================================================
 [ci-cd]: https://www.redhat.com/en/topics/devops/what-is-ci-cd "CI/CD"
 [ci]: https://www.ibm.com/topics/continuous-integration "Continuous Integration"
@@ -131,15 +139,18 @@ The scripts folder contain all the script as in the parameter `tools_path`. Also
 [nest-js]: https://docs.nestjs.com/ "NestJS"
 [vue]: https://vuejs.org/ "Vue"
 [vite-configure]: https://vitejs.dev/config/ "Vite Configuration Guide"
+[java]: https://www.java.com/zh-TW/ "Java"
 [vitest]: https://vitest.dev/ "Vitest"
 [es-lint]: https://eslint.org/ "ESLint"
 [axios]: https://github.com/axios/axios "Axios"
 [axios-response-interceptors]: https://axios-http.com/docs/interceptors "Response Interceptors"
 [Docker Related]: ====================================================================
 [docker-image]: https://docs.docker.com/get-started/overview/#images "Docker image"
+[docker]: https://www.docker.com/ "Docker"
 [docker-registry]: https://docs.docker.com/registry/ "Docker Registry"
 [container-image-digest]: https://docs.digitalocean.com/glossary/digest/ "Container Image Digest"
 [dockerfile]: https://docs.docker.com/engine/reference/builder/ "Dockerfile"
+[docker-compose]: https://docs.docker.com/compose/ "Docker Compose"
 [Git & Github Related]: ====================================================================
 [git]: https://git-scm.com/ "git"
 [github]: https://github.com/ "Github"
@@ -189,8 +200,14 @@ The scripts folder contain all the script as in the parameter `tools_path`. Also
 [longhorn]: https://longhorn.io/ "Longhorn"
 [keycloak]: https://www.keycloak.org/ "Keycloak"
 [mongo-db]: https://www.mongodb.com/ "MongoDB"
+[install-mongo]: https://www.mongodb.com/docs/manual/installation/ "Install MongoDB"
 [swagger]: https://swagger.io/solutions/getting-started-with-oas/ "Swagger"
 [sonarqube]: https://www.sonarsource.com/products/sonarqube/ "SonarQube"
+[External Bioinformatics Application Related]: ==================================================
+[igv]: https://www.igv.org/ "Integrative Genomics Viewer"
+[vep]: https://asia.ensembl.org/info/docs/tools/vep/index.html "Ensembl Variant Effect Predictor"
+[vcfanno]: https://github.com/brentp/vcfanno "vcfanno"
+[nirvana]: https://illumina.github.io/NirvanaDocumentation "Nirvana"
 [nextflow]: https://www.nextflow.io/ "Nextflow"
 [bwa]: https://github.com/lh3/bwa "BWA"
 [samtools]: https://github.com/samtools/samtools "samtools"
@@ -201,10 +218,5 @@ The scripts folder contain all the script as in the parameter `tools_path`. Also
 [glnexus]: https://github.com/dnanexus-rnd/GLnexus "GLnexus"
 [Internal Application Related]: ==================================================
 [univar]: https://github.com/kensung-lab/UniVar "UniVar"
-[univar-frontend]: https://github.com/kensung-lab/univar-frontend "UniVar Frontend"
-[univar-backend]: https://github.com/kensung-lab/univar-backend "UniVar Backend"
-[variant-import-tool]: https://github.com/kensung-lab/variant-import-tool "Variant Import tool"
-[s3-proxy-service]: https://github.com/kensung-lab/s3-proxy-service "S3 Proxy Service"
-[univar-anno]: https://github.com/kensung-lab/univar-annotation "UniVar Annotation Pipeline"
-[Internal Application Guide]: ==================================================
-[Internal Application Links]: ==================================================
+[univar-doc]: ./univar-doc/ "UniVar Document"
+[upload_page]: https://univar.live/upload "Upload Page"

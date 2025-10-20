@@ -6,7 +6,7 @@ log() {
 }
 
 populate_hpo() {
-    VERSION=v2025-01-16
+    VERSION=v2025-05-06
     URL_PREFIX=https://github.com/obophenotype/human-phenotype-ontology/releases/download/${VERSION}
     FILE=hp.json
 

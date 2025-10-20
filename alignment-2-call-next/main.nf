@@ -21,7 +21,7 @@
  * ******************************************************************* */
 params.number_of_process = 32
 params.cnv_cut_off = 5000
-params.fasta_path = "${params.data_dir}/alignment/common/GRCh38_no_alt_analysis_set.fasta"
+params.fasta_path = "${params.data_dir}/alignment/common/hs38DH.fa" // from bwakit
 params.cnv_common_path = "${params.data_dir}/alignment/common/cnvkit"
 params.alignment_path = "${params.data_dir}/alignment/samples/result"
 params.univar_flag = false
@@ -277,10 +277,11 @@ process bwa {
     script:
     """
     PLATFORM=\$(python ${tools_path}/get_fastq_platform.py \$(readlink -f ${reads[0]}))
-    bwa mem -t ${threads} -R '@RG\\tID:${sample_id}_${machine_code}_${lane}_${sample_type}\\tPL:\\\${PLATFORM}\\tSM:${sample_id}' \$(readlink -f ${fasta_path}) \$(readlink -f ${reads[0]}) \$(readlink -f ${reads[1]}) > ${sample_id}_${machine_code}_${lane}_${sample_type}.sam 
-    samtools sort -@${threads} -n ${sample_id}_${machine_code}_${lane}_${sample_type}.sam -o ${sample_id}_${machine_code}_${lane}_${sample_type}.sort_n.bam
+    GROUP_HEADER=$"@RG\\tID:${sample_id}_${machine_code}_${lane}_${sample_type}\\tPL:\$PLATFORM\\tSM:${sample_id}"
+    run-bwamem -t ${threads} -o ${sample_id}_${machine_code}_${lane}_${sample_type} -R "\$GROUP_HEADER" -H \$(readlink -f ${fasta_path}) \$(readlink -f ${reads[0]}) \$(readlink -f ${reads[1]}) | sh
+    samtools sort -@${threads} -n ${sample_id}_${machine_code}_${lane}_${sample_type}.aln.bam -o ${sample_id}_${machine_code}_${lane}_${sample_type}.sort_n.bam
 
-    samtools fixmate -@${threads} -m ${sample_id}_${machine_code}_${lane}_${sample_type}.sort_n.bam ${sample_id}_${machine_code}_${lane}_${sample_type}.fixmate.bam && rm -f ${sample_id}_${machine_code}_${lane}_${sample_type}.bam ${sample_id}_${machine_code}_${lane}_${sample_type}.sam
+    samtools fixmate -@${threads} -m ${sample_id}_${machine_code}_${lane}_${sample_type}.sort_n.bam ${sample_id}_${machine_code}_${lane}_${sample_type}.fixmate.bam && rm -f ${sample_id}_${machine_code}_${lane}_${sample_type}.aln.bam 
     samtools sort -@${threads} ${sample_id}_${machine_code}_${lane}_${sample_type}.fixmate.bam -o ${sample_id}_${machine_code}_${lane}_${sample_type}.srt.bam && rm -f ${sample_id}_${machine_code}_${lane}_${sample_type}.sort_n.bam
     samtools markdup -@${threads} ${sample_id}_${machine_code}_${lane}_${sample_type}.srt.bam ${sample_id}_${machine_code}_${lane}_${sample_type}.dedup.bam
     samtools index -@${threads} ${sample_id}_${machine_code}_${lane}_${sample_type}.dedup.bam
@@ -476,7 +477,7 @@ process cnv_calling {
 
     output:
     stdout emit: cnv_calling_success
-    tuple val(proband_id), path("${alignment_path}/${project_name}/germline/cnv/${unique}/${unique}.cnvkit.pass.vcf.gz"), emit: cnv_vcf
+    tuple val(proband_id), path("${alignment_path}/${project_name}/germline/cnv/${unique}/${unique}.cnvkit.final.vcf.gz"), emit: cnv_vcf
 
     script:
     """
@@ -520,11 +521,11 @@ process cnv_calling {
     bgzip ${alignment_path}/${project_name}/germline/cnv/${unique}/${unique}.cnvkit.vcf
     bcftools index -t ${alignment_path}/${project_name}/germline/cnv/${unique}/${unique}.cnvkit.vcf.gz --threads ${number_of_process}
     if [ "\$SEX" = "Male" ]; then
-        bcftools view --include "INFO/SVLEN>${cnv_cut_off}" -Oz -o ${alignment_path}/${project_name}/germline/cnv/${unique}/${unique}.cnvkit.pass.vcf.gz ${alignment_path}/${project_name}/germline/cnv/${unique}/${unique}.cnvkit.vcf.gz
+        bcftools view --include "INFO/SVLEN>${cnv_cut_off}" -Oz -o ${alignment_path}/${project_name}/germline/cnv/${unique}/${unique}.cnvkit.final.vcf.gz ${alignment_path}/${project_name}/germline/cnv/${unique}/${unique}.cnvkit.vcf.gz
     else
-        bcftools view -r chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX --include "INFO/SVLEN>${cnv_cut_off}" -Oz -o ${alignment_path}/${project_name}/germline/cnv/${unique}/${unique}.cnvkit.pass.vcf.gz ${alignment_path}/${project_name}/germline/cnv/${unique}/${unique}.cnvkit.vcf.gz
+        bcftools view -r chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX --include "INFO/SVLEN>${cnv_cut_off}" -Oz -o ${alignment_path}/${project_name}/germline/cnv/${unique}/${unique}.cnvkit.final.vcf.gz ${alignment_path}/${project_name}/germline/cnv/${unique}/${unique}.cnvkit.vcf.gz
     fi
-    bcftools index -t ${alignment_path}/${project_name}/germline/cnv/${unique}/${unique}.cnvkit.pass.vcf.gz --threads ${number_of_process}
+    bcftools index -t ${alignment_path}/${project_name}/germline/cnv/${unique}/${unique}.cnvkit.final.vcf.gz --threads ${number_of_process}
 
     echo "Single CNV Calling Completed for ${proband_id} (germline)"
     """
@@ -551,15 +552,15 @@ process joint_cnv_calling {
     tuple val(family_id), path("${alignment_path}/${project_name}/germline/cnv/${samples[0][3]}/${samples[0][3]}.cnvkit.final.vcf.gz"), emit: cnv_vcf
 
     script:
-    def output_dir = "${alignment_path}/${project_name}/germline/cnv/${samples[0][3]}"
-    def temp_dir = "${alignment_path}/${project_name}/germline/cnv/${samples[0][3]}/temp"
+    def unique_proband = samples[0][3]
+    def output_dir = "${alignment_path}/${project_name}/germline/cnv/${unique_proband}"
+    def temp_dir = "${alignment_path}/${project_name}/germline/cnv/${unique_proband}/temp"
     def sample_ids = samples.collect { it[0] }
 
     def tsv_content = samples
         .collect { sample ->
             def sample_id = sample[0]
-            def unique = sample[3]
-            "${sample_id}\t${output_dir}/${unique}.cnvkit.pass.vcf.gz"
+            "${sample_id}\t${temp_dir}/${sample_id}.cnvkit.pass.vcf.gz"
         }
         .join('\n')
 
@@ -586,7 +587,6 @@ process joint_cnv_calling {
     ${samples.collect { sample ->
         def sample_id = sample[0]
         def bam = sample[1]
-        def unique = sample[3]
         """
 
         cnvkit.py coverage -o ${temp_dir}/${sample_id}.targetcoverage.cnn ${bam} ${cnv_common_path}/20160622.allChr.pilot_mask.ge1k.target.bed -p ${number_of_process}
@@ -615,24 +615,24 @@ process joint_cnv_calling {
         cnvkit.py call ${temp_dir}/${sample_id}.stats.cns -y -x \$CNV_SEX --purity 0 --filter cn -v ${temp_dir}/${sample_id}.snp.norm.vcf.gz -o ${temp_dir}/${sample_id}.call.cns
         perl -ne \'chop(\$_); @line=split("\\t",\$_); if (length(\$line[5])==0) {\$line[5]=-1;} if (length(\$line[7])==0) {\$line[7]=-1;} if (length(\$line[8])==0) {\$line[8]=-1;} print join("\\t",@line)."\\n";\' ${temp_dir}/${sample_id}.call.cns > ${temp_dir}/${sample_id}.final.cns
 
-        Rscript ${cnv_common_path}/plot_1panel.r --gender \$SEX --cutoff ${cnv_cut_off} --data ${temp_dir}/${sample_id}.cnr --seg ${temp_dir}/${sample_id}.final.cns --oprefix ${output_dir}/images/${unique}
-        cnvkit.py export vcf ${temp_dir}/${sample_id}.call.cns -x \$CNV_SEX -i ${sample_id} -o ${output_dir}/${unique}.cnvkit.vcf
+        Rscript ${cnv_common_path}/plot_1panel.r --gender \$SEX --cutoff ${cnv_cut_off} --data ${temp_dir}/${sample_id}.cnr --seg ${temp_dir}/${sample_id}.final.cns --oprefix ${output_dir}/images/${sample_id}
+        cnvkit.py export vcf ${temp_dir}/${sample_id}.call.cns -x \$CNV_SEX -i ${sample_id} -o ${temp_dir}/${sample_id}.cnvkit.vcf
 
-        bgzip -@ ${number_of_process} ${output_dir}/${unique}.cnvkit.vcf
-        bcftools index -t ${output_dir}/${unique}.cnvkit.vcf.gz --threads ${number_of_process}
+        bgzip -@ ${number_of_process} ${temp_dir}/${sample_id}.cnvkit.vcf
+        bcftools index -t ${temp_dir}/${sample_id}.cnvkit.vcf.gz --threads ${number_of_process}
         if [ "\$SEX" = "Male" ]; then
-            bcftools view --include "INFO/SVLEN>${cnv_cut_off}" -Oz -o ${output_dir}/${unique}.cnvkit.pass.vcf.gz ${output_dir}/${unique}.cnvkit.vcf.gz
+            bcftools view --include "INFO/SVLEN>${cnv_cut_off}" -Oz -o ${temp_dir}/${sample_id}.cnvkit.pass.vcf.gz ${temp_dir}/${sample_id}.cnvkit.vcf.gz
         else
-            bcftools view -r chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX --include "INFO/SVLEN>${cnv_cut_off}" -Oz -o ${output_dir}/${unique}.cnvkit.pass.vcf.gz ${output_dir}/${unique}.cnvkit.vcf.gz
+            bcftools view -r chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX --include "INFO/SVLEN>${cnv_cut_off}" -Oz -o ${temp_dir}/${sample_id}.cnvkit.pass.vcf.gz ${temp_dir}/${sample_id}.cnvkit.vcf.gz
         fi
-        bcftools index -t ${output_dir}/${unique}.cnvkit.pass.vcf.gz --threads ${number_of_process}
+        bcftools index -t ${temp_dir}/${sample_id}.cnvkit.pass.vcf.gz --threads ${number_of_process}
         """
     }.join('\n')}
 
     # Merge VCFs
     echo -e "${tsv_content}" > ${temp_dir}/samples.tsv
-    ${tools_path}/clusterer ${temp_dir}/samples.tsv ${fasta_path} -o ${output_dir}/${samples[0][3]}.cnvkit.final -t ${number_of_process} > ${output_dir}/logs/${samples[0][3]}.cnv.cluster.log 2>&1
-    bcftools index -t ${output_dir}/${samples[0][3]}.cnvkit.final.vcf.gz --threads ${number_of_process}
+    ${tools_path}/clusterer ${temp_dir}/samples.tsv ${fasta_path} -o ${output_dir}/${unique_proband}.cnvkit.final -t ${number_of_process} > ${output_dir}/logs/${unique_proband}.cnv.cluster.log 2>&1
+    bcftools index -t ${output_dir}/${unique_proband}.cnvkit.final.vcf.gz --threads ${number_of_process}
 
     echo "Joint CNV Calling Completed for ${family_id} (germline)"
     """
@@ -652,14 +652,14 @@ process sv_calling {
 
     output:
     stdout emit: sv_calling_success
-    tuple val(proband_id), path("${alignment_path}/${project_name}/germline/sv/${unique}/${unique}.SurVeyor.vcf.gz"), emit: sv_vcf
+    tuple val(proband_id), path("${alignment_path}/${project_name}/germline/sv/${unique}/${unique}.SurVeyor.final.vcf.gz"), emit: sv_vcf
 
     script:
     """
     mkdir -p ${alignment_path}/${project_name}/germline/sv/${unique}/logs ${alignment_path}/${project_name}/germline/sv/${unique}/sv_temp
     ${tools_path}/surveyor.sh ${number_of_process} \$(readlink -f ${bam}) ${alignment_path}/${project_name}/germline/sv/${unique}/sv_temp \$(readlink -f ${fasta_path}) --samplename ${proband_id} > ${alignment_path}/${project_name}/germline/sv/${unique}/logs/${unique}.sv.1.call.log 2>&1
  
-    bcftools view -i 'COUNT(FT[*]=\"PASS\") = N_SAMPLES && COUNT(GT[*] != \"0/0\") > 0 && COUNT(GT[*] != \"./.\") > 0' ${alignment_path}/${project_name}/germline/sv/${unique}/sv_temp/calls-genotyped-deduped.vcf.gz -Oz -o ${alignment_path}/${project_name}/germline/sv/${unique}/${unique}.SurVeyor.vcf.gz
+    bcftools view -i 'COUNT(FT[*]=\"PASS\") = N_SAMPLES && COUNT(GT[*] != \"0/0\") > 0 && COUNT(GT[*] != \"./.\") > 0' ${alignment_path}/${project_name}/germline/sv/${unique}/sv_temp/calls-genotyped-deduped.vcf.gz -Oz -o ${alignment_path}/${project_name}/germline/sv/${unique}/${unique}.SurVeyor.final.vcf.gz
     echo "Single SV Calling Completed for ${proband_id} (germline)"
     """
 }
@@ -743,7 +743,7 @@ process snp_calling {
 
     output:
     stdout emit: snp_calling_success
-    tuple val(proband_id), path("${alignment_path}/${project_name}/germline/snp/${unique}/${unique}.final.vcf.gz"), emit: snp_vcf
+    tuple val(proband_id), path("${alignment_path}/${project_name}/germline/snp/${unique}/${unique}.deepvariant.final.vcf.gz"), emit: snp_vcf
 
     script:
     """
@@ -751,7 +751,7 @@ process snp_calling {
     ${tools_path}/deepvariant_gpu.sh ${number_of_process} ${bam} ${alignment_path}/${project_name}/germline/snp/${unique} ${unique} > ${alignment_path}/${project_name}/germline/snp/${unique}/logs/${unique}.log 2>&1
     echo "default ${proband_id}" > samples.txt
     bcftools reheader -s samples.txt ${alignment_path}/${project_name}/germline/snp/${unique}/${unique}.vcf.gz -o ${alignment_path}/${project_name}/germline/snp/${unique}/${unique}.renamed.vcf.gz
-    bcftools view -i 'FILTER=\"PASS\" && QUAL>10' ${alignment_path}/${project_name}/germline/snp/${unique}/${unique}.renamed.vcf.gz -Oz -o ${alignment_path}/${project_name}/germline/snp/${unique}/${unique}.final.vcf.gz
+    bcftools view -i 'FILTER=\"PASS\" && QUAL>10' ${alignment_path}/${project_name}/germline/snp/${unique}/${unique}.renamed.vcf.gz -Oz -o ${alignment_path}/${project_name}/germline/snp/${unique}/${unique}.deepvariant.final.vcf.gz
     echo "Single SNP Calling Completed for ${proband_id} (germline)"
     """
 }
@@ -770,7 +770,7 @@ process joint_snp_calling_with_parents {
 
     output:
     stdout emit: snp_calling_success
-    tuple val(family_id), path("${alignment_path}/${project_name}/germline/snp/${samples[0][3]}/${samples[0][3]}.deeptrio.vcf.gz"), emit: snp_vcf
+    tuple val(family_id), path("${alignment_path}/${project_name}/germline/snp/${samples[0][3]}/${samples[0][3]}.deepvariant.final.vcf.gz"), emit: snp_vcf
 
     script:
     def proband_unique = samples[0][3]
@@ -792,8 +792,8 @@ process joint_snp_calling_with_parents {
         ${temp_dir}/*.g.vcf.gz \\
         > ${output_dir}/${proband_unique}.trio.bcf
     bcftools view ${output_dir}/${proband_unique}.trio.bcf | bgzip -@ ${number_of_process} -c > ${output_dir}/${proband_unique}.trio.vcf.gz
-    bcftools view -i 'QUAL>10' ${output_dir}/${proband_unique}.trio.vcf.gz -Oz -o ${output_dir}/${proband_unique}.deeptrio.vcf.gz
-    tabix -p vcf ${output_dir}/${proband_unique}.deeptrio.vcf.gz
+    bcftools view -i 'QUAL>10' ${output_dir}/${proband_unique}.trio.vcf.gz -Oz -o ${output_dir}/${proband_unique}.deepvariant.final.vcf.gz
+    tabix -p vcf ${output_dir}/${proband_unique}.deepvariant.final.vcf.gz
     echo "Joint SNP Calling (Trio/Duo) Completed for ${family_id} (germline)"
     """
 }

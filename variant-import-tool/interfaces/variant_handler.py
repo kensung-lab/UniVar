@@ -115,8 +115,8 @@ https://web.app.univar.live:4333/variant-table
                 # call api the api will check if hpo terms is upload when init if have then run exomiser
                 headers = {"Authorization": "Bearer variant-import-tool"}
                 response = requests.post(os.environ['BACKEND_BASE_URL'] + 'pipeline/init-exomiser', headers=headers, json={"selected_database": self.db_name, "track_number": 'pipeline:' + str(round(time() * random.random())), "secret": os.environ['BACKEND_SECRET']})
-                sys.stderr.write("Response Code: %d\n" % (response.status_code))
-                sys.stderr.write("Response Raw: " + str(response.raw) + "\n")
+                sys.stdout.write("Response Code: %d\n" % (response.status_code))
+                sys.stdout.write("Response Raw: " + str(response.raw) + "\n")
         elif self.DEFAULT_APP_NAME == 'Exomiser2JSON':
             database = self._get_database(self.database_path)
             # mark exomiser able to use

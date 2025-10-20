@@ -53,7 +53,7 @@ MONGO_BASE_URL=mongodb://18.163.142.246:27018/
 [str]: <https://en.wikipedia.org/wiki/STR_analysis> (Short tandem repeat)
 [mitro]: <https://www.genome.gov/genetics-glossary/Mitochondrial-DNA> (​MITOCHONDRIAL DNA)
 [cram]: <https://en.wikipedia.org/wiki/CRAM_(file_format)> (Compressed Reference-oriented Alignment Map)
-[vcf]: <https://samtools.github.io/hts-specs/VCFv4.4.pdf> (Variant Call Format)
+[vcf]: <https://samtools.github.io/hts-specs/VCFv4.5.pdf> (Variant Call Format)
 [ped]: <https://gatk.broadinstitute.org/hc/en-us/articles/360035531972-PED-Pedigree-format> (Pedigree format)
 [hpo-website]: <https://hpo.jax.org/> (HPO Website)
 [gene]: <https://www.genome.gov/genetics-glossary/Gene> (Gene)

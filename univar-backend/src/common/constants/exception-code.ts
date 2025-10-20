@@ -137,14 +137,14 @@ export const EXCEPTION_CODE = {
   NOT_VALID_SNP_VCF_FILE: new ExceptionCode(
     'notValidSnpVcfFile',
     4019,
-    'The SNP file format is not correct. Please follow the https://samtools.github.io/hts-specs/VCFv4.4.pdf and gzip it. Thank you.',
+    'The SNP file format is not correct. Please follow the https://samtools.github.io/hts-specs/VCFv4.5.pdf and gzip it. Thank you.',
     EXCEPTION_TYPE.REQUEST_ERROR,
     EXCEPTION_LEVEL.NORMAL,
   ),
   NOT_VALID_SV_VCF_FILE: new ExceptionCode(
     'notValidSvVcfFile',
     4020,
-    'The SV file format is not correct. Please follow the https://samtools.github.io/hts-specs/VCFv4.4.pdf and gzip it. Thank you.',
+    'The SV file format is not correct. Please follow the https://samtools.github.io/hts-specs/VCFv4.5.pdf and gzip it. Thank you.',
     EXCEPTION_TYPE.REQUEST_ERROR,
     EXCEPTION_LEVEL.NORMAL,
   ),
@@ -193,14 +193,14 @@ export const EXCEPTION_CODE = {
   UPLOAD_VCF_PED_FORMAT_INCORRECT: new ExceptionCode(
     'uploadVcfPedFormatIncorrect',
     4027,
-    'The pedigree in VCF file format is not correct. Please follow the https://samtools.github.io/hts-specs/VCFv4.4.pdf and gzip it. For pedigree, please follow the Father, Mother style. Thank you.',
+    'The pedigree in VCF file format is not correct. Please follow the https://samtools.github.io/hts-specs/VCFv4.5.pdf and gzip it. For pedigree, please follow the Father, Mother style. Thank you.',
     EXCEPTION_TYPE.REQUEST_ERROR,
     EXCEPTION_LEVEL.NORMAL,
   ),
   UPLOAD_VCF_PED_ID_NOT_MATCH: new ExceptionCode(
     'uploadVcfPedIdNotMatch',
     4028,
-    'The pedigree in VCF file does not match the sample id in VCF header. Please follow the https://samtools.github.io/hts-specs/VCFv4.4.pdf and gzip it. For pedigree, please follow the Father, Mother style. Thank you.',
+    'The pedigree in VCF file does not match the sample id in VCF header. Please follow the https://samtools.github.io/hts-specs/VCFv4.5.pdf and gzip it. For pedigree, please follow the Father, Mother style. Thank you.',
     EXCEPTION_TYPE.REQUEST_ERROR,
     EXCEPTION_LEVEL.NORMAL,
   ),

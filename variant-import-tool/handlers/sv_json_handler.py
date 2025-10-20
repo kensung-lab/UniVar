@@ -45,13 +45,17 @@ class SVJSON2JSON(VariantHandler):
 
     UNIVAR_SVTYPE_LOOKUP = {
         'DEL': ['deletion','copy_number_variation', 'copy_number_loss', 'cnv|loss', 'cnv|gain+loss', 'cnv|alu deletion', 'cnv|deletion', 'cnv|herv deletion', 'cnv|line1 deletion', 'cnv|mobile element deletion', 'cnv|sva deletion', 'loss', 'indel', 'cnv', 'del'],
-        'DUP': ['duplication ','copy_number_variation', 'copy_number_gain', 'cnv|gain', 'cnv|gain+loss', 'cnv|duplication', 'cnv|tandem duplication', 'gain', 'indel', 'cnv', 'dup'],
+        'DUP': ['duplication ','copy_number_variation', 'copy_number_gain', 'cnv|gain', 'cnv|gain+loss', 'cnv|duplication', 'cnv|tandem duplication', 'gain', 'indel', 'cnv', 'dup', 'tandem_duplication'],
+        # same as DUP
+        'DUP:TANDEM': ['duplication ','copy_number_variation', 'copy_number_gain', 'cnv|gain', 'cnv|gain+loss', 'cnv|duplication', 'cnv|tandem duplication', 'gain', 'indel', 'cnv', 'dup', 'tandem_duplication'],
         'INS': ['insertion','mobile_element_insertion', 'copy_number_gain', 'cnv|alu insertion', 'cnv|herv insertion', 'cnv|insertion', 'cnv|line1 insertion', 'cnv|mobile element insertion', 'cnv|novel sequence insertion', 'cnv|sva insertion', 'cnv', 'ins'],
         'INV': ['inversion', 'other|inversion', 'inv'],
-        'BND': ['bnd', 'ctx'],
-        'TRA': ['bnd', 'tra'],
-        'CPX': ['cpx'],
-        'CTX': ['ctx'],
+        # below are complex types
+        'DUP:INV': ['cpx', 'bnd', 'ctx', 'tra'],
+        'BND': ['cpx', 'bnd', 'ctx', 'tra'],
+        'TRA': ['cpx', 'bnd', 'ctx', 'tra'],
+        'CPX': ['cpx', 'bnd', 'ctx', 'tra'],
+        'CTX': ['cpx', 'bnd', 'ctx', 'tra'],
     }
 
     TOP_TRANSCRIPT_COLUMNS = ['mane_select', 'ncbi_ids']
@@ -149,6 +153,12 @@ class SVJSON2JSON(VariantHandler):
     SPECICAL_HANDLE_COLUMNS = ['altAlleles', 'samples', 'vcfInfo.SAMPLE_ORDER']
 
     EMPTY = [[0,0],[None,0], [0,None], [None,None]]
+
+    # complex SV types
+    COMPLEX_SVTYPE = ['BND', 'TRA', 'CPX', 'CTX', 'DUP:INV']
+    NO_CHECK_OVERLAP_TYPE = ["INS"]
+    NO_CHECK_OVERLAP_TYPE.extend(COMPLEX_SVTYPE)
+    CHECK_OVERLAP_TYPE = ["DEL", "DUP", "INV", "DUP:TANDEM"]
 
     # remove unused key    
     EMPTY_KEY = {'gts', 'gt_types', 'gt_phases', 'gt_depths', 'gt_ref_depths', 'gt_alt_depths', 'gt_quals', 'gt_alt_freqs'}
@@ -635,44 +645,47 @@ class SVJSON2JSON(VariantHandler):
                     if 'NS_grp2504' in af_dict:
                         all_ns = self._round_it(float(af_dict['NS_grp2504']), 3)
 
-                    if (temp_af_dict['source_svType'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']] and sv_obj['type'] in ["DEL", "DUP"] and anno_overlap >= self.AF_ANNO_OVERLAP_FILTER and reci_overlap >= self.AF_RECI_OVERLAP_FILTER) or (temp_af_dict['source_svType'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']] and sv_obj['type'] in ["INS", "INV", "BND", "TRA", "CPX", "CTX"]):
-                        if key == '1kg_survtyper_DelDupIns':
-                            temp_af_dict['source'] = "1KGP - East Asian"
-                            temp_af_dict['source_filter'] = 'one_kg_eas'
-                        else:
-                            temp_af_dict['source'] = "1KGP - Survtyper - East Asian"
-                            temp_af_dict['source_filter'] = 'one_kg_sur_eas'
-                            
-                        if eas_af and eas_af != "NA" and eas_ns >= self.MIN_SAMPLE_SIZE:
-                            temp_af_dict['AF'] = eas_af if eas_af else -1
-                            temp_af_dict['SAMPLE_COUNT'] = eas_ns
-                            highest_af = self._get_max_number(temp_af_dict['AF'], highest_af)
-                            if highest_af == temp_af_dict['AF']:
-                                highest_af_info['source'] = temp_af_dict['source']
-                            if temp_af_dict['source'] == '1KGP - East Asian':
-                                any_eas_af = True
+                    if sv_obj['type'] in self.UNIVAR_SVTYPE_LOOKUP and temp_af_dict['source_svType'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']]:
+                        if (sv_obj['type'] in self.CHECK_OVERLAP_TYPE and anno_overlap >= self.AF_ANNO_OVERLAP_FILTER and reci_overlap >= self.AF_RECI_OVERLAP_FILTER) or sv_obj['type'] not in self.CHECK_OVERLAP_TYPE:
+                            if key == '1kg_survtyper_DelDupIns':
+                                temp_af_dict['source'] = "1KGP - East Asian"
+                                temp_af_dict['source_filter'] = 'one_kg_eas'
                             else:
-                                any_eas_sur_af = True
-                            sv_af_list.append(temp_af_dict.copy())
-                            
-                        if key == '1kg_survtyper_DelDupIns':
-                            temp_af_dict['source'] = "1KGP - Global"
-                            temp_af_dict['source_filter'] = 'one_kg'
-                        else:
-                            temp_af_dict['source'] = "1KGP - Survtyper - Global"
-                            temp_af_dict['source_filter'] = 'one_kg_sur'
+                                temp_af_dict['source'] = "1KGP - Survtyper - East Asian"
+                                temp_af_dict['source_filter'] = 'one_kg_sur_eas'
+                                
+                            if eas_af and eas_af != "NA" and eas_ns >= self.MIN_SAMPLE_SIZE:
+                                temp_af_dict['AF'] = eas_af if eas_af else -1
+                                temp_af_dict['SAMPLE_COUNT'] = eas_ns
+                                highest_af = self._get_max_number(temp_af_dict['AF'], highest_af)
+                                if highest_af == temp_af_dict['AF']:
+                                    highest_af_info['source'] = temp_af_dict['source']
+                                if temp_af_dict['source'] == '1KGP - East Asian':
+                                    any_eas_af = True
+                                else:
+                                    any_eas_sur_af = True
+                                sv_af_list.append(temp_af_dict.copy())
+                                
+                            if key == '1kg_survtyper_DelDupIns':
+                                temp_af_dict['source'] = "1KGP - Global"
+                                temp_af_dict['source_filter'] = 'one_kg'
+                            else:
+                                temp_af_dict['source'] = "1KGP - Survtyper - Global"
+                                temp_af_dict['source_filter'] = 'one_kg_sur'
 
-                        if all_af and all_af != "NA" and all_ns >= self.MIN_SAMPLE_SIZE:
-                            temp_af_dict['AF'] = all_af if all_af else -1
-                            temp_af_dict['SAMPLE_COUNT'] = all_ns
-                            highest_af = self._get_max_number(temp_af_dict['AF'], highest_af)
-                            if highest_af == temp_af_dict['AF']:
-                                highest_af_info['source'] = temp_af_dict['source']
-                            if temp_af_dict['source'] == '1KGP - Global':
-                                any_global_af = True
-                            else:
-                                any_global_sur_af = True
-                            sv_af_list.append(temp_af_dict.copy())
+                            if all_af and all_af != "NA" and all_ns >= self.MIN_SAMPLE_SIZE:
+                                temp_af_dict['AF'] = all_af if all_af else -1
+                                temp_af_dict['SAMPLE_COUNT'] = all_ns
+                                highest_af = self._get_max_number(temp_af_dict['AF'], highest_af)
+                                if highest_af == temp_af_dict['AF']:
+                                    highest_af_info['source'] = temp_af_dict['source']
+                                if temp_af_dict['source'] == '1KGP - Global':
+                                    any_global_af = True
+                                else:
+                                    any_global_sur_af = True
+                                sv_af_list.append(temp_af_dict.copy())
+                    elif sv_obj['type'] not in self.UNIVAR_SVTYPE_LOOKUP:
+                        print("Unrecognized SV type for AF check: ", sv_obj['type'], file=sys.stderr)
         temp_af_dict = {}
         temp_af_dict['AF'] = -1
 
@@ -728,8 +741,8 @@ class SVJSON2JSON(VariantHandler):
                             if field_name in af_dict:
                                 temp_af_an_dict[field_name] = self._round_it(float(af_dict[field_name]), 3)
 
-                    if sv_obj['type'] in ["INS", "INV", "BND", "CPX", "CTX"] or (anno_overlap >= self.AF_ANNO_OVERLAP_FILTER and reci_overlap >= self.AF_RECI_OVERLAP_FILTER):
-                        if temp_af_dict['source_svType'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']] or sv_obj['type'] in ["BND", "CPX", "CTX"]:
+                    if sv_obj['type'] in self.UNIVAR_SVTYPE_LOOKUP and temp_af_dict['source_svType'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']]:
+                        if (sv_obj['type'] in self.CHECK_OVERLAP_TYPE and anno_overlap >= self.AF_ANNO_OVERLAP_FILTER and reci_overlap >= self.AF_RECI_OVERLAP_FILTER) or sv_obj['type'] not in self.CHECK_OVERLAP_TYPE:
                             if 'source_end' in temp_af_dict and temp_af_dict['source_end'] and temp_af_dict['source_start']:
                                 if temp_af_dict['source_start'] > temp_af_dict['source_end']:
                                     temp_af_dict['source_start'] = temp_af_dict['source_start'] - 1
@@ -755,6 +768,8 @@ class SVJSON2JSON(VariantHandler):
                                         highest_af_info['source'] = temp_af_dict['source']
                                 sv_af_list.append(temp_af_dict.copy())
                             hit_Af = True
+                    elif sv_obj['type'] not in self.UNIVAR_SVTYPE_LOOKUP:
+                        print("Unrecognized SV type for AF check: ", sv_obj['type'], file=sys.stderr)
 
         # set the no value af to -1 for searching
         sv_obj["gnomadv2_sv_af"] = temp_global_af_dict['v2allAf']
@@ -804,8 +819,8 @@ class SVJSON2JSON(VariantHandler):
                     if failed_filter:
                         continue
 
-                    if sv_obj['type'] in ["INS", "INV", "BND", "CPX", "CTX"] or (anno_overlap >= self.AF_ANNO_OVERLAP_FILTER and reci_overlap >= self.AF_RECI_OVERLAP_FILTER):
-                        if temp_af_dict['source_svType'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']] or sv_obj['type'] in ["BND", "CPX", "CTX"]:
+                    if sv_obj['type'] in self.UNIVAR_SVTYPE_LOOKUP and temp_af_dict['source_svType'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']]:
+                        if (sv_obj['type'] in self.CHECK_OVERLAP_TYPE and anno_overlap >= self.AF_ANNO_OVERLAP_FILTER and reci_overlap >= self.AF_RECI_OVERLAP_FILTER) or sv_obj['type'] not in self.CHECK_OVERLAP_TYPE:
                             if 'source_end' in temp_af_dict and temp_af_dict['source_end'] and temp_af_dict['source_start']:
                                 if temp_af_dict['source_start'] > temp_af_dict['source_end']:
                                     temp_af_dict['source_start'] = temp_af_dict['source_start'] - 1
@@ -831,6 +846,8 @@ class SVJSON2JSON(VariantHandler):
                                         highest_af_info['source'] = temp_af_dict['source']
                                 sv_af_list.append(temp_af_dict.copy())
                             hit_Af = True
+                    elif sv_obj['type'] not in self.UNIVAR_SVTYPE_LOOKUP:
+                        print("Unrecognized SV type for AF check: ", sv_obj['type'], file=sys.stderr)
 
         # set the no value af to -1 for searching
         sv_obj["gnomadv4_sv_af"] = temp_global_af_dict['v4allAf']
@@ -881,27 +898,29 @@ class SVJSON2JSON(VariantHandler):
                     if 'num_samples' in af_dict:
                         temp_af_dict['SAMPLE_COUNT'] = self._get_str_value(af_dict['num_samples'])
 
-                    if (sv_obj['type'] in ["DEL", "DUP"] and temp_af_dict['source_svType'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']] and anno_overlap >= self.AF_ANNO_OVERLAP_FILTER and reci_overlap >= self.AF_RECI_OVERLAP_FILTER) or (sv_obj['type'] in ["INS", "INV", "BND", "CPX", "CTX"]):
-                            # tempAf_dict['json_no'], tempAf_dict['sv_no'] = 'fake_json_no', 'S' + str(sv_no)
-                        temp_af_dict['svLength'] = temp_af_dict['source_end'] - temp_af_dict['source_start'] + 1
-                        
-                        if key == 'Dgv_gold_inner':
-                            temp_af_dict['source'] = 'DGV Gold (inner)'
-                            temp_af_dict['source_filter'] = 'dgv_gold_inner'
-                            any_inner = True
-                        elif key == 'Dgv_gold_outer':
-                            temp_af_dict['source'] = 'DGV Gold (outer)'
-                            temp_af_dict['source_filter'] = 'dgv_gold_outer'
-                            any_outer = True
+                    if sv_obj['type'] in self.UNIVAR_SVTYPE_LOOKUP and temp_af_dict['source_svType'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']]:
+                        if (sv_obj['type'] in self.CHECK_OVERLAP_TYPE and anno_overlap >= self.AF_ANNO_OVERLAP_FILTER and reci_overlap >= self.AF_RECI_OVERLAP_FILTER) or sv_obj['type'] not in self.CHECK_OVERLAP_TYPE:
+                            temp_af_dict['svLength'] = temp_af_dict['source_end'] - temp_af_dict['source_start'] + 1
                             
-                        temp_af_dict['AF'] = af if af else -1
-                        highest_af = self._get_max_number(temp_af_dict['AF'], highest_af)
-                        if highest_af == temp_af_dict['AF']:
-                            highest_af_info['source'] = temp_af_dict['source']
-                        sv_af_list.append(temp_af_dict.copy())
-                        
-                        hit_Af_dgv = True
-                        hit_Af = True
+                            if key == 'Dgv_gold_inner':
+                                temp_af_dict['source'] = 'DGV Gold (inner)'
+                                temp_af_dict['source_filter'] = 'dgv_gold_inner'
+                                any_inner = True
+                            elif key == 'Dgv_gold_outer':
+                                temp_af_dict['source'] = 'DGV Gold (outer)'
+                                temp_af_dict['source_filter'] = 'dgv_gold_outer'
+                                any_outer = True
+                                
+                            temp_af_dict['AF'] = af if af else -1
+                            highest_af = self._get_max_number(temp_af_dict['AF'], highest_af)
+                            if highest_af == temp_af_dict['AF']:
+                                highest_af_info['source'] = temp_af_dict['source']
+                            sv_af_list.append(temp_af_dict.copy())
+                            
+                            hit_Af_dgv = True
+                            hit_Af = True
+                    elif sv_obj['type'] not in self.UNIVAR_SVTYPE_LOOKUP:
+                        print("Unrecognized SV type for AF check: ", sv_obj['type'], file=sys.stderr)
         temp_af_dict = {}
         temp_af_dict['AF'] = -1
 
@@ -951,19 +970,22 @@ class SVJSON2JSON(VariantHandler):
                     if 'NS' in af_dict:
                         eas_ns = self._round_it(float(af_dict['NS']), 3)
 
-                    if (temp_af_dict['source_svType'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']] and sv_obj['type'] in ["DEL", "DUP"] and anno_overlap >= self.AF_ANNO_OVERLAP_FILTER and reci_overlap >= self.AF_RECI_OVERLAP_FILTER) or (temp_af_dict['source_svType'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']] and sv_obj['type'] in ["INS", "INV", "BND", "TRA", "CPX", "CTX"]):
-                        temp_af_dict['source'] = "945 Han"
-                        temp_af_dict['source_filter'] = 'han_945'
+                    if sv_obj['type'] in self.UNIVAR_SVTYPE_LOOKUP and temp_af_dict['source_svType'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']]:
+                        if (sv_obj['type'] in self.CHECK_OVERLAP_TYPE and anno_overlap >= self.AF_ANNO_OVERLAP_FILTER and reci_overlap >= self.AF_RECI_OVERLAP_FILTER) or sv_obj['type'] not in self.CHECK_OVERLAP_TYPE:
+                            temp_af_dict['source'] = "945 Han"
+                            temp_af_dict['source_filter'] = 'han_945'
 
-                        if eas_af and eas_af != "NA":
-                            temp_af_dict['AF'] = eas_af if eas_af else -1
-                            temp_af_dict['SAMPLE_COUNT'] = eas_ns
-                            highest_af = self._get_max_number(temp_af_dict['AF'], highest_af)
-                            if highest_af == temp_af_dict['AF']:
-                                highest_af_info['source'] = temp_af_dict['source']
-                            any_eas_af = True
-                            han_highest_af = self._get_max_number(temp_af_dict['AF'], han_highest_af)
-                            sv_af_list.append(temp_af_dict.copy())
+                            if eas_af and eas_af != "NA":
+                                temp_af_dict['AF'] = eas_af if eas_af else -1
+                                temp_af_dict['SAMPLE_COUNT'] = eas_ns
+                                highest_af = self._get_max_number(temp_af_dict['AF'], highest_af)
+                                if highest_af == temp_af_dict['AF']:
+                                    highest_af_info['source'] = temp_af_dict['source']
+                                any_eas_af = True
+                                han_highest_af = self._get_max_number(temp_af_dict['AF'], han_highest_af)
+                                sv_af_list.append(temp_af_dict.copy())
+                    elif sv_obj['type'] not in self.UNIVAR_SVTYPE_LOOKUP:
+                        print("Unrecognized SV type for AF check: ", sv_obj['type'], file=sys.stderr)
                             
         temp_af_dict = {}
         temp_af_dict['AF'] = -1
@@ -1012,19 +1034,22 @@ class SVJSON2JSON(VariantHandler):
                     if 'NS' in af_dict:
                         eas_ns = self._round_it(float(af_dict['NS']), 3)
 
-                    if (temp_af_dict['source_svType'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']] and sv_obj['type'] in ["DEL", "DUP"] and anno_overlap >= self.AF_ANNO_OVERLAP_FILTER and reci_overlap >= self.AF_RECI_OVERLAP_FILTER) or (temp_af_dict['source_svType'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']] and sv_obj['type'] in ["INS", "INV", "BND", "TRA", "CPX", "CTX"]):
-                        temp_af_dict['source'] = "Consortium of Long Read Sequencing Database"
-                        temp_af_dict['source_filter'] = 'colors_sv'
+                    if sv_obj['type'] in self.UNIVAR_SVTYPE_LOOKUP and temp_af_dict['source_svType'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']]:
+                        if (sv_obj['type'] in self.CHECK_OVERLAP_TYPE and anno_overlap >= self.AF_ANNO_OVERLAP_FILTER and reci_overlap >= self.AF_RECI_OVERLAP_FILTER) or sv_obj['type'] not in self.CHECK_OVERLAP_TYPE:
+                            temp_af_dict['source'] = "Consortium of Long Read Sequencing Database"
+                            temp_af_dict['source_filter'] = 'colors_sv'
 
-                        if eas_af and eas_af != "NA":
-                            temp_af_dict['AF'] = eas_af if eas_af else -1
-                            temp_af_dict['SAMPLE_COUNT'] = eas_ns
-                            highest_af = self._get_max_number(temp_af_dict['AF'], highest_af)
-                            if highest_af == temp_af_dict['AF']:
-                                highest_af_info['source'] = temp_af_dict['source']
-                            any_eas_af = True
-                            han_highest_af = self._get_max_number(temp_af_dict['AF'], han_highest_af)
-                            sv_af_list.append(temp_af_dict.copy())
+                            if eas_af and eas_af != "NA":
+                                temp_af_dict['AF'] = eas_af if eas_af else -1
+                                temp_af_dict['SAMPLE_COUNT'] = eas_ns
+                                highest_af = self._get_max_number(temp_af_dict['AF'], highest_af)
+                                if highest_af == temp_af_dict['AF']:
+                                    highest_af_info['source'] = temp_af_dict['source']
+                                any_eas_af = True
+                                han_highest_af = self._get_max_number(temp_af_dict['AF'], han_highest_af)
+                                sv_af_list.append(temp_af_dict.copy())
+                    elif sv_obj['type'] not in self.UNIVAR_SVTYPE_LOOKUP:
+                        print("Unrecognized SV type for AF check: ", sv_obj['type'], file=sys.stderr)
                             
         temp_af_dict = {}
         temp_af_dict['AF'] = -1
@@ -1053,8 +1078,8 @@ class SVJSON2JSON(VariantHandler):
         highest_af = self._get_dgv_af(sv_obj, variant_dict, sv_af_list, highest_af, highest_af_info)
         # 4. 945 Han
         highest_af = self._get_han_af(sv_obj, variant_dict, sv_af_list, highest_af, highest_af_info)
-        # 5. CoLoRSdb
-        highest_af = self._get_colors_sv_af(sv_obj, variant_dict, sv_af_list, highest_af, highest_af_info)
+        # 5. CoLoRSdb (as currently we are only using normal samples as AF, which CoLoRSdb contain non normal samples, we will skip this for now)
+        # highest_af = self._get_colors_sv_af(sv_obj, variant_dict, sv_af_list, highest_af, highest_af_info)
 
         # Sort afs by descending (annoOverlap + reciOverlap) sum, then take top 500
         if sv_af_list and len(sv_af_list) > 500:
@@ -1092,40 +1117,43 @@ class SVJSON2JSON(VariantHandler):
                 if 'annotationOverlap' in intpn_dict:
                     temp_intpn_dict['annotation_overlap'] = intpn_dict['annotationOverlap']
                 
-                if (sv_obj['type'] in ["DEL", "DUP"] and temp_intpn_dict['Type'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']] and 'annotation_overlap' in temp_intpn_dict and  temp_intpn_dict['annotation_overlap'] >= self.AF_ANNO_OVERLAP_FILTER and 'reciprocal_overlap' in temp_intpn_dict and temp_intpn_dict['reciprocal_overlap'] >= self.AF_RECI_OVERLAP_FILTER) or (sv_obj['type'] in ["INS", "INV", "BND", "CPX", "CTX"] and temp_intpn_dict['Type'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']]):
-                    temp_intpn_dict['source'] = 'ClinVar'
-                    temp_intpn_dict['interpretation'] = ','.join(clinvar_sig)
+                if sv_obj['type'] in self.UNIVAR_SVTYPE_LOOKUP and temp_intpn_dict['Type'].lower() in self.UNIVAR_SVTYPE_LOOKUP[sv_obj['type']]:
+                    if ('annotation_overlap' in temp_intpn_dict and  temp_intpn_dict['annotation_overlap'] >= self.AF_ANNO_OVERLAP_FILTER and 'reciprocal_overlap' in temp_intpn_dict and temp_intpn_dict['reciprocal_overlap'] >= self.AF_RECI_OVERLAP_FILTER) or sv_obj['type'] not in self.CHECK_OVERLAP_TYPE:
+                        temp_intpn_dict['source'] = 'ClinVar'
+                        temp_intpn_dict['interpretation'] = ','.join(clinvar_sig)
 
-                    if 'ClinicalSignificance' in temp_intpn_dict:
-                        if temp_intpn_dict['ClinicalSignificance'].startswith('Pathogenic') and 'Likely pathogenic' not in temp_intpn_dict['ClinicalSignificance']:
-                            temp_intpn_dict['clinical_score'] = 0
-                        elif temp_intpn_dict['ClinicalSignificance'].startswith('Pathogenic') and 'Likely pathogenic' in temp_intpn_dict['ClinicalSignificance']:
-                            temp_intpn_dict['clinical_score'] = 1
-                        elif 'Likely pathogenic' in temp_intpn_dict['ClinicalSignificance'] and not temp_intpn_dict['ClinicalSignificance'].startswith('Pathogenic'):
-                            temp_intpn_dict['clinical_score'] = 2
-                        elif 'Likely benign' in temp_intpn_dict['ClinicalSignificance'] and not temp_intpn_dict['ClinicalSignificance'].startswith('Benign'):
-                            temp_intpn_dict['clinical_score'] = 3
-                        elif 'Likely benign' in temp_intpn_dict['ClinicalSignificance'] and temp_intpn_dict['ClinicalSignificance'].startswith('Benign'):
-                            temp_intpn_dict['clinical_score'] = 4
-                        elif temp_intpn_dict['ClinicalSignificance'].startswith('Benign') and 'Likely benign' not in temp_intpn_dict['ClinicalSignificance']:
-                            temp_intpn_dict['clinical_score'] = 5
+                        if 'ClinicalSignificance' in temp_intpn_dict:
+                            if temp_intpn_dict['ClinicalSignificance'].startswith('Pathogenic') and 'Likely pathogenic' not in temp_intpn_dict['ClinicalSignificance']:
+                                temp_intpn_dict['clinical_score'] = 0
+                            elif temp_intpn_dict['ClinicalSignificance'].startswith('Pathogenic') and 'Likely pathogenic' in temp_intpn_dict['ClinicalSignificance']:
+                                temp_intpn_dict['clinical_score'] = 1
+                            elif 'Likely pathogenic' in temp_intpn_dict['ClinicalSignificance'] and not temp_intpn_dict['ClinicalSignificance'].startswith('Pathogenic'):
+                                temp_intpn_dict['clinical_score'] = 2
+                            elif 'Likely benign' in temp_intpn_dict['ClinicalSignificance'] and not temp_intpn_dict['ClinicalSignificance'].startswith('Benign'):
+                                temp_intpn_dict['clinical_score'] = 3
+                            elif 'Likely benign' in temp_intpn_dict['ClinicalSignificance'] and temp_intpn_dict['ClinicalSignificance'].startswith('Benign'):
+                                temp_intpn_dict['clinical_score'] = 4
+                            elif temp_intpn_dict['ClinicalSignificance'].startswith('Benign') and 'Likely benign' not in temp_intpn_dict['ClinicalSignificance']:
+                                temp_intpn_dict['clinical_score'] = 5
+                            else:
+                                temp_intpn_dict['clinical_score'] = 6
                         else:
                             temp_intpn_dict['clinical_score'] = 6
-                    else:
-                        temp_intpn_dict['clinical_score'] = 6
 
-                    sv_intpn_list.append(temp_intpn_dict.copy())          
-                    temp_clinvar_objs.append(temp_intpn_dict.copy())   
+                        sv_intpn_list.append(temp_intpn_dict.copy())          
+                        temp_clinvar_objs.append(temp_intpn_dict.copy())   
 
-                    for y in clinvar_sig:
-                        if y.lower() in ['pathogenic', 'likely pathogenic', 'pathogenic/Likely pathogenic', 'likely pathogenic; risk factor', 'pathogenic; risk factor']:
-                            patho_label_list.append('pathogenic')
-                        elif y.lower() in ['benign', 'likely benign', 'benign/likely benign']:
-                            patho_label_list.append('benign')
-                        else:
-                            patho_label_list.append('others')
-                    
-                    hit_reported_sv = True
+                        for y in clinvar_sig:
+                            if y.lower() in ['pathogenic', 'likely pathogenic', 'pathogenic/Likely pathogenic', 'likely pathogenic; risk factor', 'pathogenic; risk factor']:
+                                patho_label_list.append('pathogenic')
+                            elif y.lower() in ['benign', 'likely benign', 'benign/likely benign']:
+                                patho_label_list.append('benign')
+                            else:
+                                patho_label_list.append('others')
+                        
+                        hit_reported_sv = True
+                elif sv_obj['type'] not in self.UNIVAR_SVTYPE_LOOKUP:
+                    print("Unrecognized SV type for ClinVar check: ", sv_obj['type'], file=sys.stderr)
 
         if temp_clinvar_objs and len(temp_clinvar_objs) > 0:
             temp_clinvar_objs.sort(key=lambda clinvar:clinvar['clinical_score'], reverse= False)
@@ -1161,13 +1189,16 @@ class SVJSON2JSON(VariantHandler):
                 if 'numDuplications' in decipher_dict:
                     num_duplications = float(decipher_dict['numDuplications'])
 
-                if sv_obj['type'] in ["INS", "INV", "BND", "CPX", "CTX"] or (anno_overlap >= self.AF_ANNO_OVERLAP_FILTER and reci_overlap >= self.AF_RECI_OVERLAP_FILTER):
-                    if (sv_obj['type'] == 'DEL' and num_deletions > 0) or (sv_obj['type'] in ["DUP", "INS"] and num_duplications > 0) or sv_obj['type'] in ["INV", "BND", "CPX", "CTX"]:
+                if sv_obj['type'] in self.NO_CHECK_OVERLAP_TYPE or (anno_overlap >= self.AF_ANNO_OVERLAP_FILTER and reci_overlap >= self.AF_RECI_OVERLAP_FILTER):
+                    if (sv_obj['type'] == 'DEL' and num_deletions > 0) or (sv_obj['type'] in ["DUP", "INS"] and num_duplications > 0) or sv_obj['type'] in self.NO_CHECK_OVERLAP_TYPE or sv_obj['type'] in ["INV"]:
                         temp_ext_var_dict['source'] = 'DECIPHER'
                         temp_ext_var_dict['svLength'] = temp_ext_var_dict['source_end'] - temp_ext_var_dict['source_start'] + 1   
                         sv_ext_var_list.append(temp_ext_var_dict.copy())         
                         
                         hit_reported_sv = True
+                elif sv_obj['type'] not in self.UNIVAR_SVTYPE_LOOKUP:
+                    print("Unrecognized SV type for ClinVar check: ", sv_obj['type'], file=sys.stderr)
+
         return hit_reported_sv
 
     def _get_hit_reported(self, sv_obj, variant_dict):
@@ -1345,7 +1376,7 @@ class SVJSON2JSON(VariantHandler):
     
     def _full_overlap(self, sv_type, input_list):
         overlap_list = []
-        if sv_type in ['DEL','DUP','INV']:
+        if sv_type in self.CHECK_OVERLAP_TYPE:
             for i in input_list:
                 if not 'annotation_overlap' in i.keys() or i['annotation_overlap'] == 1:
                     overlap_list.append(i['enst_id'])
@@ -1407,7 +1438,7 @@ class SVJSON2JSON(VariantHandler):
         # Any overlap with any coding exon
         if svtype == 'DEL' and len(cds) > 0:
             plof = "LOF"
-        elif svtype == 'DUP':
+        elif svtype == 'DUP' or svtype == 'DUP:TANDEM':
             # Both bkpts in coding exons of the same gene
             if len(common_cds) > 0:
                 plof = "LOF"    
@@ -1430,7 +1461,7 @@ class SVJSON2JSON(VariantHandler):
             # Both bkpts outside gene and inversion spans whole gene
             elif len(common_gene) == 0 and len(full_gene_overlap) > 0:
                 plof = "INV_SPAN" 
-        elif svtype in ['BND', 'CPX', "CTX"]:
+        elif svtype in self.COMPLEX_SVTYPE:
             plof = "N/A"
 
         return plof

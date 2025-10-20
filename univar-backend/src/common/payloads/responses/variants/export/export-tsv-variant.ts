@@ -48,7 +48,7 @@ export class ExportTsvVariant extends BaseVariant {
   ) {
     super(variant, userInfo);
     EXPORT_TSV_VARIANT_SPECIAL_HANDLE_KEY.forEach((key) => {
-      if (key in variant && variant[key]) {
+      if ((key in variant && variant[key]) || key === 'gene_symbol') {
         switch (key) {
           case 'genotypes_index':
             if (
