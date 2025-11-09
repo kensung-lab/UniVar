@@ -40,30 +40,30 @@ workflow SV_ANNOTATION {
             .map { vcf, name -> tuple(vcf, name) }
 
         nirvana(
-            nirvana_input.map { it[0] },
+            nirvana_input.map { it -> it[0] },
             params.nirvana_path,
             params.annotated_path,
-            nirvana_input.map { it[1] },
+            nirvana_input.map { it -> it[1] },
         )
 
         // Debugging
         import_data_to_db(
             nirvana.out,
             params.variant_type,
-            Channel.value('useless'),
+            channel.value('useless'),
         )
     }
     else {
         nirvana(
             params.in_vcf_file,
-            Channel.fromPath(params.nirvana_path),
-            Channel.fromPath(params.annotated_path),
+            channel.fromPath(params.nirvana_path),
+            channel.fromPath(params.annotated_path),
             params.output_filename,
         )
         import_data_to_db(
             nirvana.out,
             params.variant_type,
-            Channel.value('useless'),
+            channel.value('useless'),
         )
     }
 

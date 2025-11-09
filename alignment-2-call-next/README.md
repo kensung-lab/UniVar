@@ -13,10 +13,21 @@ This project is using the [Nextflow][nextflow] to create alignment and calling p
 3. [samtools][samtools] 1.21+
 4. [bcftools][bcftools] 1.21+
 5. [Python][python] 3.13+
-6. [Surveyor][surveyor] 0.9+
+6. [SurVeyor][surveyor] 0.9+
 7. [DeepVariant][deepvariant] 1.9+ (docker)
 8. [CNVkit][cnvkit] 0.9.12+
 9. [GLnexus][glnexus] 1.4.1+
+
+## Python libraries
+1. pysam
+2. argparse
+3. pandas
+4. numpy
+5. concurrent
+6. matplotlib
+7. seaborn
+8. xgboost (for [SurVeyor][surveyor])
+9. scikit-learn (for [SurVeyor][surveyor])
 
 ## Usage
 

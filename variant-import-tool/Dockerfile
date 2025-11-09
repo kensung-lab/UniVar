@@ -9,5 +9,3 @@ RUN apk update
 RUN apk add cmake build-base apache-arrow-dev bash zlib-dev bzip2-dev xz-dev curl-dev
 RUN pip install --upgrade pip
 RUN pip install -r ./requirements.txt
-ENV CIVICPY_CACHE_FILE=/app/nightly-civicpy_cache.pkl
-ENV CIVICPY_CACHE_TIMEOUT_DAYS=100

@@ -1,41 +1,124 @@
-# UniVar Documentation 🚀
+# Contributing to UniVar
 
-Welcome to the documentation for **UniVar**, the Unified Variant Interpretation Platform! This folder contains guides, tutorials, and references to help you get started, use the platform effectively, and set it up for advanced or local deployment.
+Thank you for your interest in contributing to **UniVar**! We welcome contributions from the community to improve this [Unified Variant Interpretation Platform][univar]. Whether it's fixing a bug, adding a feature, improving documentation, or enhancing the pipelines, your help makes UniVar better for everyone.
 
-Whether you're a clinician uploading [VCF][vcf] files for quick prioritization, a researcher customizing workflows, or a developer contributing to the code, these resources will guide you every step of the way.
+## Ways to Contribute
 
-## What's Included?
+### Reporting Bugs
 
-Here's an overview of the key documents in this repository:
+- **Before reporting**: Search [existing issues](https://github.com/kensung-lab/UniVar/issues) to see if it's already reported.
+- **How to report**:
+  1. Open a new issue at [Issues](https://github.com/kensung-lab/UniVar/issues/new).
+  2. Use the "Bug report" template.
+  3. Provide:
+     - A clear title (e.g., "Annotation pipeline fails on large [SV][sv] [VCFs][vcf]").
+     - Steps to reproduce.
+     - Expected vs. actual behavior.
+     - Environment details (e.g., [Nextflow][nextflow] version, OS).
+     - Screenshots or logs if possible.
+- Label it with `bug` for visibility.
 
-- **[User Guide (PDF)](reference/pdf/UniVar_User_Manual.pdf)**: A beginner-friendly walkthrough of the web interface. Learn how to upload variants, add clinical context (like [HPO terms][hpo-website] or gene panels), run analyses, and interpret results. Perfect for first-time users. _(Markdown version in progress—will be updated later!)_
+### Suggesting Features
 
-- **[Installation Guide](installation.md)**: Step-by-step instructions for local setup. Covers cloning the repo, installing dependencies (e.g., [Docker][docker], [Nextflow][nextflow]), and running [UniVar][univar] offline for privacy or high-volume use. _(In progress—expanding with more platform-specific instructions.)_
+- **Before suggesting**: Check [discussions](https://github.com/kensung-lab/UniVar/discussions) or issues for similar ideas.
+- **How to suggest**:
+  1. Open a new issue using the "Feature request" template.
+  2. Describe the feature, why it's useful, and any mockups or references.
+  3. Label it with `enhancement`.
+- We prioritize features that enhance usability, performance, or support for more variant types.
 
-- **[Tutorials](tutorials/)**: Hands-on examples with real-world scenarios. **In progress!** Detailed tutorials for basic prioritization, advanced filtering, and compound heterozygous analysis will be available in future updates.
+### Submitting Pull Requests (PRs)
 
-- **[FAQ](faq.md)**: Common questions, troubleshooting tips, and best practices for secure data handling. _(In progress—adding more technical troubleshooting.)_
+We love PRs! Follow these steps to get your contribution merged:
 
-## Pipeline Guides
+1. **Fork the repository** and clone your fork:
 
-UniVar includes modular [Nextflow][nextflow] pipelines for alignment, variant calling, and annotation. These can be run independently for custom workflows.
+```sh
+git clone https://github.com/your-username/UniVar.git
+cd UniVar
+```
 
-- **[Alignment and Variant Calling Pipeline](../alignment-2-call-next/)**: End-to-end [Nextflow][nextflow] workflow from [FASTQ][fastq] files to annotated [VCF][vcf]. Includes alignment with [BWA][bwa], variant calling with [DeepVariant][deepvariant], [CNV][cnv] detection with [CNVkit][cnvkit], and [SV][sv] calling with [SurVeyor][surveyor]. See the subfolder for setup and running instructions.
+2. **Create a feature branch** from `main`:
 
-- **[Annotation Pipeline](../univar-annotation/)**: Comprehensive [Nextflow][nextflow] workflows for variant annotation and prioritization.
-  - **[SNV/SV Annotation](../univar-annotation/annotation-next/)**: Annotates variants using [VEP][vep], [VCFanno][vcfanno], and [Nirvana][nirvana] for functional and pathogenicity predictions.
-  - **[Exomiser Prioritization](../univar-annotation/exomiser-next/)**: Phenotype-driven variant ranking.
-  - **[Database Download Scripts](../univar-annotation/data-source/)**: Tools to fetch required annotation databases. _(In progress—automating updates for new database releases.)_
+```sh
+git checkout -b feature/your-feature-name
+```
 
-For more details, refer to the README files in each pipeline subfolder or the [Installation Guide](installation.md) for integration tips.
+3. **Make your changes**:
 
-## Getting Started
+- Follow our [coding standards](#coding-standards) below.
+- Update documentation if needed (e.g., in `univar-doc/`).
+- Add tests for new features or bug fixes.
 
-1. **Read the User Guide** first for the quickest path to results.
-2. **Check Installation** if you need local control.
-3. **Explore Pipelines** for advanced customization.
+4. **Commit your changes**:
 
-For the full platform overview, see the main [README](../README.md). Questions? Open an [issue](https://github.com/kensung-lab/UniVar/issues) or [email us](mailto:yantszcheng@cuhk.edu.hk).
+- Use descriptive messages: `git commit -m "Add support for custom gene panels in Exomiser"`.
+- Push to your fork: `git push origin feature/your-feature-name`.
+
+5. **Open a PR**:
+
+- Go to [Pull Requests](https://github.com/kensung-lab/UniVar/pulls) and click "New pull request".
+- Link to the related issue (e.g., "Closes #123").
+- Describe what you changed and why.
+
+6. **What to expect**:
+
+- We'll review promptly and may request changes.
+- Ensure your PR passes CI checks (if set up).
+- Once approved, we'll merge it!
+
+**Tips**:
+
+- Keep PRs small and focused—one feature or bug fix per PR.
+- For pipeline changes (e.g., [Nextflow][nextflow] workflows), test on a sample dataset.
+
+## Development Setup
+
+To contribute to the codebase:
+
+1. **Prerequisites**:
+
+- [Git][git], [Docker][docker], [Nextflow][Nextflow].
+- [Node.js][node-js] (for frontend/backend).
+- [Python][python] (for data tools).
+
+2. **Clone and install**:
+
+```sh
+git clone https://github.com/kensung-lab/UniVar.git
+cd UniVar
+```
+
+- For frontend: `cd univar-frontend && npm install && npm run dev`.
+- For backend: `cd univar-backend && npm install && npm run start:dev`.
+- For pipelines: `nextflow run univar-annotation/annotation-next -profile docker`.
+
+3. See [Installation Guide](univar-doc/installation.md) for full details.
+
+## Coding Standards
+
+- **JavaScript/TypeScript**: Follow [ESLint][es-lint] rules (configured in repo). Use Prettier for formatting.
+- **Nextflow**: Use semantic versioning for modules; add clear params and docs.
+- **Python**: PEP 8 style; use black for formatting.
+- **Markdown**: Consistent headings, links via references.
+- **Commits**: Conventional commits (e.g., `feat: add SV filtering`).
+
+## Testing
+
+- **Unit tests**: Run `npm test` in frontend/backend.
+- **Pipeline tests**: Use sample data in `tests/` folders.
+- **Manual testing**: Upload sample [VCFs][vcf] to web/local instance.
+
+## Code of Conduct
+
+We follow the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/). Harassment or discrimination will not be tolerated.
+
+## Questions?
+
+- Join [GitHub Discussions](https://github.com/kensung-lab/UniVar/discussions) for general chat.
+- [Email us](mailto:yantszcheng@cuhk.edu.hk) for private queries.
+
+Thanks for contributing! 🎉
 
 [comment]: <Below is the information for other markdown to reference>
 [Bioinformation Related]: ========================================================
@@ -101,8 +184,8 @@ For the full platform overview, see the main [README](../README.md). Questions? 
 [axios]: https://github.com/axios/axios "Axios"
 [axios-response-interceptors]: https://axios-http.com/docs/interceptors "Response Interceptors"
 [Docker Related]: ====================================================================
-[docker-image]: https://docs.docker.com/get-started/overview/#images "Docker image"
 [docker]: https://www.docker.com/ "Docker"
+[docker-image]: https://docs.docker.com/get-started/overview/#images "Docker image"
 [docker-registry]: https://docs.docker.com/registry/ "Docker Registry"
 [container-image-digest]: https://docs.digitalocean.com/glossary/digest/ "Container Image Digest"
 [dockerfile]: https://docs.docker.com/engine/reference/builder/ "Dockerfile"

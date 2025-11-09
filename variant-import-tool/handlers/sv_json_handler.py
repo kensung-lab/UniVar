@@ -202,14 +202,15 @@ class SVJSON2JSON(VariantHandler):
         sys.stdout.write("all message variants completed in %ds\n" % (time() - start_time))
 
         self.sv_object_list = sum(sv_lists, [])
+        # When BND relationship required, can uncomment below code but it may cause performance issue (RAM and time)
         # Process related variants in parallel
-        start_time = time()
-        sys.stdout.write("start finding related variants with multiprocessing\n")
-        pool = multiprocessing.Pool(self.process_num)
-        pool.map(self._get_related_variant, sv_lists)
-        pool.close()
-        pool.join()
-        sys.stdout.write("Found all related variants completed in %ds\n" % (time() - start_time))
+        # start_time = time()
+        # sys.stdout.write("start finding related variants with multiprocessing\n")
+        # pool = multiprocessing.Pool(self.process_num)
+        # pool.map(self._get_related_variant, sv_lists)
+        # pool.close()
+        # pool.join()
+        # sys.stdout.write("Found all related variants completed in %ds\n" % (time() - start_time))
 
     ####### start private method ########
     def _read_json_chunk(self, chunk):
@@ -408,7 +409,7 @@ class SVJSON2JSON(VariantHandler):
                             self.max_sv_size = 0
                         if size_bytes > self.max_sv_size:
                             self.max_sv_size = size_bytes
-                            print(f"New max size so far: {size_bytes} bytes at index {index}", file=sys.stderr)
+                            print(f"New max size so far: {size_bytes} bytes at index {index}", file=sys.stdout)
 
                     variant_array.append(sv_obj)
         sys.stdout.write("massage chunk %d completed in %ds\n" % (chunk_num, time() - start_chunk_time))

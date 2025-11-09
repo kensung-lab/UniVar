@@ -1,5 +1,7 @@
 import pymongo
 from interfaces.database import Database
+from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception
+from pymongo.errors import WriteError
 
 class MongoDB(Database):
     MONGO_DB_VARIANTS_COLLECTION_NAME = 'variants'
@@ -9,7 +11,7 @@ class MongoDB(Database):
         self.init_database(url, timeout, app_name)
 
     def init_database(self, url, timeout, app_name):
-        self._engine = pymongo.MongoClient(url, timeoutMS=timeout, socketTimeoutMS=timeout, connectTimeoutMS=timeout, serverSelectionTimeoutMS=timeout, appname=app_name)
+        self._engine = pymongo.MongoClient(url, retryWrites=True, timeoutMS=timeout, socketTimeoutMS=timeout, connectTimeoutMS=timeout, serverSelectionTimeoutMS=timeout, appname=app_name)
 
     def insert_many(self, database, table, data):
         return self._getCollection(database, table).insert_many(data)
@@ -17,9 +19,19 @@ class MongoDB(Database):
     def insert_one(self, database, table, data):
         return self._getCollection(database, table).insert_one(data)
     
+    @retry(
+        stop=stop_after_attempt(5),  # Retry up to 5 times
+        wait=wait_exponential(multiplier=1, min=4, max=10),  # Exponential backoff: 4s, 8s, etc.
+        retry=retry_if_exception(lambda e: isinstance(e, WriteError) and e.code == 175)
+    )
     def update_one(self, database, table, condition, data):
         return self._getCollection(database, table).update_one(condition, data)
     
+    @retry(
+        stop=stop_after_attempt(5),  # Retry up to 5 times
+        wait=wait_exponential(multiplier=1, min=4, max=10),  # Exponential backoff: 4s, 8s, etc.
+        retry=retry_if_exception(lambda e: isinstance(e, WriteError) and e.code == 175) 
+    )
     def update_many(self, database, table, condition, data):
         return self._getCollection(database, table).update_many(condition, data)
     

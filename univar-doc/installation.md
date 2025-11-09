@@ -11,10 +11,10 @@ Ensure you have:
 - [Git][git]
 - [Node.js (v18+)][node-js] with [pnpm][p-npm]
 - [Docker][docker] and [Docker Compose][docker-compose] (recommended)
-- [Nextflow][nextflow] 25.04.7+
 - [MongoDB][mongo-db] 8+
 - [Python][python] 3.13+
 - [Java][java] 21+ (for [Nextflow][nextflow])
+- [Nextflow][nextflow] 25.04.7+
 
 Verify: `node --version`, `docker --version`, etc.
 

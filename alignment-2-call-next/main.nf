@@ -21,7 +21,8 @@
  * ******************************************************************* */
 params.number_of_process = 32
 params.cnv_cut_off = 5000
-params.fasta_path = "${params.data_dir}/alignment/common/hs38DH.fa" // from bwakit
+params.fasta_path = "${params.data_dir}/alignment/common/hs38DH.fa"
+// from bwakit
 params.cnv_common_path = "${params.data_dir}/alignment/common/cnvkit"
 params.alignment_path = "${params.data_dir}/alignment/samples/result"
 params.univar_flag = false
@@ -48,7 +49,7 @@ workflow {
     def family_map = params.ped_file ? loadPedMap(params.ped_file) : [:]
 
     if (params.folder_fastq && (!params.bam_path || !params.unique_string)) {
-        ch_read_pairs = Channel.fromPath("${params.folder_fastq}/*_{1,2}.{fq.gz,fastq.gz}", checkIfExists: true)
+        ch_read_pairs = channel.fromPath("${params.folder_fastq}/*_{1,2}.{fq.gz,fastq.gz}", checkIfExists: true)
             .map { file ->
                 def parts = file.name.split('_')
                 def sample_type = parts[-2] == 'somatic' ? 'somatic' : 'germline'
@@ -74,7 +75,7 @@ workflow {
             }
             .groupTuple(by: [0, 1, 2, 3])
             .map { sample_id, machine_code, lane, sample_type, files ->
-                tuple(sample_id, machine_code, lane, sample_type, files.sort { it.name.contains('_1.') ? 0 : 1 })
+                tuple(sample_id, machine_code, lane, sample_type, files.sort { it -> it.name.contains('_1.') ? 0 : 1 })
             }
 
         bwa(ch_read_pairs, params.fasta_path, params.tools_path, params.number_of_process)
@@ -95,8 +96,8 @@ workflow {
             }
             .groupTuple(by: [0, 1])
             .map { sample_id, sample_type, bam_bai_pairs ->
-                def bams = bam_bai_pairs.collect { it[0] }
-                def bais = bam_bai_pairs.collect { it[1] }
+                def bams = bam_bai_pairs.collect { it -> it[0] }
+                def bais = bam_bai_pairs.collect { it -> it[1] }
                 tuple(sample_id, sample_type, bams, bais)
             }
 
@@ -106,7 +107,7 @@ workflow {
     else if (params.bam_path && params.unique_string) {
         def bam_files = params.bam_path instanceof String ? [params.bam_path] : params.bam_path
         def unique_strings = params.unique_string instanceof String ? [params.unique_string] : params.unique_string
-        ch_input_bams = Channel.fromList(bam_files.zip(unique_strings))
+        ch_input_bams = channel.fromList(bam_files.zip(unique_strings))
             .map { bam_path, unique ->
                 def bai_path = "${bam_path}.bai"
                 def unique_file = file("${unique}.txt")
@@ -137,7 +138,7 @@ workflow {
 
     // Germline BAMs
     ch_germline_bams = ch_bams_for_calling
-        .filter { it[1] == 'germline' }
+        .filter { it -> it[1] == 'germline' }
         .map { sample_id, _sample_type, bam, bai, unique ->
             tuple(sample_id, bam, bai, unique)
         }
@@ -153,7 +154,7 @@ workflow {
 
     // Somatic-Only BAMs (Tumor-Only)
     ch_somatic_only = ch_bams_for_calling
-        .filter { it[1] == 'somatic' }
+        .filter { it -> it[1] == 'somatic' }
         .join(ch_sample_groups, by: 0)
         .filter { _sample_id, _type, _bam, _bai, _unique, types, _bams, _bais, _uniques -> !types.contains('germline') }
         .map { sample_id, _type, bam, bai, unique, _types, _bams, _bais, _uniques ->
@@ -168,7 +169,7 @@ workflow {
         }
         .groupTuple(by: 0)
         .map { family_id, samples ->
-            def ped_order = family_map.findAll { it.value.family_id == family_id }.collect { it.key }
+            def ped_order = family_map.findAll { it -> it.value.family_id == family_id }.collect { it -> it.key }
             def sorted_samples = samples.sort { a, b -> ped_order.indexOf(a[0]) <=> ped_order.indexOf(b[0]) }
             tuple(family_id, sorted_samples)
         }
@@ -180,9 +181,9 @@ workflow {
         }
         .set { germline_branched }
 
-    sv_calling(germline_branched.single.map { _family_id, samples -> samples[0] }, params.tools_path, Channel.fromPath(params.alignment_path), params.fasta_path, params.number_of_process, params.project_name)
-    snp_calling(germline_branched.single.map { _family_id, samples -> samples[0] }, params.tools_path, Channel.fromPath(params.alignment_path), params.number_of_process, params.project_name)
-    cnv_calling(germline_branched.single.map { _family_id, samples -> samples[0] }, Channel.fromPath(params.alignment_path), Channel.fromPath(params.r_env_path), params.fasta_path, params.cnv_common_path, snp_calling.out.snp_vcf, params.number_of_process, params.project_name, params.cnv_cut_off)
+    sv_calling(germline_branched.single.map { _family_id, samples -> samples[0] }, params.tools_path, channel.fromPath(params.alignment_path), params.fasta_path, params.number_of_process, params.project_name)
+    snp_calling(germline_branched.single.map { _family_id, samples -> samples[0] }, params.tools_path, channel.fromPath(params.alignment_path), params.number_of_process, params.project_name)
+    cnv_calling(germline_branched.single.map { _family_id, samples -> samples[0] }, channel.fromPath(params.alignment_path), channel.fromPath(params.r_env_path), params.fasta_path, params.cnv_common_path, snp_calling.out.snp_vcf, params.number_of_process, params.project_name, params.cnv_cut_off)
 
     germline_branched.joint
         .branch { _family_id, samples ->
@@ -191,18 +192,18 @@ workflow {
         }
         .set { joint_branched }
 
-    joint_snp_calling_with_parents(joint_branched.with_parents, params.tools_path, Channel.fromPath(params.alignment_path), params.number_of_process, params.project_name, family_map)
-    joint_snp_calling_standard(joint_branched.standard, params.tools_path, Channel.fromPath(params.alignment_path), params.number_of_process, params.project_name)
-    joint_sv_calling(joint_branched.with_parents.mix(joint_branched.standard), params.tools_path, Channel.fromPath(params.alignment_path), params.fasta_path, params.number_of_process, params.project_name)
-    joint_cnv_calling(joint_branched.with_parents.mix(joint_branched.standard), params.tools_path, Channel.fromPath(params.alignment_path), Channel.fromPath(params.r_env_path), params.fasta_path, params.cnv_common_path, joint_snp_calling_with_parents.out.snp_vcf.mix(joint_snp_calling_standard.out.snp_vcf), params.number_of_process, params.project_name, params.cnv_cut_off)
-    // denovo_gear(joint_branched.with_parents, Channel.fromPath(params.tools_path), Channel.fromPath(params.alignment_path), Channel.fromPath(params.fasta_path), params.number_of_process, params.project_name, family_map)
+    joint_snp_calling_with_parents(joint_branched.with_parents, params.tools_path, channel.fromPath(params.alignment_path), params.number_of_process, params.project_name, family_map)
+    joint_snp_calling_standard(joint_branched.standard, params.tools_path, channel.fromPath(params.alignment_path), params.number_of_process, params.project_name)
+    joint_sv_calling(joint_branched.with_parents.mix(joint_branched.standard), params.tools_path, channel.fromPath(params.alignment_path), params.fasta_path, params.number_of_process, params.project_name)
+    joint_cnv_calling(joint_branched.with_parents.mix(joint_branched.standard), params.tools_path, channel.fromPath(params.alignment_path), channel.fromPath(params.r_env_path), params.fasta_path, params.cnv_common_path, joint_snp_calling_with_parents.out.snp_vcf.mix(joint_snp_calling_standard.out.snp_vcf), params.number_of_process, params.project_name, params.cnv_cut_off)
+    // denovo_gear(joint_branched.with_parents, channel.fromPath(params.tools_path), channel.fromPath(params.alignment_path), channel.fromPath(params.fasta_path), params.number_of_process, params.project_name, family_map)
 
     // merge_vcf_germline(
     //     joint_branched.with_parents,
     //     denovo_gear.out.denovo_vcf,
     //     joint_snp_calling_with_parents.out.snp_vcf,
-    //     Channel.fromPath(params.tools_path),
-    //     Channel.fromPath(params.fasta_path),
+    //     channel.fromPath(params.tools_path),
+    //     channel.fromPath(params.fasta_path),
     //     params.alignment_path,
     //     params.number_of_process,
     //     params.project_name,
@@ -277,7 +278,7 @@ process bwa {
     script:
     """
     PLATFORM=\$(python ${tools_path}/get_fastq_platform.py \$(readlink -f ${reads[0]}))
-    GROUP_HEADER=$"@RG\\tID:${sample_id}_${machine_code}_${lane}_${sample_type}\\tPL:\$PLATFORM\\tSM:${sample_id}"
+    GROUP_HEADER=\$"@RG\\tID:${sample_id}_${machine_code}_${lane}_${sample_type}\\tPL:\$PLATFORM\\tSM:${sample_id}"
     run-bwamem -t ${threads} -o ${sample_id}_${machine_code}_${lane}_${sample_type} -R "\$GROUP_HEADER" -H \$(readlink -f ${fasta_path}) \$(readlink -f ${reads[0]}) \$(readlink -f ${reads[1]}) | sh
     samtools sort -@${threads} -n ${sample_id}_${machine_code}_${lane}_${sample_type}.aln.bam -o ${sample_id}_${machine_code}_${lane}_${sample_type}.sort_n.bam
 
@@ -555,7 +556,7 @@ process joint_cnv_calling {
     def unique_proband = samples[0][3]
     def output_dir = "${alignment_path}/${project_name}/germline/cnv/${unique_proband}"
     def temp_dir = "${alignment_path}/${project_name}/germline/cnv/${unique_proband}/temp"
-    def sample_ids = samples.collect { it[0] }
+    def sample_ids = samples.collect { sample -> sample[0] }
 
     def tsv_content = samples
         .collect { sample ->
@@ -778,8 +779,8 @@ process joint_snp_calling_with_parents {
     def output_dir = "${alignment_path}/${project_name}/germline/snp/${proband_unique}"
     def temp_dir = "${output_dir}/temp"
     def child_bam = samples[0][1]
-    def father_bam = samples.find { it[0] == family_map[samples[0][0]]?.paternal_id }?.getAt(1) ?: ""
-    def mother_bam = samples.find { it[0] == family_map[samples[0][0]]?.maternal_id }?.getAt(1) ?: ""
+    def father_bam = samples.find { sample -> sample[0] == family_map[samples[0][0]]?.paternal_id }?.getAt(1) ?: ""
+    def mother_bam = samples.find { sample -> sample[0] == family_map[samples[0][0]]?.maternal_id }?.getAt(1) ?: ""
     def bams = "${child_bam} ${father_bam} ${mother_bam}".trim()
 
     """
@@ -866,8 +867,8 @@ process denovo_gear {
     def output_dir = "${alignment_path}/${project_name}/germline/snp/${proband_unique}"
     def proband_id = samples[0][0]
     def proband_bam = samples[0][1]
-    def father_bam = samples.find { it[0] == family_map[proband_id]?.paternal_id }?.getAt(1) ?: ""
-    def mother_bam = samples.find { it[0] == family_map[proband_id]?.maternal_id }?.getAt(1) ?: ""
+    def father_bam = samples.find { sample -> sample[0] == family_map[proband_id]?.paternal_id }?.getAt(1) ?: ""
+    def mother_bam = samples.find { sample -> sample[0] == family_map[proband_id]?.maternal_id }?.getAt(1) ?: ""
     def pat_id = family_map[proband_id]?.paternal_id ?: ""
     def mat_id = family_map[proband_id]?.maternal_id ?: ""
 
@@ -1337,7 +1338,7 @@ process wait_all_completed {
 
 def loadPedMap(ped_file) {
     def family_map = [:]
-    Channel.fromPath(ped_file)
+    channel.fromPath(ped_file)
         .splitText()
         .filter { line -> !line.startsWith('#') }
         .map { line ->
@@ -1354,7 +1355,7 @@ def loadPedMap(ped_file) {
 }
 
 def isTrioOrDuo(samples, family_map) {
-    def sample_ids = samples.collect { it[0] }
+    def sample_ids = samples.collect { it -> it[0] }
     def proband_id = samples[0][0]
     def father_id = family_map[proband_id]?.paternal_id
     def mother_id = family_map[proband_id]?.maternal_id

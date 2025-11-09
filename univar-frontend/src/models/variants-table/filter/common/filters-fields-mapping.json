@@ -106,19 +106,6 @@
   ],
   "evidence": ["clingen_hi", "clingen_ts", "clnsig"],
   "repeats": ["is_repeat"],
-  "prioritization": [
-    "highest_exomiser_scombi",
-    "exomiser_ad_exgenescombi",
-    "exomiser_ar_exgenescombi",
-    "exomiser_xd_exgenescombi",
-    "exomiser_xr_exgenescombi",
-    "exomiser_mt_exgenescombi",
-    "highest_exomiser_spheno",
-    "exomiser_ad_exgenespheno",
-    "exomiser_ar_exgenespheno",
-    "exomiser_xd_exgenespheno",
-    "exomiser_xr_exgenespheno",
-    "exomiser_mt_exgenespheno"
-  ],
+  "prioritization": ["highest_exomiser_gene_combined_score", "highest_exomiser_gene_pheno_score"],
   "others": ["is_read", "note", "supp"]
 }

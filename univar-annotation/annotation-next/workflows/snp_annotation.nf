@@ -30,6 +30,7 @@ params.chrXYh2d_script = "${params.data_dir}/annotation/tools-data/snp/vcfanno/c
 params.annotated_path = "${params.data_dir}/annotation/samples/annotated"
 params.variant_type = 'snp_vcf'
 params.regions_path = "${params.data_dir}/annotation/tools-data/snp/mane/MANE.GRCh38.v1.4.ensembl_genomic.exon_flanked100.bed.gz"
+params.temp_dir = "${params.data_dir}/annotation/annotation/samples/annotated/temp"
 
 // Workflow block
 workflow SNP_ANNOTATION {
@@ -38,18 +39,18 @@ workflow SNP_ANNOTATION {
 
     main:
     if (snp_file) {
-        extract_exon(snp_file, Channel.fromPath(params.regions_path), Channel.fromPath(params.regions_path + '.tbi'))
-        vep(Channel.fromPath(params.asset_path + '/vep'), extract_exon.out)
-        vcfanno(vep.out.vcf, Channel.fromPath(params.vcfanno_template), Channel.fromPath(params.asset_path + '/vcfanno/clinvar'))
-        finalize(vcfanno.out, Channel.fromPath(params.chrXYh2d_script), Channel.fromPath(params.annotated_path), snp_file.map { file -> file.getName() })
-        IMPORT_DATA_TO_DB(finalize.out.vcf, params.variant_type, Channel.value('useless'))
+        extract_exon(snp_file, channel.fromPath(params.regions_path), channel.fromPath(params.regions_path + '.tbi'))
+        vep(channel.fromPath(params.asset_path + '/vep'), extract_exon.out)
+        vcfanno(vep.out.vcf, channel.fromPath(params.vcfanno_template), channel.fromPath(params.asset_path + '/vcfanno/clinvar'))
+        finalize(vcfanno.out, channel.fromPath(params.chrXYh2d_script), channel.fromPath(params.annotated_path), snp_file.map { file -> file.getName() })
+        IMPORT_DATA_TO_DB(finalize.out.vcf, params.variant_type, channel.value('useless'))
     }
     else {
-        extract_exon(Channel.fromPath(params.in_vcf_file), Channel.fromPath(params.regions_path), Channel.fromPath(params.regions_path + '.tbi'))
-        vep(Channel.fromPath(params.asset_path + '/vep'), extract_exon.out)
-        vcfanno(vep.out.vcf, Channel.fromPath(params.vcfanno_template), Channel.fromPath(params.asset_path + '/vcfanno/clinvar'))
-        finalize(vcfanno.out, Channel.fromPath(params.chrXYh2d_script), Channel.fromPath(params.annotated_path), Channel.fromPath(params.in_vcf_file).map { file -> file.getName() })
-        IMPORT_DATA_TO_DB(finalize.out.vcf, params.variant_type, Channel.value('useless'))
+        extract_exon(channel.fromPath(params.in_vcf_file), channel.fromPath(params.regions_path), channel.fromPath(params.regions_path + '.tbi'))
+        vep(channel.fromPath(params.asset_path + '/vep'), extract_exon.out)
+        vcfanno(vep.out.vcf, channel.fromPath(params.vcfanno_template), channel.fromPath(params.asset_path + '/vcfanno/clinvar'))
+        finalize(vcfanno.out, channel.fromPath(params.chrXYh2d_script), channel.fromPath(params.annotated_path), channel.fromPath(params.in_vcf_file).map { file -> file.getName() })
+        IMPORT_DATA_TO_DB(finalize.out.vcf, params.variant_type, channel.value('useless'))
     }
 
     emit:
@@ -58,7 +59,7 @@ workflow SNP_ANNOTATION {
 
 // Define the process to filter only exon left
 process extract_exon {
-    publishDir "data/filtered", mode: 'copy'
+    publishDir "${params.temp_dir}/filtered", mode: 'copy'
 
     input:
     path in_vcf
@@ -83,7 +84,7 @@ process extract_exon {
 
 // Define the process for running vep
 process vep {
-    publishDir "data/temp", mode: 'copy'
+    publishDir "${params.temp_dir}/temp", mode: 'copy'
 
     input:
     path vep_data
@@ -142,7 +143,7 @@ process vep {
 }
 
 process vcfanno {
-    publishDir "data/temp", mode: 'copy'
+    publishDir "${params.temp_dir}/temp", mode: 'copy'
 
     input:
     path vep_vcf_file
@@ -175,7 +176,7 @@ process vcfanno {
 }
 
 process finalize {
-    publishDir "data/result", mode: 'copy'
+    publishDir "${params.temp_dir}/result", mode: 'copy'
 
     input:
     path vcfanno_vcf_file

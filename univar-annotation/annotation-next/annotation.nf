@@ -31,11 +31,11 @@ workflow {
     def database_name = params.database_name
 
     if (params.in_snp_file) {
-        SNP_ANNOTATION(Channel.fromPath(params.in_snp_file))
+        SNP_ANNOTATION(channel.fromPath(params.in_snp_file))
     }
 
     if (params.in_sv_files) {
-        SV_ANNOTATION(Channel.fromPath(params.in_sv_files))
+        SV_ANNOTATION(channel.fromPath(params.in_sv_files))
     }
 
     wait_all_complete(params.in_snp_file ? SNP_ANNOTATION.out : '', params.in_sv_files ? SV_ANNOTATION.out : '')

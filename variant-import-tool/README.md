@@ -5,7 +5,7 @@ Aim to import different type of files to different destination e.g. DB/ [`JSON`]
 Currently focus on importing to [`MongoDB`][mongo-db]
 
 ## Requirement
-- [Python][python] 3.12+
+- [Python][python] 3.13+
 
 ## Installation
 ```bash
